@@ -1,0 +1,63 @@
+site_name: BDA
+site_author: "Luis García Bonifaz"
+site_email: "l.garciabonifaz@edu.gva.es"
+site_url: https://luisgarciabonifaz.github.io/BDA/
+
+theme:
+  name: material
+  language: es
+  palette:
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: navy
+      accent: deep orange
+
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: navy
+      accent: deep purple
+
+
+extra_css:
+  - css/custom.css
+    
+markdown_extensions:
+  - attr_list          # Adds attribute lists to generated HTML
+  - pymdownx.emoji:    # Para añadir iconos en el texto. Lista de iconos https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
+ # - codehilite         # Syntax coloring for code blocks
+  - tables
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition         # Adds boxes for Notes, Warnings, etc.
+  - pymdownx.details
+  - pymdownx.blocks.html
+  - toc: 
+#      permalink: true
+      toc_depth: 2
+  
+copyright: "<a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>."
+
+plugins:
+  - git-revision-date-localized:
+      type: date  # Puedes usar "datetime" si quieres tener fecha y hora
+      locale: es  # Configura el idioma (opcional, "es" para español)
+
+nav:
+- Inicio: 'index.md'
+- Big Data Aplicado:
+    - 'T1 - Fundamentos de los Sistemes Operativos': T_01_Fundamentos_BigData/Fundamentos_BigData.md
