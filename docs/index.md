@@ -8,8 +8,6 @@
   <a href="mailto:l.garciabonifaz@edu.gva.es">l.garciabonifaz@edu.gva.es</a>
 </div>
 
-## Temas ##
-
 /// html | div[style='display: inline-block;width:33%;']
 ## 1ª Evaluación
 * [T1 Fundamentos y Ecosistema Moderno de Big Data](T_01_Fundamentos_BigData/Fundamentos_BigData.md)
