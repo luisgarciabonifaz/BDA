@@ -2,30 +2,33 @@
 
 ## Temas
 
-Módulo 1: Fundamentos y Ecosistema Moderno de Big Data (8 horas)
-Módulo 2: Python para Data Engineering (10 horas)
-Módulo 3: Almacenamiento Moderno: Data Lake & Data Warehouse (12 horas)
-Módulo 4: Bases de Datos NoSQL en la Práctica (10 horas)
-Módulo 5: Procesamiento y Flujos de Datos (ETL) con Apache NiFi (16 horas)
-Módulo 6: Orquestación de Flujos (10 horas)
-Módulo 7: Inteligencia de Negocio y Visualización con Power BI (14 horas)
-Módulo 8: Visualización de Datos en Tiempo Real y Cierre (10 horas)
 
-En realidad son 97 horas
-
-| Módulo                                                          | Horas Ajustadas (Entero) |
-| --------------------------------------------------------------- | ------------------------ |
-| Módulo 1: Fundamentos y Ecosistema Moderno de Big Data          | 9                        |
-| Módulo 2: Python para Data Engineering                          | 11                       |
-| Módulo 3: Almacenamiento Moderno: Data Lake & Data Warehouse    | 13                       |
-| Módulo 4: Bases de Datos NoSQL en la Práctica                   | 11                       |
-| Módulo 5: Procesamiento y Flujos de Datos (ETL) con Apache NiFi | 18                       |
-| Módulo 6: Orquestación de Flujos                                | 11                       |
-| Módulo 7: Inteligencia de Negocio y Visualización con Power BI  | 16                       |
-| Módulo 8: Visualización de Datos en Tiempo Real y Cierre        | 11                       |
-| **Total**                                                       | **95**                   |
+| Módulo                                                          | Horas|RA's|
+| --------------------------------------------------------------- | ---- |----|
+| Módulo 0: Infraestructura Big Data                              | 2    ||
+| Módulo 1: Fundamentos y Ecosistema Moderno de Big Data          | 9    |RA1|
+| Módulo 2: Almacenamiento Moderno: Data Lake & Data Warehouse    | 13   |RA2.RA3|
+| Módulo 3: Bases de Datos NoSQL en la Práctica                   | 11   |RA2,RA3|
+| Módulo 4: Procesamiento y Flujos de Datos (ETL) con Apache NiFi | 18   |+RA3|
+| Módulo 5: Orquestación de Flujos                                | 20   |RA4|
+| Módulo 6: Inteligencia de Negocio y Visualización con Power BI  | 16   |RA5+RA2|
+| Módulo 7: Visualización de Datos en Tiempo Real y Cierre        | 11   |RA6+RA4|
+| **Total**                                                       |**95**|
 
 Exportar a Hojas de cálculo
+
+RA3 de BDA Se elimina
+
+**RA's SBD**
+-----------
+RA1 --> Spark
+RA2 --> Modulo 6
+RA3 --> Modulo 4
+RA4 --> Modulo 7
+
+
+## Descripción
+
 
 
 ## Módulo 1: Fundamentos y Ecosistema Moderno de Big Data (8 horas)
@@ -57,20 +60,32 @@ Proyecto 2 (P2): Análisis Académico. Se presenta como un reto de Business Inte
 
 (P2): Análisis exploratorio inicial de los ficheros CSV proporcionados.
 
-## Módulo 2: Python para Data Engineering (10 horas)
-Un módulo fundamental para asegurar que todo el alumnado tiene la base de programación necesaria para las herramientas modernas de datos, que se basan mayoritariamente en Python.
+## Módulo 2: Bases de Datos NoSQL en la Práctica con FIWARE (10 horas)
+Introducción al módulo:
+No todos los datos encajan bien en las tablas y filas de las bases de datos tradicionales. Este módulo explora el mundo de las bases de datos NoSQL, diseñadas para la flexibilidad y la escala. Nos centraremos en un caso de uso muy práctico: la plataforma FIWARE para IoT, que utiliza internamente bases de datos NoSQL para gestionar los datos de los sensores en tiempo real de nuestro Proyecto 1.
 
-2.1. Python como Lenguaje Vehicular.
+4.1. Introducción a NoSQL: Cuándo y por qué usarlas frente a SQL.
 
-2.2. Librería Pandas: Manipulación y análisis de datos tabulares.
+4.2. Tipos de Bases de Datos NoSQL.
 
-2.3. Conexión a Fuentes de Datos: Lectura de CSVs, JSON y conexión a APIs.
+Documentales (MongoDB), Clave-Valor (Redis, DynamoDB), Columnares (Cassandra) y de Grafos (Neo4j).
 
-2.4. Práctica:
+4.3. FIWARE y su integración con Bases de Datos NoSQL.
 
-(P2): Uso de Pandas para cargar, inspeccionar y realizar una limpieza inicial de los CSVs del CIPFP de Mislata.
+El rol del Orion Context Broker como gestor de estado.
 
-(P1): Creación de un script en Python que simule la generación de datos de los sensores y los guarde en formato JSON o CSV.
+Cómo FIWARE se integra con bases de datos como MongoDB (para el estado actual) y CrateDB o TimescaleDB (para el histórico de datos).
+
+4.4. Práctica (P1):
+
+Configuración del entorno FIWARE (Orion Context Broker y una base de datos para persistencia).
+
+Creación de las 3 entidades definidas en el Módulo 1 a través de la API de Orion.
+
+Creación de una suscripción para que cualquier cambio en las entidades se guarde automáticamente en la base de datos histórica.
+
+Cargar los 400 datos por atributo usando el script de Python del Módulo 2 para enviar actualizaciones a Orion.
+
 ## Módulo 3: Almacenamiento Moderno: Data Lake & Data Warehouse (12 horas)
 Introducción al módulo:
 Un proyecto de datos es tan sólido como sus cimientos, y esos cimientos son el almacenamiento. En este módulo, profundizaremos en los dos pilares del almacenamiento de Big Data: el Data Lake, para guardar datos en su formato original, y el Data Warehouse, para almacenar datos estructurados y listos para el análisis. Veremos cómo ambos conceptos pueden convivir e incluso fusionarse en la arquitectura moderna del Data Lakehouse.
@@ -99,33 +114,8 @@ Conceptos de linaje de datos, catalogación y gestión de la calidad.
 
 (P1 y P2): Usar el script de Python del módulo anterior para convertir los datos generados (sensores) y los datos limpios (académicos) a formato Parquet.
 
-## Módulo 4: Bases de Datos NoSQL en la Práctica con FIWARE (10 horas)
-Introducción al módulo:
-No todos los datos encajan bien en las tablas y filas de las bases de datos tradicionales. Este módulo explora el mundo de las bases de datos NoSQL, diseñadas para la flexibilidad y la escala. Nos centraremos en un caso de uso muy práctico: la plataforma FIWARE para IoT, que utiliza internamente bases de datos NoSQL para gestionar los datos de los sensores en tiempo real de nuestro Proyecto 1.
 
-4.1. Introducción a NoSQL: Cuándo y por qué usarlas frente a SQL.
-
-4.2. Tipos de Bases de Datos NoSQL.
-
-Documentales (MongoDB), Clave-Valor (Redis, DynamoDB), Columnares (Cassandra) y de Grafos (Neo4j).
-
-4.3. FIWARE y su integración con Bases de Datos NoSQL.
-
-El rol del Orion Context Broker como gestor de estado.
-
-Cómo FIWARE se integra con bases de datos como MongoDB (para el estado actual) y CrateDB o TimescaleDB (para el histórico de datos).
-
-4.4. Práctica (P1):
-
-Configuración del entorno FIWARE (Orion Context Broker y una base de datos para persistencia).
-
-Creación de las 3 entidades definidas en el Módulo 1 a través de la API de Orion.
-
-Creación de una suscripción para que cualquier cambio en las entidades se guarde automáticamente en la base de datos histórica.
-
-Cargar los 400 datos por atributo usando el script de Python del Módulo 2 para enviar actualizaciones a Orion.
-
-## Módulo 5: Procesamiento y Flujos de Datos (ETL) con Apache NiFi (16 horas)
+## Módulo 4: Procesamiento y Flujos de Datos (ETL) con Apache NiFi (16 horas)
 Introducción al módulo:
 Este es el corazón práctico del curso. Aquí aprenderemos a mover, transformar y dirigir los datos de un lugar a otro usando Apache NiFi. NiFi es una herramienta visual e interactiva que permite diseñar flujos de datos (ETL) complejos de forma intuitiva, conectando diferentes sistemas y procesando la información en tiempo real o por lotes. Es la herramienta perfecta para construir los pipelines de nuestros dos proyectos.
 
@@ -169,7 +159,7 @@ Realice las uniones (Join) y transformaciones necesarias para construir las tabl
 
 Cargue los datos procesados en las tablas del Data Warehouse.
 
-## Módulo 6: Orquestación y Automatización de Flujos (10 horas)
+## Módulo 5: Orquestación y Automatización de Flujos (10 horas)
 Introducción al módulo:
 Un flujo de datos no es útil si tenemos que ejecutarlo manualmente cada vez. La orquestación consiste en programar, automatizar y gestionar la ejecución de nuestros pipelines de datos. Aunque NiFi tiene sus propias capacidades de programación, lo integraremos con herramientas estándar de la industria como Apache Airflow para gestionar dependencias complejas y tener un control centralizado de todos nuestros procesos.
 
@@ -191,7 +181,7 @@ Cómo usar la API de NiFi para iniciar y detener flujos de datos desde una herra
 
 (P1 y P2): Crear un DAG (Directed Acyclic Graph) simple en Airflow que se ejecute diariamente y que, a través de la API de NiFi, inicie el flujo de datos correspondiente a cada proyecto. Esto simula un entorno de producción real donde los procesos ETL están totalmente automatizados.
 
-## Módulo 7: Inteligencia de Negocio y Visualización con Power BI (14 horas)
+## Módulo 6: Inteligencia de Negocio y Visualización con Power BI (14 horas)
 Introducción al módulo:
 Los datos solo tienen valor si podemos convertirlos en conocimiento. Este módulo se centra en la última milla del viaje del dato: la visualización y la inteligencia de negocio (BI). Aprenderemos a usar Power BI, una de las herramientas líderes del mercado, para conectar nuestros datos procesados, modelarlos y crear informes interactivos que respondan a preguntas de negocio clave para nuestro Proyecto 2.
 
@@ -217,7 +207,7 @@ Implementar el modelo de datos (relaciones entre tablas de hechos y dimensiones)
 
 Crear el cuadro de mando de resultados académicos, incluyendo los filtros solicitados (Familia, Curso, Grado, etc.) y al menos 2 visualizaciones interactivas y 2 métricas calculadas con DAX.
 
-## Módulo 8: Visualización de Datos en Tiempo Real y Cierre (10 horas)
+## Módulo 7: Visualización de Datos en Tiempo Real y Cierre (10 horas)
 Introducción al módulo:
 Para datos que cambian constantemente, como los de nuestro proyecto de Smart City, necesitamos herramientas de visualización diferentes. En este módulo final, aprenderemos a usar Grafana, el estándar para la monitorización y visualización de datos de series temporales. Cerraremos el curso preparando la documentación final y presentando los dos proyectos completos, demostrando así el dominio de todo el ciclo de vida del dato.
 
