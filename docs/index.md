@@ -8,22 +8,17 @@
   <a href="mailto:l.garciabonifaz@edu.gva.es">l.garciabonifaz@edu.gva.es</a>
 </div>
 
-/// html | div[style='display: inline-block;width:33%;']
 ## 1ª Evaluación
 * [T1 Fundamentos y Ecosistema Moderno de Big Data](T_01_Fundamentos_BigData/Fundamentos_BigData.md)
 * [T2 Bases de Datos NoSQL](T_02_NoSQL/BD_NoSQL.md) 
-* [T3 Almacenamiento Moderno en Big Data](T_03_almacenamieno_Moderno/Almacenamiento_Moderno_BigData.md) 
+* [T3 Almacenamiento Moderno en Big Data](T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData.md) 
 * [T4 ETL con NiFi](T_04_NIFI/Orquestacion_PipeLines_NiFi.md)
 * [T5 Orquestacion](T_05_Orquestacion/Orquestacion_Automatizacion_Flujos.md)
 * [T6 Bussines Intelligence](T_06_Bussines_intelligence/BI_Visualizacion_Power_BI.md)
 * [T7 Visualizacion Tiempo Real](T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real.md)
-///
-
-/// html | div[style='display: inline-block;width:33%;']
 ## 2ª Evaluacion
 * [T8 Linux Gestión de Archivos](T_08_Linux_Archivos/Linux_Gestion_Archivos.md)
 * [T9 Linux Administración](T_09_Linux_Administracion/Linux_Administracion.md)
-///
 
 <!-- **Última actualización:** {{ git_revision_date_localized }} -->
 

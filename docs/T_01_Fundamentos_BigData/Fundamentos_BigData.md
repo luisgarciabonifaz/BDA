@@ -85,6 +85,17 @@ Pensemos en el viaje que hacen los datos como una cadena de montaje. Cada etapa 
     - Es la capa final, donde los datos se convierten en gráficos, informes y cuadros de mando interactivos que aportan **valor** al negocio.
     - *Herramientas:* **Microsoft Power BI** y Tableau (para Business Intelligence), **Grafana** (para monitorización y datos en tiempo real).
 
+/// html | div[style='text-align: center;']
+
+```mermaid
+graph TD;
+    A(1. Ingesta <br> Apache NiFi) --> B(2. Almacenamiento <br> Data Lake, DW);
+    B --> C(3. Procesamiento <br> ETL / ELT <br> NiFi, Spark);
+    C --> D(4. Orquestación <br> Apache Airflow);
+    D --> E(5. Visualización y Análisis <br> Power BI, Grafana);
+```
+///
+
 ## 3. Presentación de los Proyectos del Curso: Aprender Haciendo
 
 La mejor forma de aprender es construyendo. Estos dos proyectos serán nuestro hilo conductor. Cada módulo nos dará una pieza para avanzar en ellos.
@@ -110,7 +121,7 @@ La mejor forma de aprender es construyendo. Estos dos proyectos serán nuestro h
 - **Resultado Final:** Un informe en Power BI que permita al equipo directivo filtrar por curso, año o ciclo y analizar tasas de éxito, promociones, etc.
 
 
-## 4. Práctica Inicial: ¡Manos a la Obra!
+## 4. Práctica Inicial
 
 Vamos a empezar a "pensar en datos" desde el primer día.
 
