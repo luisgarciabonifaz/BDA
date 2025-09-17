@@ -1,4 +1,4 @@
-site_name: BDA
+site_name: "BDA"
 site_author: "Luis García Bonifaz"
 site_email: "l.garciabonifaz@edu.gva.es"
 site_url: https://luisgarciabonifaz.github.io/BDA/
@@ -6,6 +6,7 @@ site_url: https://luisgarciabonifaz.github.io/BDA/
 theme:
   name: material
   language: es
+  custom_dir: overrides
   palette:
     # Light Mode
     - scheme: default
@@ -58,7 +59,7 @@ plugins:
       locale: es  # Configura el idioma (opcional, "es" para español)
 
 nav:
-- Inicio: 'index.md'
+- "Inicio": 'index.md'
 - Big Data Aplicado:
     - 'T1 - Fundamentos y Ecosistema Moderno de Big Data': T_01_Fundamentos_BigData/Fundamentos_BigData.md
     - 'T2 - Bases de Datos NoSQL': T_02_NoSQL/BD_NoSQL.md

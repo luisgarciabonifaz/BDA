@@ -1,12 +1,13 @@
 
 <div class="titulo">
-  <img alt="Logo" src="Imagenes/Logo_SOM.png" /> Big Data Aplicado
+  <img alt="Logo" src="Imagenes/Icono_BDA.png" /> Big Data Aplicado
 </div>
 
 <div class="autor">
   <b>Luis Gárcia Bonifaz</b><br>
   <a href="mailto:l.garciabonifaz@edu.gva.es">l.garciabonifaz@edu.gva.es</a>
 </div>
+
 
 ## 1ª Evaluación
 * [T1 Fundamentos y Ecosistema Moderno de Big Data](T_01_Fundamentos_BigData/Fundamentos_BigData.md)

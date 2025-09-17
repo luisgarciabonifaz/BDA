@@ -138,8 +138,7 @@ El linaje de datos es la capacidad de visualizar el **ciclo de vida completo de 
   - **Depuración de Errores:** Si un dashboard muestra un dato incorrecto, el linaje nos permite "viajar hacia atrás" para encontrar el punto exacto donde se introdujo el error.
 
 - **Importancia:** Es fundamental para la **confianza y la auditoría**. Herramientas como **Apache NiFi**, que usaremos en el curso, tienen capacidades de linaje visual muy potentes, permitiendo ver en tiempo real la traza completa de cada dato que fluye por el sistema.
-
-  
+ 
 
 ## 4. Práctica: Diseñando y Construyendo Nuestro Almacén
 
