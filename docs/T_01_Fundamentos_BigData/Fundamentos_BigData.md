@@ -6,7 +6,7 @@
 
 ¡Bienvenidos al curso de Big Data Aplicado! Este primer módulo es la puerta de entrada al fascinante universo de los datos a gran escala. Olvídate de las definiciones abstractas; aquí vamos a entender **por qué** el Big Data es una de las áreas más revolucionarias de la tecnología actual.
 
-No nos quedaremos solo en la teoría de las "5 V"; exploraremos el **ecosistema de herramientas real** que usan empresas como Netflix, Airbnb o Spotify, conocido como el "Modern Data Stack". Entenderemos los distintos roles profesionales que existen en este campo y, lo más importante, presentaremos los **dos proyectos que serán nuestra guía práctica** durante las próximas 90 horas. El objetivo es que, al finalizar este módulo, tengas un mapa completo del territorio que vamos a explorar y los emocionantes retos que vamos a superar juntos. ¡Empezamos!
+No nos quedaremos solo en la teoría de las "5 V"; exploraremos el **ecosistema de herramientas real** que usan empresas como Netflix, Airbnb o Spotify, conocido como el "Modern Data Stack". Entenderemos los distintos roles profesionales que existen en este campo y, lo más importante, presentaremos los **dos proyectos que serán nuestra guía práctica** durante las próximas sesiones de clase. El objetivo es que, al finalizar este módulo, tengas un mapa completo del territorio que vamos a explorar y los emocionantes retos que vamos a superar juntos.
 
 ## 1. ¿Qué es Big Data? Más allá de "muchos datos"
 

@@ -1,15 +1,13 @@
+<div class="titulo">
+   Bases de Datos NoSQL
+</div>
+#  
 
-# Bases de Datos NoSQL
-
-No todos los datos encajan perfectamente en las estructuras rígidas de filas y columnas de las bases de datos relacionales (SQL) que conocemos. 
-
-En el mundo del Big Data, los datos pueden ser variados (estructurados, semi-estructurados, no estructurados), masivos y generados a gran velocidad. 
+No todos los datos encajan perfectamente en las estructuras rígidas de filas y columnas de las bases de datos relacionales (SQL) que conocemos. En el mundo del Big Data, los datos pueden ser **variados** (estructurados, semi-estructurados, no estructurados), masivos (**volumen**)y generados a gran **velocidad**. 
 
 Aquí es donde entran en juego las bases de datos **NoSQL** (Not Only SQL), una categoría de sistemas de gestión de bases de datos que ofrecen una flexibilidad, escalabilidad y rendimiento excepcionales para estos escenarios.
 
-En este tema, no solo exploraremos los fundamentos de NoSQL, sino que los aplicaremos a un caso de uso real y relevante: la plataforma **FIWARE** para la gestión de datos de Internet de las Cosas (IoT). 
-
-Utilizaremos FIWARE para manejar los datos en tiempo real de los sensores de nuestro **Proyecto 1**, aprendiendo cómo esta plataforma se integra con distintas bases de datos NoSQL para gestionar el estado actual y el historial de los datos.
+En este tema, no solo exploraremos los fundamentos de NoSQL, sino que los aplicaremos a un caso de uso real y relevante: la plataforma **FIWARE** para la gestión de datos de Internet de las Cosas (IoT). Utilizaremos FIWARE para manejar los datos en tiempo real de los sensores de nuestro **Proyecto 1**, aprendiendo cómo esta plataforma se integra con distintas bases de datos NoSQL para gestionar el estado actual y el historial de los datos.
 
 ## 1. Introducción a NoSQL
 
@@ -17,7 +15,7 @@ Las bases de datos relacionales (SQL) son fantásticas para datos que se ajustan
 
 **Ventajas de NoSQL:**
 
-- **Flexibilidad de esquema:** No hay un esquema predefinido. Puedes almacenar diferentes tipos de datos dentro de la misma colección, lo cual es ideal para datos semi-estructurados como JSON, que es el formato principal en el IoT.
+- **Flexibilidad de esquema:** No hay un esquema predefinido. Puedes almacenar diferentes tipos de datos dentro de la misma colección, lo cual es ideal para datos semi-estructurados como JSON.
 - **Escalabilidad horizontal:** Las bases de datos NoSQL están diseñadas para escalar fácilmente en clústeres de servidores de bajo coste. Esto se conoce como escalabilidad horizontal y es crucial para manejar enormes volúmenes de datos.
 - **Rendimiento:** Al estar diseñadas para casos de uso específicos, muchas bases de datos NoSQL ofrecen un rendimiento superior para lecturas y escrituras intensivas.
 
@@ -47,7 +45,7 @@ Cada tipo de base de datos NoSQL está optimizado para un propósito diferente. 
 
 MongoDB es una base de datos NoSQL de tipo **documental**. A diferencia de las bases de datos relacionales que usan tablas, MongoDB organiza los datos en **colecciones**, que son equivalentes a las tablas, y cada colección contiene **documentos**, que son equivalentes a las filas.
 
-La clave de MongoDB es que cada documento es una estructura flexible, similar a **JSON** (JavaScript Object Notation), que puede contener campos anidados, listas y otros documentos. Esto elimina la necesidad de un esquema fijo y hace que sea ideal para datos semi-estructurados como los que provienen de sensores IoT.
+La clave de MongoDB es que cada documento es una estructura flexible, similar a **JSON** (JavaScript Object Notation), que puede contener campos anidados, listas y otros documentos. Esto elimina la necesidad de un esquema fijo y hace que sea ideal para datos semi-estructurados.
 
 ### 3.1. Conceptos Clave:
 
@@ -67,23 +65,83 @@ Para interactuar con MongoDB, usaremos el **Mongo Shell**. A continuación, los 
 **2. Insertar Documentos**
 
 - `db.[nombre_coleccion].insertOne({ ... });` : Inserta un único documento.
-- `db.[nombre_coleccion].insertMany([{ ... }, { ... }]);` : Inserta múltiples documentos.
+  
+``` json
+    db.sensores.insertOne({
+      id_sensor: "temp01",
+      tipo: "temperatura",
+      ubicacion: "sala_servidores",
+      valor_actual: 24.5,
+      unidad: "celsius"
+    })
+```
 
+- `db.[nombre_coleccion].insertMany([{ ... }, { ... }]);` : Inserta múltiples documentos.
+```json
+db.sensores.insertMany([
+  {
+    "id_sensor": "temp01",
+    "tipo": "temperatura",
+    "ubicacion": "sala_servidores",
+    "valor_actual": 24.5,
+    "unidad": "celsius"
+  },
+  {
+    "id_sensor": "hum02",
+    "tipo": "humedad",
+    "ubicacion": "almacen_datos",
+    "valor_actual": 55,
+    "unidad": "porcentaje"
+  },
+  {
+    "id_sensor": "co2_03",
+    "tipo": "dioxido_carbono",
+    "ubicacion": "oficina_principal",
+    "valor_actual": 415,
+    "unidad": "ppm"
+  }
+])
+```
 **3. Buscar Documentos**
 
 - `db.[nombre_coleccion].find();` : Encuentra todos los documentos de una colección.
-- `db.[nombre_coleccion].find({ [criterio] });` : Busca documentos que coincidan con un criterio específico. Por ejemplo, `db.sensores.find({ tipo: "temperatura" });`.
+- `db.[nombre_coleccion].find({ [criterio] });` : Busca documentos que coincidan con un criterio específico. 
+
+```json
+    db.sensores.find({ tipo: "temperatura" });
+```
+
 - `db.[nombre_coleccion].findOne({ ... });` : Devuelve el primer documento que coincide.
 - `db.[nombre_coleccion].find().pretty();` : Muestra los resultados de forma legible.
 
 **4. Actualizar Documentos**
 
 - `db.[nombre_coleccion].updateOne({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza un solo documento.
+
+```json
+    db.sensores.updateOne(
+    { "id_sensor": "temp01" },          // Criterio de búsqueda: el documento con id_sensor "temp01"
+    { $set: { "ubicacion": "cuarto_control" } } // Acción: establece el campo "ubicacion" a "cuarto_control"
+    )
+```
+
 - `db.[nombre_coleccion].updateMany({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza múltiples documentos.
+
+```json
+    db.sensores.updateMany(
+    { "tipo": "temperatura" },          // Criterio de búsqueda: todos los documentos con tipo "temperatura"
+    { $set: { "unidad": "grados_centigrados" } } // Acción: establece el campo "unidad" a "grados_centigrados"
+    )
+```
 
 **5. Eliminar Documentos**
 
 - `db.[nombre_coleccion].deleteOne({ [criterio] });` : Elimina el primer documento que coincide.
+
+```json
+    db.usuarios.deleteOne({ email: "ejemplo@dominio.com" });
+```
+
 - `db.[nombre_coleccion].deleteMany({ [criterio] });` : Elimina todos los documentos que coinciden.
 
 
@@ -119,7 +177,7 @@ Imagina que tienes una base de datos llamada `iot_data` para el Proyecto 1.
 2. Verifica que el documento ya no exista.
 
 
-## 4. FIWARE y su Integración con Bases de Datos NoSQL
+## 4. FIWARE y MongoDB
 
 **FIWARE** es una iniciativa de código abierto que proporciona un conjunto de estándares y componentes de software para acelerar el desarrollo de soluciones inteligentes en diversos dominios como Ciudades Inteligentes (Smart Cities), Industria Inteligente (Smart Industry) y Agricultura Inteligente (Smart Agrifood).
 
@@ -128,6 +186,7 @@ El objetivo principal de FIWARE es romper los silos de datos, ofreciendo una for
 ### 4.1. ¿Cómo Funciona FIWARE? La Arquitectura del Bróker de Contexto
 
 El funcionamiento de FIWARE gira en torno a un componente central y un protocolo de comunicación estandarizado. La arquitectura está diseñada para ser modular, escalable y distribuida.
+
 
 **1. El Corazón de FIWARE: El Orion Context Broker**
 
