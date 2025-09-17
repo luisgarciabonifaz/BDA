@@ -227,6 +227,19 @@ En nuestro proyecto, la arquitectura de FIWARE se materializa de la siguiente ma
 
 -   **QuantumLeap y CrateDB/TimescaleDB:** El Orion Context Broker por sí solo no guarda un historial. Para almacenar cada una de las 400 actualizaciones que enviaremos, utilizamos una **suscripción**. Esta suscripción le dice a Orion que, cada vez que reciba una actualización para una de nuestras entidades, debe notificar a otro componente: **QuantumLeap**. QuantumLeap, a su vez, toma esta notificación y la persiste en una base de datos optimizada para series temporales, como **CrateDB** o **TimescaleDB**.
 
+/// html | div[style='text-align: center;']   
+```mermaid
+flowchart LR
+  A[(Mongo db)] <--> B("Orion
+                       Context
+                       Broker");
+  B <--> C["Quamtump
+            Leap"];
+  C <--> D[(_CrateBD_)];
+  D <--> E[Grafana];
+```
+///
+
 Esta arquitectura dual es extremadamente potente:
 
 -   **MongoDB** nos da acceso instantáneo y eficiente al **estado más reciente**.
@@ -241,7 +254,7 @@ Imagina que el **Orion Context Broker** es el "cerebro" de nuestro sistema IoT. 
 **¿Por qué MongoDB?** Porque su modelo de documentos se adapta perfectamente a la estructura JSON de los datos de los sensores, permitiendo que el estado de cada entidad (sensor, dispositivo, etc.) se represente como un solo documento.
 
 
-### 4.3. Práctica (Proyecto 1):
+## 5. Práctica (Proyecto 1)
 
 Vamos a construir una solución completa de gestión de datos de IoT.
 
@@ -260,8 +273,8 @@ Vamos a construir una solución completa de gestión de datos de IoT.
     - Cuando Orion detecte una actualización, enviará automáticamente una copia de la entidad modificada al servicio **QuantumLeap**.
     - La suscripción se crea con un `POST` a `/v2/subscriptions`.
 4. **Carga de datos:**
-    - Ahora viene la carga de los datos masivos. Utilizaremos el script de Python que creamos en el Módulo 2.
-    - El script se modificará para **enviar 400 actualizaciones por atributo** a la API de Orion para cada una de nuestras 3 entidades.
+    - Ahora viene la carga de los datos masivos. Utilizaremos un script de Python con la API de Orion.
+    - El script deberá **enviar 400 actualizaciones por atributo** a la API de Orion para cada una de nuestras 3 entidades.
     - Cada vez que el script envíe una actualización, Orion hará dos cosas:
         - Actualizará el documento en **MongoDB** con el nuevo estado.
         - Debido a la suscripción, enviará una copia de los datos a **QuantumLeap**, que a su vez los insertará en **CrateDB** como una nueva entrada de serie de tiempo.

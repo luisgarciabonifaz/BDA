@@ -7,8 +7,8 @@
 | --------------------------------------------------------------- | ---- |----|
 | Módulo 0: Infraestructura Big Data                              | 2    ||
 | Módulo 1: Fundamentos y Ecosistema Moderno de Big Data          | 9    |RA1|
-| Módulo 2: Almacenamiento Moderno: Data Lake & Data Warehouse    | 13   |RA2.RA3|
-| Módulo 3: Bases de Datos NoSQL en la Práctica                   | 11   |RA2,RA3|
+| Módulo 2: Bases de Datos NoSQL en la Práctica                   | 11   |RA2,RA3|
+| Módulo 3: Almacenamiento Moderno: Data Lake & Data Warehouse    | 13   |RA2.RA3|
 | Módulo 4: Procesamiento y Flujos de Datos (ETL) con Apache NiFi | 18   |+RA3|
 | Módulo 5: Orquestación de Flujos                                | 20   |RA4|
 | Módulo 6: Inteligencia de Negocio y Visualización con Power BI  | 16   |RA5+RA2|

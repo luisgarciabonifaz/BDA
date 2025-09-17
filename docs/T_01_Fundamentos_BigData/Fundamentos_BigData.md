@@ -28,6 +28,15 @@ Para entenderlo mejor, usamos el modelo de las **5 "V"**:
     - **Datos No Estructurados:** No tienen un modelo predefinido, como un email, una imagen, un vídeo, un audio o un post en redes sociales.
     - *Ejemplo:* Un único post de Instagram puede contener una imagen (no estructurado), un texto con #hashtags (semi-estructurado) y metadatos como la geolocalización (estructurado).
     - *Reto:* ¿Cómo extraemos información útil de esta mezcla heterogénea de formatos?
+
+??? info  "Tipos de datos"
+    | Tipo de Datos | Descripcion | Formatos comunes | Ejemplos | Observaciones| 
+    | -- | -- |-- | -- | -- |
+    |**Archivos de Datos Estructurados** | Datos organizados en un formato con una estructura fija y predefinida, como las tablas de una base de datos relacional.| CSV | Archivos de hojas de cálculo, bases de datos SQL y archivos CSV. |Los archivos estructurados son eficientes para almacenar datos tabulares, pero pueden ser menos flexibles para datos variados o no estructurados. |
+    | **Archivos de Datos Semiestructurados** | No siguen una estructura fija como los datos estructurados, pero tienen cierta organización o jerarquía, como en el caso de archivos JSON o XML. | JSON y XML |  Archivos JSON que almacenan configuraciones, datos de sensores o información de productos. | Los datos semiestructurados son ideales para representar información jerárquica, como configuraciones de aplicaciones o datos de sensores. |
+    | **Archivos de Datos No Estructurados** | Carecen de una organización o formato definido y pueden incluir archivos de imágenes, videos, documentos de texto sin formato y audio, entre otros. | | Imágenes JPEG, videos MP4, documentos de texto sin formato, grabaciones de audio, etc. | Se utilizan herramientas de procesamiento de medios, visión por computadora, reconocimiento de voz y análisis de texto para extraer información de datos no estructurados. |
+    | **Archivos de Log** | Registran eventos y actividades, como transacciones, errores o interacciones de usuarios. |  |  | Herramientas como Splunk, ELK Stack (Elasticsearch, Logstash, Kibana) y Apache Flume se utilizan para analizar y visualizar datos de registros. |
+
 - **Veracidad (Confianza):** Se refiere a la calidad y fiabilidad de los datos. No todos los datos son precisos. Pueden tener ruido, sesgos, inconsistencias o simplemente ser falsos.
     - *Ejemplo:* Reseñas falsas de productos en Amazon, errores en lecturas de sensores por un fallo de hardware, o datos introducidos manualmente con erratas.
     - *Reto:* ¿Cómo limpiamos los datos y nos aseguramos de que podemos confiar en ellos para tomar decisiones? *Garbage In, Garbage Out* (si entra basura, sale basura).
