@@ -15,7 +15,7 @@
 * [T3 Almacenamiento Moderno en Big Data](T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData.md) 
 * [T4 ETL con NiFi](T_04_NIFI/ETL_NiFi.md)
 * [T5 Orquestacion](T_05_Orquestacion/Orquestacion_Flujos.md)
-* [T6 Bussines Intelligence](T_06_Bussines_intelligence/BI_Visualizacion_Power_BI.md)
+* [T6 Bussines Intelligence](T_06_Bussines_Intelligence/BI_Power_BI.md)
 * [T7 Visualizacion Tiempo Real](T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real.md)
 ## 2ª Evaluacion
 * [Proyecto Domotica](T_08_Linux_Archivos/Linux_Gestion_Archivos.md)

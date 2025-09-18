@@ -38,32 +38,18 @@ Airflow es una plataforma de código abierto para crear, programar y monitorizar
 - **Prefect:** Una plataforma que se presenta como una alternativa a Airflow, enfocada en la robustez y la facilidad de uso. Prefect se destaca por su manejo de los fallos y sus capacidades de reintentos inteligentes.
 
 
-## 3. Integración de NiFi con Orquestadores
-
-Una de las principales ventajas de herramientas como NiFi es su **API REST**. Esta interfaz nos permite interactuar con NiFi de manera programática, lo que significa que un orquestador como Airflow puede enviar comandos a NiFi.
-
-El patrón de integración típico es:
-
-1. **Airflow define el flujo de trabajo (DAG):** El DAG de Airflow contendrá tareas para los diferentes pasos de nuestro pipeline.
-2. **Una tarea de Airflow envía una petición a la API de NiFi:** Esta petición puede, por ejemplo, iniciar o detener un grupo de procesos en NiFi.
-3. **NiFi ejecuta el flujo de datos:** NiFi se encarga del procesamiento, la transformación y la carga de los datos.
-4. **Airflow monitoriza el estado:** Airflow puede seguir el estado de la tarea de NiFi, sabiendo si se ejecutó con éxito o si falló.
-
-Este enfoque separa la **orquestación** (quién, cuándo y en qué orden se ejecutan las tareas) de la **ejecución** (cómo se procesan realmente los datos), permitiendo que cada herramienta se enfoque en lo que mejor sabe hacer.
-
-
-## 4. Profundizando en Apache Airflow
+## 3. Profundizando en Apache Airflow
 
 **Apache Airflow** es una plataforma de código abierto que se ha convertido en el estándar de la industria para orquestar flujos de trabajo de datos. A diferencia de NiFi, que se centra en el flujo y la transformación visual, Airflow se enfoca en la **programación y automatización** de tareas a gran escala.
 
-### 4.1. Características Clave de Airflow
+### 3.1. Características Clave de Airflow
 
 - **Basado en Código:** Los flujos de trabajo se definen como código Python, lo que permite la versionabilidad, las pruebas unitarias y la colaboración en equipo. Esto es una ventaja significativa sobre las herramientas con interfaces gráficas.
 - **Flexibilidad:** Con su extensa biblioteca de **operadores**, Airflow puede interactuar con casi cualquier sistema, desde bases de datos hasta APIs y servicios en la nube (AWS, Google Cloud, Azure).
 - **Interfaz de Usuario (UI):** Airflow incluye una interfaz web intuitiva para monitorizar el estado de los DAGs, ver los logs de las tareas, depurar fallos y gestionar las ejecuciones.
 - **Escalabilidad:** Está diseñado para ejecutar miles de tareas de manera simultánea en un clúster de máquinas, lo que lo hace ideal para entornos de Big Data.
 
-### 4.2. Componentes Principales**
+### 3.2. Componentes Principales
 
 Para entender cómo funciona Airflow, es crucial conocer sus componentes principales:
 
@@ -73,17 +59,22 @@ Para entender cómo funciona Airflow, es crucial conocer sus componentes princip
 - **Worker (Trabajador):** En un clúster de Airflow, los workers son los procesos que ejecutan las tareas que el `Executor` les asigna.
 - **Base de Datos de Metadatos:** Almacena el estado de los DAGs, la información de las tareas, los logs de ejecución y las configuraciones.
 
+<figure markdown="span">
+  ![Arquitectura Airflow](Imagenes/Arquitectura_Airflow.png)
+  <figcaption>https://airflow.apache.org/docs/apache-airflow/2.0.1/concepts.html</figcaption>
+</figure>
+
+### 3.3. ¿Cómo funciona?
+
+1. **Definición del DAG:** Un desarrollador escribe un archivo de Python que define un DAG. En este archivo, se especifican:
+    - **Las tareas** 
+    - **Las dependencias**. El orden en el que deben ejecutarse.
+2. **Detección y Programación:** El **Scheduler** busca nuevos archivos DAG en una carpeta específica. Una vez detectado, esté lo programa para su ejecución en base a la frecuencia que se haya definido (ej. una vez al día).
+3. **Ejecución de Tareas:** Cuando llega el momento de la ejecución, el **Scheduler** le dice al **Executor** qué tareas deben ejecutarse. Este asigna estas tareas a los **Workers**.
+4. **Monitoreo y Almacenamiento:** El **Webserver** muestra el estado de las tareas y los DAGs en tiempo real. Todos los eventos y logs se guardan en la base de datos de metadatos para su consulta y depuración.
 
 
-### 4.3. ¿Cómo funciona?
-
-1. **Definición del DAG:** Un desarrollador escribe un archivo de Python que define un DAG. En este archivo, se especifican las tareas y el orden en el que deben ejecutarse (las dependencias).
-2. **Detección y Programación:** El `Scheduler` busca nuevos archivos DAG en una carpeta específica. Una vez detectado, el `Scheduler` lo programa para su ejecución en base a la frecuencia que se haya definido (ej. una vez al día).
-3. **Ejecución de Tareas:** Cuando llega el momento de la ejecución, el `Scheduler` le dice al `Executor` qué tareas deben ejecutarse. El `Executor` asigna estas tareas a los `Workers`.
-4. **Monitoreo y Almacenamiento:** El `Webserver` muestra el estado de las tareas y los DAGs en tiempo real. Todos los eventos y logs se guardan en la base de datos de metadatos para su consulta y depuración.
-
-
-### 4.4. Ejemplo Sencillo de un DAG
+### 3.4. Ejemplo Sencillo de un DAG
 
 Aquí tienes un ejemplo de un DAG simple escrito en Python que simula un flujo de trabajo que primero descarga un archivo y luego lo procesa.
 
@@ -133,18 +124,44 @@ descargar_archivo >> procesar_archivo
 
 En este ejemplo, la línea `descargar_archivo >> procesar_archivo` define la dependencia: la tarea de `procesar_archivo` no se ejecutará hasta que la tarea de `descargar_archivo` haya finalizado con éxito. Este es el principio básico detrás de la orquestación con Airflow.
 
+## 4. Integración de NiFi con Orquestadores
+
+Una de las principales ventajas de herramientas como NiFi es su **API REST**. Esta interfaz nos permite interactuar con NiFi de manera programática, lo que significa que un orquestador como Airflow puede enviar comandos a NiFi.
+
+El patrón de integración típico es:
+
+1. **Airflow define el flujo de trabajo (DAG):** El DAG de Airflow contendrá tareas para los diferentes pasos de nuestro pipeline.
+2. **Una tarea de Airflow envía una petición a la API de NiFi:** Esta petición puede, por ejemplo, iniciar o detener un grupo de procesos en NiFi.
+3. **NiFi ejecuta el flujo de datos:** NiFi se encarga del procesamiento, la transformación y la carga de los datos.
+4. **Airflow monitoriza el estado:** Airflow puede seguir el estado de la tarea de NiFi, sabiendo si se ejecutó con éxito o si falló.
+
+Este enfoque separa la **orquestación** (quién, cuándo y en qué orden se ejecutan las tareas) de la **ejecución** (cómo se procesan realmente los datos), permitiendo que cada herramienta se enfoque en lo que mejor sabe hacer.
+
+
 ## 5. Práctica: Automatización con Airflow y NiFi
 
 Esta práctica final unirá todos los conceptos del curso.
 
-### 5.1. (P1 y P2): Creación de un DAG en Airflow para el Proyecto
+### 5.1. Practica 1
+**Creación de un DAG en Airflow para el proyecto de sensores**
 
-1. **Configuración del Entorno:** Montaremos una instancia de Apache Airflow (típicamente con Docker Compose) y la configuraremos para que pueda comunicarse con nuestra instancia de NiFi.
+1. **Configuración del Entorno:** Montaremos una instancia de Apache Airflow (típicamente con Docker Compose) y la configuraremos para que pueda comunicarse con nuestra instancia de NiFi del proyeto de sensores.
 2. **Creación del DAG:**
    - Escribiremos un archivo de Python para definir el DAG.
    - El DAG tendrá una única tarea principal.
-   - Utilizaremos un `SimpleHttpOperator` para enviar una petición a la API de NiFi. La petición le dirá a NiFi que inicie la ejecución de nuestro grupo de procesos (`Process Group`) para los proyectos 1 y 2.
+   - Utilizaremos un `SimpleHttpOperator` para enviar una petición a la API de NiFi. La petición le dirá a NiFi que inicie la ejecución de nuestro grupo de procesos (`Process Group`) para el de sensores.
    - Programaremos el DAG para que se ejecute diariamente a una hora específica.
 3. **Verificación:** Una vez en marcha, monitorizaremos el DAG desde la interfaz de Airflow para asegurarnos de que se ejecute en el horario programado. También revisaremos los registros de NiFi para confirmar que el flujo de datos se ha iniciado y completado correctamente.
 
-Al final de esta práctica, habrás creado un sistema de procesamiento de datos **totalmente automatizado** y robusto, listo para entornos de producción.
+### 5.2. Practica 2
+**Creación de un DAG en Airflow para el proyecto de resultados academicos**
+
+1. **Configuración del Entorno:** Utilizaremos eldocker compose de la práctica anterior.
+2. **Creacion del DAG:**
+   - Escribiremos un archivo de Python para definir el DAG.
+   - El DAG tendrá todas las tareas nececesarias para orquestar el proyecto de resultados academicos.
+   - Crearemos las tareas de la ETL con codigo python. Olvidandonos del flujo de datos creado con NiFi.
+   - Programaremos el DAG para que se ejecute diariamente a una hora específica.
+3. **Verificación:** Una vez en marcha, monitorizaremos el DAG desde la interfaz de Airflow para asegurarnos de que se ejecute en el horario programado. También revisaremos los registros de NiFi para confirmar que el flujo de datos se ha iniciado y completado correctamente.
+
+El objetivo de estas prácticas es crear un sistema de procesamiento de datos **totalmente automatizado** y robusto, listo para entornos de producción.
