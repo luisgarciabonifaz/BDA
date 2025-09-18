@@ -1,4 +1,7 @@
-# Orquestación y Automatización de Flujos
+<div class="titulo">
+   Orquestación y Automatización de Flujos
+</div>
+#  
 
 ## 1. ¿Qué es la Orquestación de Datos?
 
@@ -24,12 +27,10 @@ Airflow es una plataforma de código abierto para crear, programar y monitorizar
 
 - **DAG (Directed Acyclic Graph):** Es el corazón de Airflow. Un DAG es un **grafo acíclico dirigido** que representa el flujo de trabajo. "Dirigido" significa que las tareas tienen un orden específico (A → B → C), y "acíclico" significa que no hay bucles (una tarea no puede volver a una tarea anterior). Cada nodo del grafo es una tarea, y las flechas indican las dependencias.
 - **Operadores (Operators):** Son las piezas de código que definen lo que una tarea debe hacer. Cada operador representa una tarea atómica. Ejemplos comunes incluyen:
-  - `BashOperator`: Ejecuta un comando de shell.
-  - `PythonOperator`: Ejecuta una función de Python.
-  - `SimpleHttpOperator`: Envía una petición HTTP.
+    - `BashOperator`: Ejecuta un comando de shell.
+    - `PythonOperator`: Ejecuta una función de Python.
+    - `SimpleHttpOperator`: Envía una petición HTTP.
 - **Tareas (Tasks):** Una instancia de un `Operador` dentro de un `DAG`.
-
-
 
 ### 2.2. Alternativas a Airflow
 

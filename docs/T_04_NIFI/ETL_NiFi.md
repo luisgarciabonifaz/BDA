@@ -17,7 +17,7 @@ El proceso ETL es fundamental en los sistemas de gestión de datos y en los proy
 - **Transform (Transformación)**: Los datos se limpian, validan y adaptan para el formato o la estructura deseada.
 - **Load (Carga)**: Los datos ya transformados se cargan en el destino final (normalmente un almacén de datos o una base de datos).
 
-## 2. Fases del proceso ETL (Extract, Transform, Load)
+## 2. Fases del proceso ETL
 El proceso ETL consta de tres fases principales que trabajan en conjunto para mover, procesar y almacenar los datos desde diversas fuentes a un destino centralizado (generalmente un almacén de datos o data warehouse). 
 
 Estos tres pasos básicos se pueden ampliar a 6 pasos cruciales que juntos componen la arquitectura ETL.
@@ -222,7 +222,7 @@ La principal fortaleza de NiFi es su interfaz de usuario basada en web. Permite 
 
 ### 3.4. Procesadores Esenciales de NiFi
 
-NiFi incluye cientos de procesadores listos para usar, cubriendo casi cualquier caso de uso de integración de datos. Aquí, nos centraremos en los que usaremos en las prácticas.
+NiFi incluye cientos de procesadores listos para usar, cubriendo casi cualquier caso de uso de integración de datos. Aquí, nos centraremos en los más habituales.
 
 **Ingesta de Datos**
 
@@ -333,22 +333,20 @@ Este ejemplo ilustra la potencia de NiFi para automatizar tareas de forma visual
 
 ## 5. Práctica: Construyendo los Pipelines del Proyecto
 
-Estas prácticas son la culminación del curso, donde pondrás en uso todo lo aprendido.
-
-### (Proyecto1): Pipeline de Datos de Sensores
+### 5.1 Practica 1: Pipeline de Datos de Sensores
 
 Construiremos un flujo de datos en NiFi que automatizará la ingesta y el procesamiento de los datos de nuestros sensores IoT.
 
 1. **Ingesta (`ListenHTTP`):** El flujo comenzará con un procesador `ListenHTTP` que actuará como un "escuchador". FIWARE enviará las notificaciones de los sensores a este punto final, y cada notificación se convertirá en un `FlowFile`.
 2. **Extracción de Datos (`JoltTransformJSON`):** Usaremos un procesador `JoltTransformJSON` para transformar el complejo cuerpo de la notificación de FIWARE y extraer solo los valores de los sensores que nos interesan (temperatura, humedad, etc.).
 3. **Cálculo de Agregados (`AttributesToJSON` y `PutDatabaseRecord`):** Agregaremos procesadores para calcular los valores diarios agregados (máximo, mínimo, promedio). Los datos se agruparán por día y se calcularán los valores.
-4. **Carga en el Data Lake (`PutFile`):** El resultado del cálculo se guardará en el Data Lake, probablemente en un formato optimizado para el análisis como **Parquet** que usaremos en un módulo posterior.
+4. **Carga en el Data Lake (`PutFile`):** El resultado del cálculo se guardará en el Data Lake, probablemente en un formato optimizado para el análisis como **Parquet**.
 
 
-### (P2): Pipeline de Datos Históricos
+### 5.2. Practica 2: Pipeline de Datos Academicos Históricos.
 
-En este pipeline, procesaremos y cargaremos los datos de un conjunto histórico para alimentar un **Data Warehouse**.
+En este pipeline, procesaremos y cargaremos los datos de un conjunto histórico para alimentar el **Data Warehouse** con los datos académicos.
 
 1. **Lectura de Datos (`GetFile`):** El flujo se iniciará con un procesador `GetFile` que leerá los ficheros CSV limpios de nuestro sistema de archivos.
 2. **Uniones y Transformaciones:** Usaremos procesadores como `ReplaceText` y `RouteOnAttribute` para limpiar y transformar los datos. Luego, se usarán procesadores para realizar **uniones (joins)** de tablas y construir las **tablas de hechos y dimensiones** de nuestro modelo de datos.
-3. **Carga en el Data Warehouse (`PutDatabaseRecord`):** Finalmente, los datos procesados se cargarán en las tablas finales del Data Warehouse, dejándolos listos para su análisis y visualización en el módulo siguiente.
+3. **Carga en el Data Warehouse (`PutDatabaseRecord`):** Finalmente, los datos procesados se cargarán en las tablas finales del Data Warehouse, dejándolos listos para su análisis y visualización en el módulo de BI.

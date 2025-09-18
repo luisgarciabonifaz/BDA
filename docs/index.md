@@ -14,12 +14,13 @@
 * [T2 Bases de Datos NoSQL](T_02_NoSQL/BD_NoSQL.md) 
 * [T3 Almacenamiento Moderno en Big Data](T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData.md) 
 * [T4 ETL con NiFi](T_04_NIFI/ETL_NiFi.md)
-* [T5 Orquestacion](T_05_Orquestacion/Orquestacion_Automatizacion_Flujos.md)
+* [T5 Orquestacion](T_05_Orquestacion/Orquestacion_Flujos.md)
 * [T6 Bussines Intelligence](T_06_Bussines_intelligence/BI_Visualizacion_Power_BI.md)
 * [T7 Visualizacion Tiempo Real](T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real.md)
 ## 2ª Evaluacion
-* [T8 Linux Gestión de Archivos](T_08_Linux_Archivos/Linux_Gestion_Archivos.md)
-* [T9 Linux Administración](T_09_Linux_Administracion/Linux_Administracion.md)
+* [Proyecto Domotica](T_08_Linux_Archivos/Linux_Gestion_Archivos.md)
+* [Proyecto Imagenes](T_09_Linux_Administracion/Linux_Administracion.md)
+* [Proyecto Manager Musical](T_09_Linux_Administracion/Linux_Administracion.md)
 
 <!-- **Última actualización:** {{ git_revision_date_localized }} -->
 
