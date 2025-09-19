@@ -149,12 +149,12 @@ El éxito de un informe de Power BI depende en gran medida de un **modelo de dat
 
 ### 7.1.Conexión a las Fuentes de Datos
 
-Power BI puede conectarse a un vasto número de fuentes. En nuestra práctica, nos conectaremos a las tablas que generamos en el Data Warehouse en el tema 4. Utilizaremos el conector apropiado para bases de datos (como el conector de SQL Server, PostgreSQL, etc.) para importar los datos de las tablas de hechos y dimensiones.
+Power BI puede conectarse a un vasto número de fuentes. En nuestra práctica, nos conectaremos a las tablas que generamos en el Data Warehouse en el tema 3. Utilizaremos el conector apropiado para bases de datos (como el conector de SQL Server, PostgreSQL, etc.) para importar los datos de las tablas de hechos y dimensiones.
 
 ### 7.2. La Importancia del Esquema en Estrella
 
 
-El **esquema en estrella**, que ya hemos discutido en el tema 4, es la estructura ideal para el análisis de BI. En Power BI, esto se traduce en:
+El **esquema en estrella**, que ya hemos discutido en el tema 3, es la estructura ideal para el análisis de BI. En Power BI, esto se traduce en:
 
 - Una **tabla de hechos** central que contiene los valores numéricos a analizar (ej. `calificacion_final`).
 - Varias **tablas de dimensiones** que contienen los atributos que describen los hechos (ej. `familia`, `curso`, `grado`).
@@ -184,13 +184,15 @@ Un buen diseño es tan importante como un buen análisis. Un dashboard debe cont
 - **Elige las visualizaciones correctas:** Un gráfico de barras es excelente para comparar categorías, mientras que un gráfico de líneas es ideal para mostrar tendencias a lo largo del tiempo.
 - **Utiliza colores de forma estratégica:** El color puede guiar la mirada del usuario y resaltar información importante.
 
+[The 15 Rules to Design a Perfect Dashboard](https://www.sqlbi.com/wp-content/uploads/videotrainings/dashboarddesign/rules-A3.pdf){target="_blank"}
+
 ## 9. Prácticas
 
 ### 9.1. Construcción del Dashboard de resultados academicos
 
 Esta práctica es el objetivo final de nuestro proyecto de resultados academicos.
 
-1. **Conexión a la Fuente:** Conecta Power BI a la base de datos que contiene las tablas del Data Warehouse (`Calificaciones`, `Familia`, `Curso`, `Grado`, etc.) que hemos generado con NiFi.
+1. **Conexión a la Fuente:** Conecta Power BI a la base de datos que contiene las tablas del Data Warehouse (`Calificaciones`, `Familia`, `Curso`, `Grado`, etc.).
 2. **Modelo de Datos:** En la vista de modelo de Power BI, establece las relaciones entre la tabla de hechos (`Calificaciones`) y las tablas de dimensiones (`Familia`, `Curso`, `Grado`).
 3. **Visualizaciones y Métricas:**
     - **Filtros:** Agrega segmentaciones (`slicers`) para permitir que los usuarios filtren los datos por `Familia`, `Curso` y `Grado`.
@@ -202,19 +204,4 @@ Esta práctica es el objetivo final de nuestro proyecto de resultados academicos
         - Una medida para contar el **número total de estudiantes** en el conjunto de datos.
 4. **Diseño del Dashboard:** Organiza las visualizaciones, los filtros y las métricas en una página coherente. Utiliza títulos claros y etiquetas para que el dashboard sea fácil de entender.
 
-### 9.2. Construcción del Dashboard de sensores
-
-Esta práctica es el objetivo final de nuestro proyecto de sensores 
-
-1. **Conexión a la Fuente:** Conecta Power BI a la base de datos que contiene las tablas del Data Warehouse (`Calificaciones`, `Familia`, `Curso`, `Grado`, etc.) que hemos generado con NiFi.
-2. **Modelo de Datos:** En la vista de modelo de Power BI, establece las relaciones entre la tabla de hechos (`Calificaciones`) y las tablas de dimensiones (`Familia`, `Curso`, `Grado`).
-3. **Visualizaciones y Métricas:**
-    - **Filtros:** Agrega segmentaciones (`slicers`) para permitir que los usuarios filtren los datos por `Familia`, `Curso` y `Grado`.
-    - **Visualizaciones Interactivas:**
-        - Un **gráfico de barras** para comparar la calificación promedio por `Familia` o `Curso`.
-        - Un **gráfico de líneas** para mostrar la evolución del promedio de calificaciones a lo largo de los cursos.
-    - **Métricas Calculadas con DAX:**
-        - Una medida para calcular la **calificación promedio** de todos los estudiantes.
-        - Una medida para contar el **número total de estudiantes** en el conjunto de datos.
-4. **Diseño del Dashboard:** Organiza las visualizaciones, los filtros y las métricas en una página coherente. Utiliza títulos claros y etiquetas para que el dashboard sea fácil de entender.
 

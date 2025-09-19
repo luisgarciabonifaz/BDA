@@ -1,6 +1,7 @@
-# Visualización en Tiempo Real
-
-**De la Analítica Estática a la Monitorización Dinámica**
+<div class="titulo">
+   Visualización en Tiempo Real
+</div>
+#  
 
 A lo largo del curso, hemos construido pipelines de datos para su posterior análisis. Sin embargo, para datos que cambian constantemente, como los de nuestro proyecto de **Smart City**, necesitamos herramientas que puedan mostrar información en **tiempo real** o casi real. Este módulo final se centra en la monitorización y visualización dinámica con **Grafana**, la plataforma líder para este tipo de tareas.
 
@@ -14,9 +15,11 @@ Las herramientas de BI tradicionales como Power BI o Tableau son excelentes para
 
 **Grafana** es una plataforma de código abierto de analítica y monitorización. Su principal fortaleza es su capacidad para crear **dashboards dinámicos** que se actualizan automáticamente. Es compatible con una gran cantidad de fuentes de datos (Data Sources), lo que la convierte en una herramienta versátil para visualizar datos de sensores, logs de servidores y cualquier otro dato de series temporales.
 
-![Imagen de Grafana dashboard](https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSDcSWmJbE67kLuqBIMx8Ho0bpAaMnSh-hdYY-bmZnVxC3ntwgM8fnPyVCXt6O_jDuU9Q75LqBTLyyVmEzBAfoHRRn5vNCo3i60TUV2m21A8CnULCI)
+<figure markdown="span">
+   ![Imagen de Grafana dashboard](https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSDcSWmJbE67kLuqBIMx8Ho0bpAaMnSh-hdYY-bmZnVxC3ntwgM8fnPyVCXt6O_jDuU9Q75LqBTLyyVmEzBAfoHRRn5vNCo3i60TUV2m21A8CnULCI){: style="width:70%;margin:auto;display:block"}
+  <figcaption>Con licencia de Google</figcaption>
+</figure>
 
-Con licencia de Google
 
 A diferencia de las herramientas de BI que se enfocan en responder preguntas de negocio, Grafana se enfoca en **mostrar el estado actual y la evolución de un sistema**, lo que es perfecto para nuestro proyecto de IoT.
 
@@ -32,9 +35,9 @@ Para construir dashboards en Grafana, es fundamental entender sus componentes b�
 - **Alertas:** Las alertas te permiten definir reglas sobre tus datos. Si un valor supera un umbral, Grafana puede enviar una notificación a un canal de tu elección (ej. email, Slack, etc.). Esto es crucial para la monitorización proactiva de sistemas.
 
 
-## 3. Práctica: Construcción del Dashboard del Proyecto 1
+## 3. Práctica: Construcción del Dashboard de Smart City
 
-En esta práctica, construiremos un dashboard de monitorización para los datos de los sensores de nuestro proyecto de IoT, demostrando la utilidad de los datos en tiempo real.
+En esta práctica, construiremos un dashboard de monitorización para los datos de los sensores de nuestro proyecto de Smart City, demostrando la utilidad de los datos en tiempo real.
 
 1. **Conexión a la Fuente de Datos:** En Grafana, añadiremos una nueva fuente de datos. Seleccionaremos el conector adecuado y configuraremos los detalles de conexión a la base de datos donde FIWARE almacena el historial de datos de los sensores (`CrateDB` o `TimescaleDB`).
 2. **Creación del Panel de Control:** Construiremos un dashboard que incluya al menos 4 visualizaciones clave:
