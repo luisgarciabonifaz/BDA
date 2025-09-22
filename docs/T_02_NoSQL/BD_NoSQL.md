@@ -254,7 +254,7 @@ Imagina que el **Orion Context Broker** es el "cerebro" de nuestro sistema IoT. 
 **¿Por qué MongoDB?** Porque su modelo de documentos se adapta perfectamente a la estructura JSON de los datos de los sensores, permitiendo que el estado de cada entidad (sensor, dispositivo, etc.) se represente como un solo documento.
 
 
-## 5. Práctica (Proyecto 1)
+## 5. Práctica (Proyecto Smart City)
 
 Vamos a construir una solución completa de gestión de datos de IoT.
 
@@ -278,5 +278,9 @@ Vamos a construir una solución completa de gestión de datos de IoT.
     - Cada vez que el script envíe una actualización, Orion hará dos cosas:
         - Actualizará el documento en **MongoDB** con el nuevo estado.
         - Debido a la suscripción, enviará una copia de los datos a **QuantumLeap**, que a su vez los insertará en **CrateDB** como una nueva entrada de serie de tiempo.
+5. **Guarda** toda la información en tu Repositorio de GitHub
+**Ayudas**
+[Mi primera aplicación con FIWARE](https://fiware-training.readthedocs.io/es-mx/latest/casodeestudio/descripcion/){target:_blank}
+[Orion Context Broker](https://fiware-training.readthedocs.io/es-mx/latest/ecosistemaFIWARE/ocb/){target:_blank}
 
 Al final de la práctica, tendrás un sistema funcional donde puedes ver el estado actual de tus entidades en MongoDB y consultar el historial completo en CrateDB.

@@ -138,15 +138,17 @@ La mejor forma de aprender es construyendo. Estos dos proyectos serán nuestro h
 
 Vamos a empezar a "pensar en datos" desde el primer día.
 
-### Tarea 1: Diseño del ADN de los Sensores (Proyecto 1)
+### Tarea 1: Diseño del ADN de los Sensores (Proyecto Smart City)
 
 **Objetivo:** Entender la importancia de modelar los datos antes de empezar. Un buen diseño inicial nos ahorrará muchos problemas.
 
 **Instrucciones:**
 
-1. Abre un editor de texto simple (Bloc de Notas, VS Code) o una hoja de cálculo.
+1. Crea un Repositorio Git Hub para ir añadido todo el trabajo del proyecto
 
-2. Para cada una de las 3 entidades (Sensor de Temperatura/Humedad, Sensor de CO2, Sensor de Calidad del Agua), define su estructura. Puedes usar un formato como este:
+2. Abre un editor de texto simple (Bloc de Notas, VS Code) o una hoja de cálculo.
+
+3. Para cada una de las 3 entidades (Sensor de Temperatura/Humedad, Sensor de CO2, Sensor de Calidad del Agua), define su estructura. Puedes usar un formato como este:
 
    JSON
 
@@ -171,21 +173,26 @@ Vamos a empezar a "pensar en datos" desde el primer día.
      }
    }
    ```
+4. Crea una estructura similar para:
 
-3. Crea una estructura similar para el sensor de CO2 (con un atributo `co2` en `ppm`) y el de calidad del agua (con `ph`, `chlorine` en `mgL`, etc.). No te preocupes por la sintaxis perfecta, céntrate en definir los **atributos, sus tipos de dato y sus unidades**.
+    - El sensor de CO2 (con un atributo `co2` en `ppm`)
+    - El sensor de calidad del agua (con `ph`, `chlorine` en `mgL`, etc.). 
+    - No te preocupes por la sintaxis perfecta, céntrate en definir los **atributos, sus tipos de dato y sus unidades**.
 
-### Tarea 2: La Primera Inspección: ¿Qué nos cuentan los datos? (Proyecto 2)
+### Tarea 2: La Primera Inspección: (Proyecto Análisis Académico)
 
 **Objetivo:** Desarrollar un "ojo crítico" para la calidad de los datos. Es una de las habilidades más importantes de un profesional del dato.
 
+  
 **Instrucciones:**
 
-1. Descarga los ficheros CSV del proyecto académico.
-2. Ábrelos con Microsoft Excel, Google Sheets o un visor de CSV. **No modifiques nada todavía.**
-3. Conviértete en un detective y responde a estas preguntas para cada fichero:
-    - ¿Cuál es el separador de columnas (coma `,`, punto y coma `;`)?
+1. Crea un Repositorio Git Hub para ir añadido todo el trabajo del proyecto
+2. Descarga los ficheros CSV del proyecto académico.
+3. Ábrelos con Microsoft Excel, Google Sheets o un visor de CSV. **No modifiques nada todavía.**
+4. Conviértete en un detective y responde a estas preguntas para cada fichero:
+    - ¿Cuál es el separador de columnas (coma `,` o punto y coma `;`)?
     - ¿La primera fila contiene los nombres de las columnas (encabezados)? ¿Son claros?
     - Inspecciona visualmente las primeras 20-30 filas. ¿Ves valores que te parezcan extraños o que faltan (celdas vacías, "N/A", "s/d")?
     - ¿Los formatos son consistentes? Por ejemplo, ¿las fechas están siempre como `DD/MM/AAAA` o a veces cambian?
     - Identifica las "claves" o "IDs" que podrían servir para relacionar unos ficheros con otros (ej: `id_alumno` en el fichero de `calificaciones.csv` y también en `alumnos.csv`).
-4. Apunta tus hallazgos en un documento de texto. Este será nuestro punto de partida para la limpieza de datos en módulos posteriores.
+5. Apunta tus hallazgos en un documento de texto. Este será nuestro punto de partida para la limpieza de datos en módulos posteriores.

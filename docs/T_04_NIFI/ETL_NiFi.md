@@ -76,6 +76,8 @@ Los tres componentes del data profiling son:
     report.show_html('informe_eda.html')
     ```
 
+[Practica 1](#51-practica-1)
+
 ### 2.2. Extracción (Extract)
 
 La extracción es el primer paso del proceso ETL y consiste en obtener los datos de las diferentes fuentes de datos. 
@@ -199,7 +201,6 @@ Una variante moderna de ETL es ELT (Extract, Load, Transform). La diferencia rad
 
 - ETL por lotes: el proceso ETL se ejecuta a intervalos regulares, procesando grandes lotes de datos de una vez. Esto es útil cuando no es necesario un procesamiento inmediato.
 - ETL en tiempo real: los datos se extraen, transforman y cargan tan pronto como están disponibles. Esto es necesario en escenarios donde el análisis de datos inmediato es crucial, como en aplicaciones financieras o de monitorización.
-
 
 ## 3. Introducción a Apache NiFi
 
@@ -331,9 +332,18 @@ Una vez que todos los componentes están conectados, puedes **iniciar** el flujo
 
 Este ejemplo ilustra la potencia de NiFi para automatizar tareas de forma visual, asegurando que los datos solo se muevan cuando se cumplen las condiciones que estableciste.
 
-## 5. Práctica: Construyendo los Pipelines del Proyecto
+## 5. Prácticas
 
-### 5.1 Practica 1: Pipeline de Datos de Sensores
+### 5.1 Practica 1
+
+**Data Profiling**
+
+Prueba el codigo del Data Profiling con 3 de los ficheros csv del proyecto de Análisis Académico.
+Añade los resultados al GitHUb
+
+### 5.2 Practica 2: 
+
+**Pipeline de la Smart City**
 
 Construiremos un flujo de datos en NiFi que automatizará la ingesta y el procesamiento de los datos de nuestros sensores IoT.
 
@@ -343,7 +353,9 @@ Construiremos un flujo de datos en NiFi que automatizará la ingesta y el proces
 4. **Carga en el Data Lake (`PutFile`):** El resultado del cálculo se guardará en el Data Lake, probablemente en un formato optimizado para el análisis como **Parquet**.
 
 
-### 5.2. Practica 2: Pipeline de Datos Academicos Históricos.
+### 5.3. Practica 3.
+
+**Pipeline de Analisis Académicos**
 
 En este pipeline, procesaremos y cargaremos los datos de un conjunto histórico para alimentar el **Data Warehouse** con los datos académicos.
 

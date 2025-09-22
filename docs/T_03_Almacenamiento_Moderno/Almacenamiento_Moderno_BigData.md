@@ -279,25 +279,28 @@ El linaje de datos es la capacidad de visualizar el **ciclo de vida completo de 
 ## 4. Prácticas
 
 ### Práctica 1
-**(Proyectos 2): Arquitectura de Data Lakehouse**
+**(Proyecto Analisis Académico): Arquitectura de Data Lakehouse**
 
 Define una arquitectura Medallón (bronce, Plata, Oro) para el proyecto de datos academicos. 
 
 - Creala en AWS con el servicio S3.
-- Añade la definción de la arquitectura a tu Git Hub del Proyecto de datos académicos.
+- Añade la definición de la arquitectura a tu GitHub del Proyecto de Análisis Academico.
 
 ### Práctica 2 
-**(Proyecto 2): Diseño del Data Warehouse Académico**
+**(Proyecto Analisis Académico): Diseño del Data Warehouse**
 
 Vamos a aplicar la metodología de Kimball para diseñar un *Data Mart* para nuestro proyecto. Usaremos un **Esquema en Estrella**, el modelo más común y eficiente para BI.
 
 1. **Tabla de Hechos (Fact Table):** Es la tabla central. Contiene las métricas numéricas que queremos analizar. También contiene claves foráneas que la unen a las dimensiones.
 2. **Tablas de Dimensiones (Dimension Tables):** Son las tablas que rodean a la de hechos. Contienen el contexto descriptivo. Responden a las preguntas "quién, qué, dónde, cuándo, por qué".
 
+Añade el diseño a tu GitHub del Proyecto Analisis Académico.
+
 ### Práctica 3 
-**(Proyectos 1 y 2): De CSV a Parquet con Python y Pandas**
+**(Proyecto Anáslisis Académico): De CSV a Parquet con Python y Pandas**
 
 Convertir los ficheros CSV limpios del módulo anterior al formato Parquet, mucho más eficiente, utilizando Python y Pandas
 
 De esta forma nuestros datos procesados se almacenan en un formato columnar y comprimido, dejándolos listos para ser utilizados por herramientas de procesamiento a gran escala como Apache NiFi en los próximas secciones.
 
+Añade el código a tu GitHub del Proyecto Analisis Académico.
