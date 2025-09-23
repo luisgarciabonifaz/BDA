@@ -138,12 +138,10 @@ El patrón de integración típico es:
 Este enfoque separa la **orquestación** (quién, cuándo y en qué orden se ejecutan las tareas) de la **ejecución** (cómo se procesan realmente los datos), permitiendo que cada herramienta se enfoque en lo que mejor sabe hacer.
 
 
-## 5. Práctica: Automatización con Airflow y NiFi
-
-Esta práctica final unirá todos los conceptos del curso.
+## 5. Prácticas
 
 ### 5.1. Practica 1
-**Creación de un DAG en Airflow para el proyecto de sensores**
+**Creación de un DAG en Airflow para el proyecto Smart City**
 
 1. **Configuración del Entorno:** Montaremos una instancia de Apache Airflow (típicamente con Docker Compose) y la configuraremos para que pueda comunicarse con nuestra instancia de NiFi del proyeto de sensores.
 2. **Creación del DAG:**
@@ -152,16 +150,21 @@ Esta práctica final unirá todos los conceptos del curso.
    - Utilizaremos un `SimpleHttpOperator` para enviar una petición a la API de NiFi. La petición le dirá a NiFi que inicie la ejecución de nuestro grupo de procesos (`Process Group`) para el de sensores.
    - Programaremos el DAG para que se ejecute diariamente a una hora específica.
 3. **Verificación:** Una vez en marcha, monitorizaremos el DAG desde la interfaz de Airflow para asegurarnos de que se ejecute en el horario programado. También revisaremos los registros de NiFi para confirmar que el flujo de datos se ha iniciado y completado correctamente.
+4. **Documentación** Guardamos en el Repositorio de GitHub el DAG creado.
+
 
 ### 5.2. Practica 2
-**Creación de un DAG en Airflow para el proyecto de resultados academicos**
+**Creación de un DAG en Airflow para el proyecto Análisis Académico**
 
 1. **Configuración del Entorno:** Utilizaremos eldocker compose de la práctica anterior.
 2. **Creacion del DAG:**
-   - Escribiremos un archivo de Python para definir el DAG.
-   - El DAG tendrá todas las tareas nececesarias para orquestar el proyecto de resultados academicos.
+   - Escribiremos un archivo de Python para definir el/los DAG/s.
+   - El/Los DAG/s tendrán todas las tareas nececesarias para orquestar el proyecto Análisis Académico.
    - Crearemos las tareas de la ETL con codigo python. Olvidandonos del flujo de datos creado con NiFi.
-   - Programaremos el DAG para que se ejecute diariamente a una hora específica.
-3. **Verificación:** Una vez en marcha, monitorizaremos el DAG desde la interfaz de Airflow para asegurarnos de que se ejecute en el horario programado. También revisaremos los registros de NiFi para confirmar que el flujo de datos se ha iniciado y completado correctamente.
+   - Programaremos el/los DAG/s para que se ejecute diariamente a una hora específica.
+3. **Verificación:** Una vez en marcha, monitorizaremos el flujo de datos desede la interfaz de Airflow para asegurarnos de que se ejecute en el horario programado.
+
+4. **Documentación** Guardamos en el Repositorio de GitHub los DAG creados.
+
 
 El objetivo de estas prácticas es crear un sistema de procesamiento de datos **totalmente automatizado** y robusto, listo para entornos de producción.
