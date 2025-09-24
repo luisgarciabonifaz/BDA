@@ -3,7 +3,6 @@
 </div>
 #  
 
-
 Has trabajado duro. Has recolectado datos, los has almacenado, los has procesado y los has automatizado. Pero, ¿de qué sirve todo ese esfuerzo si no podemos entender lo que los datos nos dicen? 
 
 Este tema es la culminación de tu viaje en la ciencia de datos. Aquí, convertirás los datos brutos en **conocimiento accionable** utilizando **Microsoft Power BI**, una de las herramientas de **Inteligencia de Negocio (BI)** más poderosas del mercado.
@@ -188,7 +187,7 @@ Un buen diseño es tan importante como un buen análisis. Un dashboard debe cont
 
 ## 9. Prácticas
 
-### 9.1. Construcción del Dashboard de resultados academicos
+### 9.1. Construcción del Dashboard de Analisis Académico
 
 Esta práctica es el objetivo final de nuestro proyecto de resultados academicos.
 

@@ -156,7 +156,7 @@ Este enfoque separa la **orquestación** (quién, cuándo y en qué orden se eje
 ### 5.2. Practica 2
 **Creación de un DAG en Airflow para el proyecto Análisis Académico**
 
-1. **Configuración del Entorno:** Utilizaremos eldocker compose de la práctica anterior.
+1. **Configuración del Entorno:** Utilizaremos el docker compose de la práctica anterior.
 2. **Creacion del DAG:**
    - Escribiremos un archivo de Python para definir el/los DAG/s.
    - El/Los DAG/s tendrán todas las tareas nececesarias para orquestar el proyecto Análisis Académico.
