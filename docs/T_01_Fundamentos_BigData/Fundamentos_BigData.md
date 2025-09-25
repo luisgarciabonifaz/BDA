@@ -133,7 +133,7 @@ La mejor forma de aprender es construyendo. Estos dos proyectos serán nuestro h
     - Creación de un cuadro de mando interactivo con **Power BI**.
 - **Resultado Final:** Un informe en Power BI que permita al equipo directivo filtrar por curso, año o ciclo y analizar tasas de éxito, promociones, etc.
 
-[Proyectos](../PDF/Proyectos.pdf){target:_blank}
+[Proyectos](../PDF/Proyectos.pdf){target="_blank"}
 
 ## 4. Práctica Inicial
 
