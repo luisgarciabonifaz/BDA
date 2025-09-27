@@ -1,0 +1,185 @@
+Infraestructura
+---------------
+----------------
+
+
+Docker
+---------
+
+Cada proyecto tendrá su propio directorio con un archivo docker-compose.yml:
+
+
+
+├── bigdata-proyecto-smartcity/
+│   ├── docker-compose.yml  # FIWARE, CrateDB, Grafana
+│   ├── data/
+│   │   └── sensors_data.json
+│   └── src/
+│       └── simulation_script.py
+├── bigdata-proyecto-academico/
+│   ├── docker-compose.yml  # Base de Datos (PostgreSQL/MySQL), Herramienta ETL
+│   ├── data/
+│   │   └── calificaciones.csv
+│   └── src/
+│       └── etl_script.py
+└── README.md
+
+
+
+. Comandos Esenciales de Docker
+Acción	Comando	Notas
+Arrancar Infraestructura	docker-compose up -d	Levanta todos los servicios en segundo plano.
+Ver Logs	docker-compose logs -f	Monitorea la actividad de todos los servicios.
+Detener Infraestructura	docker-compose down	Detiene y elimina los contenedores (conserva las imágenes).
+Ejecutar Script	docker exec -it <nombre_contenedor> python src/script.py	Ejecuta tu código (simulación, ETL) dentro de un contenedor.
+
+Flujo de Trabajo con Git
+----------------------------
+
+
+El flujo de trabajo debe ser constante y descriptivo. Un buen historial de commits demuestra cómo avanzaste en el proyecto:
+
+Trabajo Inicial (Infraestructura):
+
+
+git add docker-compose.yml
+git commit -m "feat: Inicializar infraestructura Docker con Orion, CrateDB y Grafana"
+git push origin main
+Desarrollo (Fase 1 - Entidades y Simulación):
+
+
+git add src/simulation_script.py
+git commit -m "feat: Implementar simulación de los tres sensores (Temp, CO2, Agua) y enviar a Orion"
+git push origin main
+Documentación (Fase 2 - ETL):
+
+
+git add src/etl_process.py
+git commit -m "refactor: Crear proceso ETL para calcular valores Max/Min/Medios diarios y cargar en Data Warehouse"
+git push origin main
+
+
+README.md: La Documentación Esencial
+
+README.md es tu informe final  y debe estar en la raíz de tu repositorio. No solo debe describir el proyecto, sino también servir de guía de ejecución para el evaluador.
+
+Sección del README.md	Contenido Mínimo (Ej. Proyecto Académico)
+1. Definición del Proyecto Objetivo (Consolidar históricos e indicadores de calidad ) y enfoque (Modelo dimensional para BI ).
+2. Infraestructura Técnica Lista de contenedores ( PostgreSQL o MySQL para Data Warehouse, Python/Pandas en contenedor para el ETL). Incluir la estructura del docker-compose.yml.
+3. Proceso ETL y Modelo de Datos Diagrama o descripción de cómo se transforman los archivos CSV (ITACA, PAA)  en tablas de Hechos y Dimensiones. Describir las validaciones realizadas.
+
+4. Instrucciones de Uso	Pasos exactos: git clone, docker-compose up -d, cómo ejecutar el script ETL (python src/etl_process.py), y cómo conectar Power BI al Data Warehouse.
+5. Resultados (Power BI) Capturas de pantalla del Cuadro de Mando , mostrando el porcentaje de aprobación y los filtros aplicables (Familia, Curso, Evaluación, etc.).
+
+
+
+
+
+
+
+
+
+
+
+
+AWS:
+-----
+
+-Bases de Datos
+-Almacenamiento en S3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- docker-compose Proyecto Smart City   BD:  AWS
+- docker-compose Nifi                  BD: AWS
+- docker compose Airflow               BD:  Aws
+
+------------------------------
+
+
+
+
+# 📚 Apuntes de Infraestructura y Flujo de Trabajo
+
+## 🏗️ Infraestructura con Docker
+
+La infraestructura de cada proyecto se gestiona mediante **Docker Compose**, asegurando que cada entorno sea aislado y reproducible.
+
+### 📂 Estructura de Directorios (Ejemplos)
+
+Cada proyecto reside en su propio directorio y contiene un archivo `docker-compose.yml` para definir sus servicios.
+
+| Proyecto | Archivos Clave | Servicios Típicos |
+| :--- | :--- | :--- |
+| `bigdata-proyecto-smartcity/` | `docker-compose.yml` | **FIWARE** (Orion Context Broker), **CrateDB**, **Grafana** |
+| | `data/sensors_data.json` | |
+| | `src/simulation_script.py` | |
+| `bigdata-proyecto-academico/` | `docker-compose.yml` | Base de Datos (**PostgreSQL** o **MySQL**), Herramienta **ETL** (Contenedor Python) |
+| | `data/calificaciones.csv` | |
+| | `src/etl_script.py` | |
+
+---
+
+### ⚙️ Comandos Esenciales de Docker Compose
+
+| Acción | Comando | Notas |
+| :--- | :--- | :--- |
+| **Arrancar** Infraestructura | `docker-compose up -d` | Levanta todos los servicios en **segundo plano**. |
+| **Ver Logs** | `docker-compose logs -f` | Monitorea la actividad en tiempo real de todos los servicios. |
+| **Detener** Infraestructura | `docker-compose down` | Detiene y **elimina los contenedores** (conserva las imágenes). |
+| **Ejecutar Script** | `docker exec -it <nombre_contenedor> python src/script.py` | Ejecuta tu código (simulación, ETL) **dentro de un contenedor** existente. |
+
+---
+
+## 💾 Flujo de Trabajo con Git
+
+El historial de `commits` debe ser **constante y descriptivo** para mostrar el progreso. Se recomienda seguir un esquema de mensajes claro.
+
+| Etapa | Comando `git` | Mensaje de Commit (Ejemplo) | Propósito |
+| :--- | :--- | :--- | :--- |
+| **Infraestructura** | `git add docker-compose.yml` | `feat: Inicializar infraestructura Docker con Orion, CrateDB y Grafana` | Establecer el entorno de trabajo. |
+| **Desarrollo** | `git add src/simulation_script.py` | `feat: Implementar simulación de los tres sensores (Temp, CO2, Agua) y enviar a Orion` | Implementación de nueva funcionalidad. |
+| **Documentación/Refactor** | `git add src/etl_process.py` | `refactor: Crear proceso ETL para calcular valores Max/Min/Medios diarios y cargar en Data Warehouse` | Mejora o reestructuración de código/procesos. |
+
+**Recordatorio:** Después de cada `commit`, ejecuta `git push origin main` para sincronizar con el repositorio remoto.
+
+---
+
+## 📄 README.md: La Documentación Esencial
+
+El archivo `README.md` es el **informe final** y la **guía de ejecución** del proyecto. Debe estar en la raíz del repositorio.
+
+| Sección del README.md | Contenido Mínimo Requerido (Ej. Proyecto Académico) |
+| :--- | :--- |
+| 1. **Definición del Proyecto** | **Objetivo** (Ej: Consolidar históricos e indicadores de calidad) y **enfoque** (Ej: Modelo dimensional para BI). |
+| 2. **Infraestructura Técnica** | Lista de **contenedores** (PostgreSQL/MySQL, Contenedor Python para ETL). Incluir la estructura del `docker-compose.yml`. |
+| 3. **Proceso ETL y Modelo de Datos** | **Diagrama o descripción** de la transformación de archivos CSV (ITACA, PAA) en tablas de Hechos y Dimensiones. Describir las **validaciones** realizadas. |
+| 4. **Instrucciones de Uso** | Pasos **exactos** para la ejecución: `git clone`, `docker-compose up -d`, cómo ejecutar el script ETL (`python src/etl_process.py`), y cómo conectar la herramienta de BI (Ej: Power BI) al Data Warehouse. |
+| 5. **Resultados (Power BI)** | **Capturas de pantalla** del Cuadro de Mando, mostrando indicadores clave (Ej: porcentaje de aprobación) y filtros aplicables (Familia, Curso, Evaluación, etc.). |
+
+---
+
+## ☁️ Referencia a AWS
+
+La infraestructura podría incorporar servicios en la nube de **AWS** para:
+
+* **Bases de Datos:** Uso de servicios gestionados de bases de datos (Ej: Amazon RDS).
+* **Almacenamiento:** Uso de **S3** (Simple Storage Service) para archivos estáticos o *data lakes*.
+
+
+2 Laboratorios 1 por evaluación
+
+
