@@ -1,0 +1,1076 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/BDA/T_02_NoSQL/BD_NoSQL/">
+      
+      
+        <link rel="prev" href="../../T_01_Fundamentos_BigData/Fundamentos_BigData/">
+      
+      
+        <link rel="next" href="../../T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>T2 - Bases de Datos NoSQL - BDA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="BDA" class="md-header__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BDA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T2 - Bases de Datos NoSQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BDA" class="md-nav__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BDA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Aplicado
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Aplicado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_BigData/Fundamentos_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T1 - Fundamentos y Ecosistema Moderno de Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    T2 - Bases de Datos NoSQL
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    T2 - Bases de Datos NoSQL
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-a-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introducción a NoSQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tipos-de-bases-de-datos-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Tipos de Bases de Datos NoSQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-conceptos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Conceptos Clave:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-comandos-basicos-de-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Comandos Básicos de MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Ejercicios Prácticos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fiware-y-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. FIWARE y MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. FIWARE y MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-como-funciona-fiware-la-arquitectura-del-broker-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. ¿Cómo Funciona FIWARE? La Arquitectura del Bróker de Contexto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-integracion-de-fiware-con-bases-de-datos-nosql-en-nuestro-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Integración de FIWARE con Bases de Datos NoSQL en Nuestro Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-rol-del-orion-context-broker-como-gestor-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      El Rol del Orion Context Broker como Gestor de Estado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-practica-proyecto-smart-city" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Práctica (Proyecto Smart City)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T3 - Almacenamiento Moderno en Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_NIFI/ETL_NiFi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T4 - ETL con NiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Orquestacion/Orquestacion_Flujos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T5 - Orquestacion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Bussines_Intelligence/BI_Power_BI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T6 - Bussines Intelligence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T7 - Visualizacion Tiempo Real
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-a-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introducción a NoSQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tipos-de-bases-de-datos-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Tipos de Bases de Datos NoSQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-conceptos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Conceptos Clave:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-comandos-basicos-de-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Comandos Básicos de MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Ejercicios Prácticos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fiware-y-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. FIWARE y MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. FIWARE y MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-como-funciona-fiware-la-arquitectura-del-broker-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. ¿Cómo Funciona FIWARE? La Arquitectura del Bróker de Contexto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-integracion-de-fiware-con-bases-de-datos-nosql-en-nuestro-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Integración de FIWARE con Bases de Datos NoSQL en Nuestro Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-rol-del-orion-context-broker-como-gestor-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      El Rol del Orion Context Broker como Gestor de Estado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-practica-proyecto-smart-city" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Práctica (Proyecto Smart City)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div class="titulo">
+   Bases de Datos NoSQL
+</div>
+<h1 id="_1"></h1>
+<p>No todos los datos encajan perfectamente en las estructuras rígidas de filas y columnas de las bases de datos relacionales (SQL) que conocemos. En el mundo del Big Data, los datos pueden ser <strong>variados</strong> (estructurados, semi-estructurados, no estructurados), masivos (<strong>volumen</strong>)y generados a gran <strong>velocidad</strong>. </p>
+<p>Aquí es donde entran en juego las bases de datos <strong>NoSQL</strong> (Not Only SQL), una categoría de sistemas de gestión de bases de datos que ofrecen una flexibilidad, escalabilidad y rendimiento excepcionales para estos escenarios.</p>
+<p>En este tema, no solo exploraremos los fundamentos de NoSQL, sino que los aplicaremos a un caso de uso real y relevante: la plataforma <strong>FIWARE</strong> para la gestión de datos de Internet de las Cosas (IoT). Utilizaremos FIWARE para manejar los datos en tiempo real de los sensores de nuestro <strong>Proyecto 1</strong>, aprendiendo cómo esta plataforma se integra con distintas bases de datos NoSQL para gestionar el estado actual y el historial de los datos.</p>
+<h2 id="1-introduccion-a-nosql">1. Introducción a NoSQL</h2>
+<p>Las bases de datos relacionales (SQL) son fantásticas para datos que se ajustan a un esquema fijo y tienen relaciones bien definidas (ej. un cliente tiene muchos pedidos). Sin embargo, cuando los datos son heterogéneos y cambian constantemente, como en una red de sensores IoT, las bases de datos NoSQL ofrecen una solución más ágil y eficiente.</p>
+<p><strong>Ventajas de NoSQL:</strong></p>
+<ul>
+<li><strong>Flexibilidad de esquema:</strong> No hay un esquema predefinido. Puedes almacenar diferentes tipos de datos dentro de la misma colección, lo cual es ideal para datos semi-estructurados como JSON.</li>
+<li><strong>Escalabilidad horizontal:</strong> Las bases de datos NoSQL están diseñadas para escalar fácilmente en clústeres de servidores de bajo coste. Esto se conoce como escalabilidad horizontal y es crucial para manejar enormes volúmenes de datos.</li>
+<li><strong>Rendimiento:</strong> Al estar diseñadas para casos de uso específicos, muchas bases de datos NoSQL ofrecen un rendimiento superior para lecturas y escrituras intensivas.</li>
+</ul>
+<h2 id="2-tipos-de-bases-de-datos-nosql">2. Tipos de Bases de Datos NoSQL</h2>
+<p>Cada tipo de base de datos NoSQL está optimizado para un propósito diferente. Entender sus características te ayudará a elegir la herramienta adecuada para cada tarea.</p>
+<ul>
+<li><strong>Bases de Datos de Documentos (Document Stores):</strong><ul>
+<li><strong>Concepto:</strong> Almacenan datos en documentos similares a JSON (MongoDB usa BSON, una versión binaria de JSON). Cada documento puede tener un esquema diferente, lo que las hace increíblemente flexibles.</li>
+<li><strong>Ejemplo:</strong> <strong>MongoDB</strong>.</li>
+<li><strong>Casos de uso:</strong> Sistemas de gestión de contenidos, catálogos de productos y, en nuestro caso, el estado actual de las entidades de IoT.</li>
+</ul>
+</li>
+<li><strong>Bases de Datos de Clave-Valor (Key-Value Stores):</strong><ul>
+<li><strong>Concepto:</strong> El tipo más simple de NoSQL. Cada dato es un par <strong>clave-valor</strong>. Son extremadamente rápidas para operaciones de lectura y escritura.</li>
+<li><strong>Ejemplos:</strong> <strong>Redis</strong> (memoria), <strong>DynamoDB</strong> (Amazon).</li>
+<li><strong>Casos de uso:</strong> Caching de datos, gestión de sesiones de usuarios y tablas de búsqueda rápidas.</li>
+</ul>
+</li>
+<li><strong>Bases de Datos Columnares (Wide-Column Stores):</strong><ul>
+<li><strong>Concepto:</strong> En lugar de almacenar datos por filas, los almacenan por columnas. Esto las hace muy eficientes para consultas analíticas sobre grandes conjuntos de datos, ya que solo se leen las columnas necesarias.</li>
+<li><strong>Ejemplo:</strong> <strong>Cassandra</strong>.</li>
+<li><strong>Casos de uso:</strong> Analítica de Big Data, series de tiempo (Time Series) y bases de datos de eventos.</li>
+</ul>
+</li>
+<li><strong>Bases de Datos de Grafos (Graph Databases):</strong><ul>
+<li><strong>Concepto:</strong> Almacenan datos y las relaciones entre ellos en una estructura de grafo, donde los datos son <strong>nodos</strong> y las relaciones son <strong>aristas</strong>. Son ideales para analizar interconexiones complejas.</li>
+<li><strong>Ejemplo:</strong> <strong>Neo4j</strong>.</li>
+<li><strong>Casos de uso:</strong> Redes sociales, detección de fraude y sistemas de recomendación.</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-mongodb">3. MongoDB</h2>
+<p>MongoDB es una base de datos NoSQL de tipo <strong>documental</strong>. A diferencia de las bases de datos relacionales que usan tablas, MongoDB organiza los datos en <strong>colecciones</strong>, que son equivalentes a las tablas, y cada colección contiene <strong>documentos</strong>, que son equivalentes a las filas.</p>
+<p>La clave de MongoDB es que cada documento es una estructura flexible, similar a <strong>JSON</strong> (JavaScript Object Notation), que puede contener campos anidados, listas y otros documentos. Esto elimina la necesidad de un esquema fijo y hace que sea ideal para datos semi-estructurados.</p>
+<h3 id="31-conceptos-clave">3.1. Conceptos Clave:</h3>
+<ul>
+<li><strong>Documento:</strong> Un registro individual en MongoDB. Es una estructura de datos en formato <strong>BSON</strong> (una versión binaria de JSON), que puede tener diferentes campos y tipos de datos.</li>
+<li><strong>Colección:</strong> Un grupo de documentos. Es el equivalente a una tabla en bases de datos relacionales. No se aplica un esquema estricto a los documentos de una colección.</li>
+<li><strong>Base de Datos:</strong> Un contenedor físico para colecciones. Puedes tener múltiples bases de datos en una misma instancia de MongoDB.</li>
+</ul>
+<h3 id="32-comandos-basicos-de-mongodb">3.2. Comandos Básicos de MongoDB</h3>
+<p>Para interactuar con MongoDB, usaremos el <strong>Mongo Shell</strong>. A continuación, los comandos más comunes:</p>
+<p><strong>1. Ver bases de datos y cambiar de base de datos</strong></p>
+<ul>
+<li><code>show dbs;</code> : Muestra todas las bases de datos disponibles.</li>
+<li><code>use [nombre_base_de_datos];</code> : Selecciona o crea una base de datos. Por ejemplo, <code>use fiware_db;</code>.</li>
+</ul>
+<p><strong>2. Insertar Documentos</strong></p>
+<ul>
+<li><code>db.[nombre_coleccion].insertOne({ ... });</code> : Inserta un único documento.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="err">db.se</span><span class="kc">ns</span><span class="err">ores.i</span><span class="kc">nsert</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span>
+<span class="w">      </span><span class="err">id_se</span><span class="kc">ns</span><span class="err">or</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temp01&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="kc">t</span><span class="err">ipo</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temperatura&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="err">ubicacio</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sala_servidores&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="err">valor_ac</span><span class="kc">tual</span><span class="p">:</span><span class="w"> </span><span class="mf">24.5</span><span class="p">,</span>
+<span class="w">      </span><span class="err">u</span><span class="kc">n</span><span class="err">idad</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;celsius&quot;</span>
+<span class="w">    </span><span class="p">}</span><span class="err">)</span>
+</code></pre></div>
+<ul>
+<li>
+<p><code>db.[nombre_coleccion].insertMany([{ ... }, { ... }]);</code> : Inserta múltiples documentos.
+<div class="highlight"><pre><span></span><code><span class="err">db.se</span><span class="kc">ns</span><span class="err">ores.i</span><span class="kc">nsert</span><span class="err">Ma</span><span class="kc">n</span><span class="err">y(</span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id_sensor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temp01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temperatura&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ubicacion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sala_servidores&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;valor_actual&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">24.5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;celsius&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id_sensor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hum02&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;humedad&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ubicacion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;almacen_datos&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;valor_actual&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;porcentaje&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id_sensor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;co2_03&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dioxido_carbono&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ubicacion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oficina_principal&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;valor_actual&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">415</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ppm&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span><span class="err">)</span>
+</code></pre></div>
+<strong>3. Buscar Documentos</strong></p>
+</li>
+<li>
+<p><code>db.[nombre_coleccion].find();</code> : Encuentra todos los documentos de una colección.</p>
+</li>
+<li><code>db.[nombre_coleccion].find({ [criterio] });</code> : Busca documentos que coincidan con un criterio específico. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="err">db.se</span><span class="kc">ns</span><span class="err">ores.</span><span class="kc">f</span><span class="err">i</span><span class="kc">n</span><span class="err">d(</span><span class="p">{</span><span class="w"> </span><span class="kc">t</span><span class="err">ipo</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temperatura&quot;</span><span class="w"> </span><span class="p">}</span><span class="err">);</span>
+</code></pre></div>
+<ul>
+<li><code>db.[nombre_coleccion].findOne({ ... });</code> : Devuelve el primer documento que coincide.</li>
+<li><code>db.[nombre_coleccion].find().pretty();</code> : Muestra los resultados de forma legible.</li>
+</ul>
+<p><strong>4. Actualizar Documentos</strong></p>
+<ul>
+<li><code>db.[nombre_coleccion].updateOne({ [criterio] }, { $set: { [campo]: [valor] } });</code> : Actualiza un solo documento.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="err">db.se</span><span class="kc">ns</span><span class="err">ores.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id_sensor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temp01&quot;</span><span class="w"> </span><span class="p">},</span><span class="w">          </span><span class="c1">// Criterio de búsqueda: el documento con id_sensor &quot;temp01&quot;</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="err">$se</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;ubicacion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cuarto_control&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// Acción: establece el campo &quot;ubicacion&quot; a &quot;cuarto_control&quot;</span>
+<span class="w">    </span><span class="err">)</span>
+</code></pre></div>
+<ul>
+<li><code>db.[nombre_coleccion].updateMany({ [criterio] }, { $set: { [campo]: [valor] } });</code> : Actualiza múltiples documentos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="err">db.se</span><span class="kc">ns</span><span class="err">ores.upda</span><span class="kc">te</span><span class="err">Ma</span><span class="kc">n</span><span class="err">y(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temperatura&quot;</span><span class="w"> </span><span class="p">},</span><span class="w">          </span><span class="c1">// Criterio de búsqueda: todos los documentos con tipo &quot;temperatura&quot;</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="err">$se</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;grados_centigrados&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// Acción: establece el campo &quot;unidad&quot; a &quot;grados_centigrados&quot;</span>
+<span class="w">    </span><span class="err">)</span>
+</code></pre></div>
+<p><strong>5. Eliminar Documentos</strong></p>
+<ul>
+<li><code>db.[nombre_coleccion].deleteOne({ [criterio] });</code> : Elimina el primer documento que coincide.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="err">db.usuarios.dele</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="w"> </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ejemplo@dominio.com&quot;</span><span class="w"> </span><span class="p">}</span><span class="err">);</span>
+</code></pre></div>
+<ul>
+<li><code>db.[nombre_coleccion].deleteMany({ [criterio] });</code> : Elimina todos los documentos que coinciden.</li>
+</ul>
+<h3 id="33-ejercicios-practicos">3.3. Ejercicios Prácticos</h3>
+<p>Imagina que tienes una base de datos llamada <code>iot_data</code> para el Proyecto 1.</p>
+<p><strong>Ejercicio 1: Crear una base de datos e insertar un sensor</strong></p>
+<ol>
+<li>Abre el Mongo Shell y crea una base de datos llamada <code>iot_data</code>.</li>
+<li>Crea una colección llamada <code>dispositivos</code>.</li>
+<li>Inserta un documento en la colección <code>dispositivos</code> con la siguiente información:<ul>
+<li><code>id_sensor</code>: "temp01"</li>
+<li><code>tipo</code>: "temperatura"</li>
+<li><code>ubicacion</code>: "sala_servidores"</li>
+<li><code>valor_actual</code>: 24.5</li>
+<li><code>unidad</code>: "celsius"</li>
+</ul>
+</li>
+</ol>
+<p><strong>Ejercicio 2: Insertar múltiples sensores y buscar por tipo</strong></p>
+<ol>
+<li>Inserta dos nuevos documentos en la colección <code>dispositivos</code>: uno para un sensor de humedad (<code>hum01</code>) y otro para un sensor de CO2 (<code>co201</code>), con valores y ubicaciones que elijas.</li>
+<li>Busca y muestra solo los documentos de los sensores de tipo "temperatura".</li>
+</ol>
+<p><strong>Ejercicio 3: Actualizar el valor de un sensor</strong></p>
+<ol>
+<li>Actualiza el valor actual del sensor con <code>id_sensor: "temp01"</code> a 25.8.</li>
+<li>Verifica que el valor se haya actualizado correctamente buscando el documento del sensor.</li>
+</ol>
+<p><strong>Ejercicio 4: Eliminar un sensor</strong></p>
+<ol>
+<li>Elimina el documento del sensor de CO2 (<code>co201</code>) de la colección.</li>
+<li>Verifica que el documento ya no exista.</li>
+</ol>
+<h2 id="4-fiware-y-mongodb">4. FIWARE y MongoDB</h2>
+<p><strong>FIWARE</strong> es una iniciativa de código abierto que proporciona un conjunto de estándares y componentes de software para acelerar el desarrollo de soluciones inteligentes en diversos dominios como Ciudades Inteligentes (Smart Cities), Industria Inteligente (Smart Industry) y Agricultura Inteligente (Smart Agrifood).</p>
+<p>El objetivo principal de FIWARE es romper los silos de datos, ofreciendo una forma universal de gestionar y compartir información. Esta información se conoce como <strong>"información de contexto"</strong>, que representa el estado de los objetos del mundo real (como un vehículo, un sensor o una habitación) y entidades conceptuales (como una orden de trabajo).</p>
+<h3 id="41-como-funciona-fiware-la-arquitectura-del-broker-de-contexto">4.1. ¿Cómo Funciona FIWARE? La Arquitectura del Bróker de Contexto</h3>
+<p>El funcionamiento de FIWARE gira en torno a un componente central y un protocolo de comunicación estandarizado. La arquitectura está diseñada para ser modular, escalable y distribuida.</p>
+<p><strong>1. El Corazón de FIWARE: El Orion Context Broker</strong></p>
+<p>El componente central de cualquier solución basada en FIWARE es el <strong>Orion Context Broker</strong>. Su única función es gestionar todo el ciclo de vida de la información de contexto: recibir actualizaciones, procesar consultas y enviar notificaciones. Podemos pensar en él como una base de datos central en tiempo real que almacena el estado actual de todas las entidades. Por defecto, utiliza <strong>MongoDB</strong> para persistir esta información, ya que el modelo de documentos de MongoDB se adapta perfectamente a la naturaleza flexible y semi-estructurada de los datos de contexto (generalmente en formato JSON).</p>
+<p><strong>2. El Estándar de Comunicación: NGSI (Next Generation Service Interfaces)</strong></p>
+<p>Los componentes se comunican con el Orion Context Broker utilizando una API abierta y estandarizada llamada <strong>NGSI</strong>. Esta API define un "lenguaje" común para todas las interacciones, asegurando que diferentes aplicaciones y dispositivos puedan entenderse entre sí sin necesidad de integraciones personalizadas. La última versión, <strong>NGSI-LD</strong>, se basa en los principios de Linked Data para crear modelos de datos aún más ricos y semánticos.</p>
+<p>Los conceptos clave de NGSI son:</p>
+<ul>
+<li><strong>Entidad (Entity):</strong> Cualquier "cosa" que se está monitorizando (ej. <code>urn:ngsi-ld:Vehicle:01</code>).</li>
+<li><strong>Atributo (Attribute):</strong> Una propiedad de una entidad (ej. <code>speed</code>, <code>location</code>).</li>
+<li><strong>Relación (Relationship):</strong> Cómo se relacionan las entidades entre sí.</li>
+</ul>
+<p><strong>3. El Flujo de Datos: Modelo de Publicación/Suscripción</strong></p>
+<p>La interacción con el Context Broker sigue un patrón de publicación-suscripción, lo que permite un bajo acoplamiento entre los productores y los consumidores de datos:</p>
+<ul>
+<li><strong>Productores de Contexto (Context Producers):</strong> Son las fuentes de datos (sensores IoT, aplicaciones móviles, sistemas backend, etc.). "Publican" actualizaciones en el Context Broker cada vez que el estado de una entidad cambia. Por ejemplo, un sensor de temperatura publicaría una nueva lectura de temperatura en el bróker.</li>
+<li><strong>Consumidores de Contexto (Context Consumers):</strong> Son las aplicaciones que necesitan los datos. Pueden:<ul>
+<li><strong>Consultar (Query)</strong> activamente al bróker para obtener información (ej. "¿Cuál es la temperatura actual del Sensor X?").</li>
+<li><strong>Suscribirse (Subscribe)</strong> para recibir notificaciones automáticas cuando ocurra un cambio específico (ej. "Notifícame cada vez que la temperatura del Sensor X supere los 30 grados").</li>
+</ul>
+</li>
+</ul>
+<p><strong>4. El Ecosistema de Componentes: Generic Enablers</strong></p>
+<p>Más allá del Orion Context Broker, FIWARE ofrece un rico ecosistema de otros componentes (llamados <strong>Generic Enablers</strong>) que se encargan de otras funciones esenciales:</p>
+<ul>
+<li><strong>Agentes IoT (IoT Agents):</strong> Traducen datos de diversos protocolos de IoT (como MQTT, LoRaWAN, etc.) al formato estándar NGSI que el Context Broker entiende.</li>
+<li><strong>Persistencia de Datos Históricos:</strong> Componentes como <strong>QuantumLeap</strong> o <strong>Cygnus</strong> se utilizan para almacenar datos de contexto históricos en bases de datos para su posterior análisis. Aquí es donde entran en juego bases de datos de series temporales como <strong>CrateDB</strong> o <strong>TimescaleDB</strong>.</li>
+<li><strong>Procesamiento y Visualización:</strong> Herramientas para crear cuadros de mando, procesar flujos de datos o implementar seguridad y control de acceso.</li>
+</ul>
+<h3 id="42-integracion-de-fiware-con-bases-de-datos-nosql-en-nuestro-proyecto">4.2. Integración de FIWARE con Bases de Datos NoSQL en Nuestro Proyecto</h3>
+<p>En nuestro proyecto, la arquitectura de FIWARE se materializa de la siguiente manera:</p>
+<ul>
+<li>
+<p><strong>Orion Context Broker y MongoDB:</strong> Orion gestiona el <strong>estado actual</strong> de nuestras entidades (sensores). Cada vez que un sensor envía un nuevo valor, Orion actualiza el documento correspondiente en su base de datos interna, que es <strong>MongoDB</strong>. Esto nos da una visión en tiempo real del sistema.</p>
+</li>
+<li>
+<p><strong>QuantumLeap y CrateDB/TimescaleDB:</strong> El Orion Context Broker por sí solo no guarda un historial. Para almacenar cada una de las 400 actualizaciones que enviaremos, utilizamos una <strong>suscripción</strong>. Esta suscripción le dice a Orion que, cada vez que reciba una actualización para una de nuestras entidades, debe notificar a otro componente: <strong>QuantumLeap</strong>. QuantumLeap, a su vez, toma esta notificación y la persiste en una base de datos optimizada para series temporales, como <strong>CrateDB</strong> o <strong>TimescaleDB</strong>.</p>
+</li>
+</ul>
+<div style="text-align: center;">
+<pre class="mermaid"><code>flowchart LR
+  A[(Mongo db)] &lt;--&gt; B("Orion
+                       Context
+                       Broker");
+  B &lt;--&gt; C["Quamtump
+            Leap"];
+  C &lt;--&gt; D[(_CrateBD_)];
+  D &lt;--&gt; E[Grafana];</code></pre>
+</div>
+<p>Esta arquitectura dual es extremadamente potente:</p>
+<ul>
+<li><strong>MongoDB</strong> nos da acceso instantáneo y eficiente al <strong>estado más reciente</strong>.</li>
+<li><strong>CrateDB/TimescaleDB</strong> nos proporciona un <strong>historial completo</strong> para análisis, visualización de tendencias y auditoría.</li>
+</ul>
+<p>FIWARE es un marco de software de código abierto que facilita el desarrollo de aplicaciones inteligentes. Su componente central para la gestión de datos es el <strong>Orion Context Broker</strong>.</p>
+<h3 id="el-rol-del-orion-context-broker-como-gestor-de-estado">El Rol del Orion Context Broker como Gestor de Estado</h3>
+<p>Imagina que el <strong>Orion Context Broker</strong> es el "cerebro" de nuestro sistema IoT. Su función principal es gestionar el <strong>estado en tiempo real</strong> de las entidades de nuestro proyecto (ej. sensores). Cuando un sensor envía datos, Orion recibe la información y la actualiza en su base de datos interna. Esta base de datos, por defecto, suele ser <strong>MongoDB</strong>.</p>
+<p><strong>¿Por qué MongoDB?</strong> Porque su modelo de documentos se adapta perfectamente a la estructura JSON de los datos de los sensores, permitiendo que el estado de cada entidad (sensor, dispositivo, etc.) se represente como un solo documento.</p>
+<h2 id="5-practica-proyecto-smart-city">5. Práctica (Proyecto Smart City)</h2>
+<p>Vamos a construir una solución completa de gestión de datos de IoT.</p>
+<ol>
+<li><strong>Configuración del entorno FIWARE:</strong><ul>
+<li>Utilizaremos <strong>Docker Compose</strong> para levantar los servicios necesarios:<ul>
+<li><code>orion</code>: El Orion Context Broker.</li>
+<li><code>mongo</code>: La base de datos MongoDB para el estado actual.</li>
+<li><code>quantumleap</code>: El componente para el histórico.</li>
+<li><code>cratedb</code>: La base de datos para el histórico de datos.</li>
+</ul>
+</li>
+<li>Asegúrate de que todos los contenedores se comuniquen correctamente a través de la red de Docker.</li>
+</ul>
+</li>
+<li><strong>Creación de las 3 entidades:</strong><ul>
+<li>Usando la <strong>API REST de Orion Context Broker</strong>, crearemos las 3 entidades que definimos en el Módulo 1 (ej. un sensor de temperatura, un sensor de humedad, etc.). Cada entidad tendrá sus propios atributos.</li>
+<li>La llamada API enviará un <code>POST</code> a <code>/v2/entities</code> con el JSON de cada entidad.</li>
+</ul>
+</li>
+<li><strong>Creación de una suscripción:</strong><ul>
+<li>Esta es la parte clave para el histórico. Crearemos una <strong>suscripción</strong> en Orion que "escucha" cualquier cambio en nuestras entidades.</li>
+<li>Cuando Orion detecte una actualización, enviará automáticamente una copia de la entidad modificada al servicio <strong>QuantumLeap</strong>.</li>
+<li>La suscripción se crea con un <code>POST</code> a <code>/v2/subscriptions</code>.</li>
+</ul>
+</li>
+<li><strong>Carga de datos:</strong><ul>
+<li>Ahora viene la carga de los datos masivos. Utilizaremos un script de Python con la API de Orion.</li>
+<li>El script deberá <strong>enviar 400 actualizaciones por atributo</strong> a la API de Orion para cada una de nuestras 3 entidades.</li>
+<li>Cada vez que el script envíe una actualización, Orion hará dos cosas:<ul>
+<li>Actualizará el documento en <strong>MongoDB</strong> con el nuevo estado.</li>
+<li>Debido a la suscripción, enviará una copia de los datos a <strong>QuantumLeap</strong>, que a su vez los insertará en <strong>CrateDB</strong> como una nueva entrada de serie de tiempo.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Guarda</strong> toda la información en tu Repositorio de GitHub
+<strong>Ayudas</strong>
+<a href="https://fiware-training.readthedocs.io/es-mx/latest/casodeestudio/descripcion/" target:_blank="target:_blank">Mi primera aplicación con FIWARE</a>
+<a href="https://fiware-training.readthedocs.io/es-mx/latest/ecosistemaFIWARE/ocb/" target:_blank="target:_blank">Orion Context Broker</a></li>
+</ol>
+<p>Al final de la práctica, tendrás un sistema funcional donde puedes ver el estado actual de tus entidades en MongoDB y consultar el historial completo en CrateDB.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="27 de septiembre de 2025 16:43:08 UTC">27 de septiembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
