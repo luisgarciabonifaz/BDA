@@ -10,7 +10,6 @@
 
 
 ## 1ª Evaluación
-* [T0 Infraestructura](T_00_Infraestructura/Infraestructura.md)
 * [T1 Fundamentos y Ecosistema Moderno de Big Data](T_01_Fundamentos_BigData/Fundamentos_BigData.md)
 * [T2 Bases de Datos NoSQL](T_02_NoSQL/BD_NoSQL.md) 
 * [T3 Almacenamiento Moderno en Big Data](T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData.md) 
