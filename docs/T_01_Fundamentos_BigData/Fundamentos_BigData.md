@@ -10,6 +10,8 @@ No nos quedaremos solo en la teoría de las "5 V"; exploraremos el **ecosistema 
 
 ## 1. ¿Qué es Big Data? Más allá de "muchos datos"
 
+El Big Data se refiere a conjuntos de datos masivos y complejos que, por su volumen, variedad y velocidad, superan la capacidad de las herramientas tradicionales para su almacenamiento y procesamiento. Su principal objetivo es extraer información valiosa, patrones y conocimientos para tomar mejores decisiones, optimizar procesos y desarrollar soluciones inteligentes en diversos ámbitos como la medicina, el marketing o la gestión del tráfico. 
+
 Imagina que pasas de tener una libreta de contactos (un Excel) a tener que gestionar la agenda de teléfonos de todo un país, que además se actualiza cada segundo. Esa es la esencia del Big Data: los problemas y oportunidades que surgen cuando los datos superan la capacidad de las herramientas tradicionales.
 
 Para entenderlo mejor, usamos el modelo de las **5 "V"**:
