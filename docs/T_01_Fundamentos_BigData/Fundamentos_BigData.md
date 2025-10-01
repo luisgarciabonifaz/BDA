@@ -149,31 +149,8 @@ Vamos a empezar a "pensar en datos" desde el primer día.
 
 2. Abre un editor de texto simple (Bloc de Notas, VS Code) o una hoja de cálculo.
 
-3. Para cada una de las 3 entidades (Sensor de Temperatura/Humedad, Sensor de CO2, Sensor de Calidad del Agua), define su estructura. Puedes usar un formato como este:
+3. Para cada una de las 3 entidades (Sensor de Temperatura/Humedad, Sensor de CO2, Sensor de Calidad del Agua), define su estructura.
 
-   JSON
-
-   ```
-   // Entidad: Sensor de Temperatura y Humedad
-   {
-     "id": "urn:ngsi-ld:TemperatureSensor:001",
-     "type": "TemperatureSensor",
-     "location": {
-       "type": "GeoProperty",
-       "value": { "type": "Point", "coordinates": [-0.376, 39.469] }
-     },
-     "temperature": {
-       "type": "Property",
-       "value": 25.5,
-       "unitCode": "CEL"
-     },
-     "humidity": {
-       "type": "Property",
-       "value": 60,
-       "unitCode": "P1" // Porcentaje
-     }
-   }
-   ```
 4. Crea una estructura similar para:
 
     - El sensor de CO2 (con un atributo `co2` en `ppm`)

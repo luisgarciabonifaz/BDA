@@ -14,24 +14,6 @@ Usaremos las siguientes infraestructuras de servicios con Docker, cada una de el
 - **ETL**: :NiFi
 - **Orquestación**: Airflow
 
-
-Cada proyecto tendrá su propio directorio con un archivo docker-compose.yml:
-
-    ├── bigdata-proyecto-smartcity/
-    │   ├── docker-compose.yml  # FIWARE, CrateDB, Grafana
-    │   ├── data/
-    │   │   └── sensors_data.json
-    │   └── src/
-    │       └── simulation_script.py
-    ├── bigdata-proyecto-academico/
-    │   ├── docker-compose.yml  # Base de Datos (PostgreSQL/MySQL), Herramienta ETL
-    │   ├── data/
-    │   │   └── calificaciones.csv
-    │   └── src/
-    │       └── etl_script.py
-    └── README.md
-
-
 ??? info "Ayuda Docker"
 
     ### 1. Conceptos Clave
@@ -95,24 +77,45 @@ Cada proyecto tendrá su propio directorio con un archivo docker-compose.yml:
     |Ejecutar Script|docker exec -it <nombre_contenedor> python src/script.py	|Ejecuta tu código (simulación, ETL) dentro de un contenedor.|
 
 
-## 2. Flujo de Trabajo con Git
+## 2. Flujo de Trabajo con GitHub
 
-La infraestructura de cada proyecto se gestiona mediante **Docker Compose**, asegurando que cada entorno sea aislado y reproducible.
+GitHub es una plataforma de alojamiento de código y   colaboración basada en la web. Su función principal es proporcionar un lugar centralizado para almacenar repositorios de proyectos que utilizan Git, un sistema de control de versiones distribuido. 
 
-### Estructura de Directorios (Ejemplos)
+Es la plataforma estándar de la industria para alojar proyectos de código, permitiendo la colaboración, el control de versiones y una gestión de proyectos estructurada y transparente.
 
-Cada proyecto reside en su propio directorio y contiene un archivo `docker-compose.yml` para definir sus servicios.
+Usaremos GitHub para la documentación y el flujo de trabajo de nuestros proyectos.
 
-| Proyecto                      | Archivos Clave             | Servicios Típicos                                            |
-| :---------------------------- | :------------------------- | :----------------------------------------------------------- |
-| `bigdata-proyecto-smartcity/` | `docker-compose.yml`       | **FIWARE** (Orion Context Broker), **CrateDB**, **Grafana**  |
-|                               | `data/sensors_data.json`   |                                                              |
-|                               | `src/simulation_script.py` |                                                              |
-| `bigdata-proyecto-academico/` | `docker-compose.yml`       | Base de Datos (**PostgreSQL** o **MySQL**), Herramienta **ETL** (Contenedor Python) |
-|                               | `data/calificaciones.csv`  |                                                              |
-|                               | `src/etl_script.py`        |                                                              |
+??? info "Conceptos clave GitHub"
 
-### 2.1. Commits
+    - **Repositorio (Repo)**: Es la carpeta principal de tu proyecto en GitHub. Contiene todos los archivos del proyecto, junto con el historial completo de revisiones de Git.
+    - **Clonar**: Es descargar una copia completa de un repositorio de GitHub a tu máquina local.
+    - **Commit**: Es guardar un conjunto de cambios realizados en el proyecto. Cada commit incluye un mensaje que describe los cambios.
+    - **Push**: Es enviar tus commits locales (los cambios que has guardado) desde tu máquina al repositorio remoto en GitHub.
+    - **Pull**: Es descargar los últimos cambios desde el repositorio remoto de GitHub a tu máquina local.
+    - **Rama (Branch)**: Permite trabajar en nuevas características o correcciones sin afectar el código principal (generalmente la rama main o master). Es fundamental para el trabajo en equipo y el desarrollo seguro.
+    - **Pull Request (PR) / Merge Request (MR)**: Es la forma estándar de proponer cambios de una rama a otra (por ejemplo, de una rama de característica a la rama principal). Permite que otros revisen el código antes de que se integre.
+
+### 2.1. Estructura de Directorios
+
+Cada proyecto reside en su propio directorio y contiene un archivo `docker-compose.yml` para definir sus servicios. Este puede ser un ejemplo
+
+Cada Repositoria tendra un directorio por proyecto con un archivo docker-compose.yml. Esta podría ser la estructura carpetas en el repositorio de GitHub:
+
+    ├── bigdata-proyecto-smartcity/
+    │   ├── docker-compose.yml  # FIWARE, CrateDB, Grafana
+    │   ├── data/
+    │   │   └── sensors_data.json
+    │   └── src/
+    │       └── simulation_script.py
+    ├── bigdata-proyecto-academico/
+    │   ├── docker-compose.yml  # Base de Datos (PostgreSQL/MySQL), Herramienta ETL
+    │   ├── data/
+    │   │   └── calificaciones.csv
+    │   └── src/
+    │       └── etl_script.py
+    └── README.md
+
+### 2.2. Commits
 
 El historial de `commits` debe ser **constante y descriptivo** para mostrar el progreso. Se recomienda seguir un esquema de mensajes claro.
 
@@ -124,7 +127,7 @@ El historial de `commits` debe ser **constante y descriptivo** para mostrar el p
 
 **Recordatorio:** Después de cada `commit`, ejecuta `git push origin main` para sincronizar con el repositorio remoto.
 
-### 2.2. README.md:
+### 2.3. README.md:
 
 El archivo `README.md` es el **informe final** y la **guía de ejecución** del proyecto. Debe estar en la raíz del repositorio.
 
@@ -150,7 +153,5 @@ El alumno tendra en AWS Academy:
 
 - Un curso de Cloud Foundations
 - Dos Learner Lab ( Laboratorios)  
-  - Uno para los proyectos del modulo 
-  - Otro para los proyectos globales
-
-
+    - Uno para los proyectos del modulo 
+    - Otro para los proyectos globales
