@@ -103,7 +103,7 @@ Pensemos en el viaje que hacen los datos como una cadena de montaje. Cada etapa 
 /// html | div[style='text-align: center;']
 
 ```mermaid
-graph TD;
+graph LR;
     A(1. Ingesta <br> Apache NiFi) --> B(2. Almacenamiento <br> Data Lake, DW);
     B --> C(3. Procesamiento <br> ETL / ELT <br> NiFi, Spark);
     C --> D(4. Orquestación <br> Apache Airflow);
