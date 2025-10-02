@@ -81,7 +81,7 @@ El "sótano de servidores" de las empresas ha dado paso a la nube. El ecosistema
 Pensemos en el viaje que hacen los datos como una cadena de montaje. Cada etapa tiene un propósito específico:
 
 1. **Ingesta (Ingestion):** Es el punto de partida. ¿Cómo metemos los datos en nuestro sistema?
-    - *Fuentes:* APIs de redes sociales, sensores IoT (como en nuestro **Proyecto 1**), bases de datos de la empresa, ficheros CSV (como en nuestro **Proyecto 2**).
+    - *Fuentes:* APIs de redes sociales, sensores IoT (como en nuestro **Proyecto Smart City**), bases de datos de la empresa, ficheros CSV (como en nuestro **Proyecto Análisi Académico**).
     - *Herramientas:* **Apache NiFi**, Fivetran, Airbyte.
 2. **Almacenamiento (Storage):** ¿Dónde guardamos los datos?
     - **Data Lake:** Un gran "lago" de datos crudos. Almacena todo en su formato original. Es barato y muy flexible. Ideal para datos no estructurados y para que los Científicos de Datos exploren.
@@ -91,7 +91,7 @@ Pensemos en el viaje que hacen los datos como una cadena de montaje. Cada etapa 
     - **ETL (Extract, Transform, Load):** El método tradicional. Se extraen los datos, se transforman en un servidor intermedio y luego se cargan ya limpios en el Data Warehouse.
     - **ELT (Extract, Load, Transform):** El método moderno, potenciado por la nube. Se extraen los datos y se cargan **inmediatamente** en el Data Lake/Warehouse. La transformación se hace *después*, aprovechando la potencia de cálculo del sistema de almacenamiento. Es más rápido y flexible.
     - *Herramientas:* **Apache NiFi** (ideal para ETL visual), dbt (data build tool), Apache Spark.
-4. **Orquestación (Orchestration): El Director de Orquesta 🎼**
+4. **Orquestación (Orchestration): El Director de Orquesta**
     - **¿Qué es?** Es el proceso de **automatizar, programar y coordinar** la ejecución de todos nuestros flujos de datos. Un flujo de ETL no sirve de mucho si tenemos que ejecutarlo a mano cada día. La orquestación se encarga de que todo funcione solo.
     - **Analogía:** Piensa en los flujos de NiFi como los músicos de una orquesta. Cada uno sabe tocar su instrumento (procesar datos). El orquestador es el **director de orquesta**: les dice cuándo empezar, en qué orden tocar, y qué hacer si uno de ellos falla.
     - **Propósito:** Define las dependencias ("*no empieces a procesar los datos hasta que no se hayan cargado por completo*"), gestiona los reintentos en caso de error y nos da una visión centralizada de la salud de todos nuestros procesos.
