@@ -111,7 +111,7 @@ graph LR;
 ```
 ///
 
-## 3. Presentación de los Proyectos del Curso: Aprender Haciendo
+## 3. Presentación de los Proyectos del Curso
 
 La mejor forma de aprender es construyendo. Estos dos proyectos serán nuestro hilo conductor. Cada módulo nos dará una pieza para avanzar en ellos.
 
