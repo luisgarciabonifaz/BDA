@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acogida - Especialización en IA y Big Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --dark-text: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            font-size: 18px; /* Aumentado el tamaño de letra base */
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://picsum.photos/seed/ia-bigdata/1920/600.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem; /* Aumentado */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section p.lead {
+            font-size: 1.5rem; /* Aumentado */
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem; /* Aumentado */
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem; /* Aumentado */
+        }
+        
+        .card-body {
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        .info-box {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .teacher-card {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .teacher-info {
+            flex-grow: 1;
+        }
+        
+        .teacher-name {
+            font-size: 1.8rem; /* Aumentado */
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .teacher-name {
+            color: white; /* Letra blanca */
+            position: relative;
+            display: inline-block;
+            background-color: var(--primary-color); /* Fondo azul */
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .teacher-card:hover .teacher-name::after {
+            width: 100%;
+        }
+
+
+        .teacher-role {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 1.2rem; /* Aumentado */
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 4px;
+            background: var(--primary-color);
+            left: 0;
+            top: 0;
+        }
+        
+        .timeline-item {
+            margin-left: 30px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            left: -38px;
+            top: 5px;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        .nav-pills .nav-link {
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        .content-card {
+            text-align: center;
+            padding: 30px 20px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .content-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .planning-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .planning-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 1.4rem; /* Aumentado */
+        }
+        
+        .planning-body {
+            padding: 20px;
+        }
+        
+        .project-card {
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .schedule-image-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .schedule-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .image-caption {
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--secondary-color);
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        .zoom-container {
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        
+        .zoom-container img {
+            transition: transform 0.3s ease;
+        }
+        
+        .zoom-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        h3 {
+            font-size: 1.6rem; /* Aumentado */
+        }
+        
+        h4 {
+            font-size: 1.4rem; /* Aumentado */
+        }
+        
+        h5 {
+            font-size: 1.2rem; /* Aumentado */
+        }
+        
+        p {
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        ul {
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        li {
+            font-size: 1.1rem; /* Aumentado */
+            margin-bottom: 8px;
+        }
+        
+        .accordion-button {
+            font-size: 1.2rem; /* Aumentado */
+        }
+        
+        .accordion-body {
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        .list-group-item {
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        .alert {
+            font-size: 1.1rem; /* Aumentado */
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .teacher-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            body {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">CIPFP Mislata - IA y Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#presentacion">Presentación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#calendario">Calendario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#horario">Horario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reglamento">Reglamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipamiento">Equipamiento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profesores">Profesores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#metodologia">Metodología</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contenidos">Contenidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#planing">Planing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ruegos-preguntas">Preguntas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Curso de Especialización en Inteligencia Artificial y Big Data</h1>
+            <p class="lead">CIPFP Mislata - Formación de Excelencia</p>
+            <a href="#presentacion" class="btn btn-light btn-lg mt-3">Conocer más</a>
+        </div>
+    </section>
+
+    <!-- Presentación del Curso -->
+    <section id="presentacion" class="section">
+        <div class="container">
+            <h2 class="section-title">Presentación del Curso</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h3><i class="bi bi-calendar-range"></i> Duración</h3>
+                        <p>600 horas en modalidad presencial</p>
+                    </div>
+                    <div class="info-box">
+                        <h3><i class="bi bi-clock"></i> Horario</h3>
+                        <p>De lunes a jueves de 15:55 a 20:50</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h3><i class="bi bi-calendar-event"></i> Inicio</h3>
+                        <p>1 de octubre</p>
+                    </div>
+                    <div class="info-box">
+                        <h3><i class="bi bi-calendar-check"></i> Fin</h3>
+                        <p>5 de junio</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight mt-4">
+                <h4><i class="bi bi-geo-alt"></i> Ubicación</h4>
+                <p>Aula 2A4, 2ª planta, pasillo A</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendario Escolar -->
+    <section id="calendario" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Calendario Escolar</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Vacaciones
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Navidad:</strong>
+                                    <span>23 de Diciembre al 6 de Enero</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Fallas:</strong>
+                                    <span>17 al 19 de Marzo</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Semana Santa:</strong>
+                                    <span>2 al 13 de Abril</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Festivos y Puentes
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>9 al 12 de Octubre (Puente)</strong>
+                                    <span>Fiesta</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>1 Noviembre</strong>
+                                    <span>Fiesta</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>8 Diciembre</strong>
+                                    <span>Fiesta</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>1 Mayo</strong>
+                                    <span>Puente</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horario -->
+    <section id="horario" class="section">
+        <div class="container">
+            <h2 class="section-title">Horario</h2>
+            <div class="row">
+                <div class="col-md-12 mb-5">
+                    <div class="schedule-image-container">
+                        <div class="zoom-container">
+                            <img src="../Imagenes/Horario_IABD.png" alt="Horario de Clases" class="schedule-image">
+                        </div>
+                        <p class="image-caption">Horario semanal del curso de especialización en IA y Big Data</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="schedule-image-container">
+                        <div class="zoom-container">
+                            <img src="../Imagenes/Calendario_25-26.png" alt="Calendario Escolar" class="schedule-image">
+                        </div>
+                        <p class="image-caption">Calendario escolar detallado con todas las actividades y fechas importantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reglamento Interno -->
+    <section id="reglamento" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Reglamento Interno</h2>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    Pérdida de Matrícula
+                </div>
+                <div class="card-body">
+                    <p>Es un ciclo presencial, por tanto la asistencia es obligatoria.</p>
+                    <p>Si un alumno:</p>
+                    <ul>
+                        <li>Falta 10 días consecutivos desde el inicio de curso se producirá la baja automática del curso.</li>
+                        <li>Tiene faltas injustificadas del 15% sobre el total de horas del primer curso se producirá la baja automática del curso.</li>
+                    </ul>
+                    <p>El curso tiene 600h lo que supone un total de 30 semanas de 20h cada una.</p>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    Pérdida de Evaluación
+                </div>
+                <div class="card-body">
+                    <p>Si un alumno tiene un 15% de faltas injustificadas sobre el total de horas de un módulo concreto perderá el derecho a la evaluación continua, lo que significa que no hará evaluación continua y se examinará en las convocatorias final ordinaria y extraordinaria.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    Justificación de Faltas
+                </div>
+                <div class="card-body">
+                    <p>Se justificarán faltas por:</p>
+                    <ul>
+                        <li><strong>Criterios médicos:</strong> Presentar la justificación del médico.</li>
+                        <li><strong>Motivos laborales:</strong> Imprescindible presentar el contrato laboral donde figure el horario de trabajo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipamiento -->
+    <section id="equipamiento" class="section">
+        <div class="container">
+            <h2 class="section-title">Equipamiento</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="bi bi-laptop display-1 text-primary mb-3"></i>
+                            <h4 class="card-title">Ordenadores Portátiles</h4>
+                            <p class="card-text">Equipos con 16 GB RAM con sistema operativo Fedora.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="bi bi-display display-1 text-primary mb-3"></i>
+                            <h4 class="card-title">Monitores Adicionales</h4>
+                            <p class="card-text">Monitores para que el alumnado pueda utilizar una segunda pantalla.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="bi bi-person-workspace display-1 text-primary mb-3"></i>
+                            <h4 class="card-title">BYOD</h4>
+                            <p class="card-text">Facilidad para que el alumnado se traiga su propio equipo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4 mb-4">
+                <div class="card-header">
+                    <i class="bi bi-wifi"></i> Acceso a la Red WiFi
+                </div>
+                <div class="card-body">
+                    <p>Para acceder a la red WiFi del centro hay que utilizar la identidad digital de la conselleria de educación.</p>
+                    <div class="highlight mt-3">
+                        <h4><i class="bi bi-wifi"></i> Credenciales</h4>
+                        <p>Es la cuenta del dominio <strong>@alu.edu.gva.es</strong></p>
+                        <p>En caso de duda preguntar al tutor.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <i class="bi bi-person-circle"></i> Acceso Aules
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Usuario:</strong> NIA</p>
+                            <p><strong>Contraseña:</strong> Tres primeras letras del apellido en minúscula seguidas de la fecha de nacimiento, en formato DDMMAA.</p>
+                            <div class="highlight mt-3">
+                                <p><strong>Ejemplo:</strong> Una alumna nacida el 18 de octubre de 2003 de nombre Laura Pérez Sanchis tendrá como contraseña <strong>per181003</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <i class="bi bi-laptop"></i> Acceso Portátiles Aula
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Usuario:</strong> NIA</p>
+                            <p><strong>Contraseña:</strong> NIA</p>
+                            <div class="alert alert-info mt-3">
+                                <i class="bi bi-info-circle"></i> Recomendable cambiar la contraseña, pero debe hacer en un equipo de sobremesa del centro.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo Educativo -->
+    <section id="profesores" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Equipo Educativo</h2>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="teacher-card">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Luis Garcia Bonifaz</h3>
+                            <p class="teacher-role">Coordinador del curso</p>
+                            <p>Ejerce como profesor en el CIPFP Mislata desde 2016.</p>
+                            <p>Profesor del Curso de Especialización en IA y Big Data desde 2021.</p>
+                            <p><i class="bi bi-envelope"></i> <a href="mailto:l.garciabonifaz@edu.gva.es">l.garciabonifaz@edu.gva.es</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="teacher-card">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Toni Cambra Gonzalez</h3>
+                            <p class="teacher-role">Profesor Conselleria</p>
+                            <p>Catedrático de Educación Secundaria desde 2022 y ejerce como profesor en el CIPFP Mislata desde 2008.</p>
+                            <p>Profesor del Curso de Especialización en IA y Big Data desde 2021.</p>
+                            <p><i class="bi bi-envelope"></i> <a href="mailto:a.cambragonzalez@edu.gva.es">a.cambragonzalez@edu.gva.es</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="teacher-card">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Lorenzo Gonzalez Gascon</h3>
+                            <p class="teacher-role">Profesor Conselleria</p>
+                            <p>Ejerce como profesor en el CIPFP Mislata desde 2008.</p>
+                            <p>Profesor del Curso de Especialización en IA y Big Data desde 2021.</p>
+                            <p><i class="bi bi-envelope"></i> <a href="mailto:l.gongazlezgascon@edu.gva.es">l.gongazlezgascon@edu.gva.es</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="teacher-card">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Ana Jimenez Pastor</h3>
+                            <p class="teacher-role">Profesora especialista</p>
+                            <h5>Formación</h5>
+                            <ul>
+                                <li>Ingeniera de telecomunicaciones por la Universidad Politécnica de Valencia</li>
+                                <li>Máster en ingeniería biomédica por la misma universidad</li>
+                                <li>Cursando el programa de doctorado en tecnologías para la salud y el bienestar donde aplica técnicas de procesamiento de imagen y Deep Learning</li>
+                            </ul>
+                            <h5>Experiencia laboral</h5>
+                            <ul>
+                                <li>Trabaja en Quibim SL, empresa valenciana centrada en el desarrollo de algoritmos para la ayuda al diagnóstico radiológico</li>
+                                <li>Ponencias en diversos congresos nacionales e internacionales</li>
+                                <li>Autora de 7 artículos científicos y 2 capítulos de libro</li>
+                                <li>Participa activamente en eventos de divulgación científica como los organizados por Girls4Stem o ANBAN</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="teacher-card">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Raul Pucheta Barranco</h3>
+                            <p class="teacher-role">Profesor especialista</p>
+                            <h5>Formación</h5>
+                            <ul>
+                                <li>Técnico Superior Desarrollo de Aplicaciones Informáticas</li>
+                                <li>Grado en Ingeniería de tecnologías y Servicios de telecomunicación</li>
+                            </ul>
+                            <h5>Experiencia Laboral</h5>
+                            <ul>
+                                <li>Chief Technology Officer, en varias empresas con base tecnológica:
+                                    <ul>
+                                        <li>Imelt Software</li>
+                                        <li>Previsión Personal S.L</li>
+                                        <li>Finance Academy</li>
+                                    </ul>
+                                </li>
+                                <li>Orientado a proyectos de visión computerizada e Inteligencia Artificial, así como Machine Learning y Deep Learning</li>
+                                <li>Formador FP Dual desde 2018 (Certificado por curso oficial desde 2019 por la Generalitat Valenciana)</li>
+                                <li>Publicaciones en Medium: <a href="https://medium.com/@raulpucheta" target="_blank">Artículos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="teacher-card">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Ricardo Alvaro Blanco</h3>
+                            <p class="teacher-role">Profesor especialista</p>
+                            <h5>Formación</h5>
+                            <ul>
+                                <li>Ingeniero técnico de telecomunicaciones (especializado en sistemas electrónicos)</li>
+                                <li>Graduado en electrónica de telecomunicaciones</li>
+                                <li>Master en telecomunicación por la universidad de valencia</li>
+                            </ul>
+                            <h5>Experiencia Laboral</h5>
+                            <ul>
+                                <li>4 años colaborando con el instituto de física corpuscular desarrollando electrónica y código para FPGAs en varios proyectos europeos</li>
+                                <li>3 años en Capgemini como desarrollador de BI y Big data en el sector financiero (Bancos nacionales e internacionales)</li>
+                                <li>4 años (actualmente) en Mistral BS como analista senior de BI, Big data y RPAs para diversos sectores (turismo, industrial y financiero)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodología -->
+    <section id="metodologia" class="section">
+        <div class="container">
+            <h2 class="section-title">Metodología</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Evaluaciones
+                        </div>
+                        <div class="card-body">
+                            <ul class="timeline">
+                                <li class="timeline-item">
+                                    <h5>Primera evaluación</h5>
+                                    <p>Segunda semana de Febrero</p>
+                                </li>
+                                <li class="timeline-item">
+                                    <h5>Segunda y final</h5>
+                                    <p>Segunda semana de Junio</p>
+                                </li>
+                                <li class="timeline-item">
+                                    <h5>Extraordinaria</h5>
+                                    <p>Cuarta semana de junio</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Enfoque Práctico
+                        </div>
+                        <div class="card-body">
+                            <p>Metodología con enfoque muy práctico, con:</p>
+                            <ul>
+                                <li>Abundantes prácticas</li>
+                                <li>Basada en proyectos</li>
+                                <li>Aprendizaje activo y colaborativo</li>
+                                <li>Resolución de problemas reales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenidos del Curso -->
+    <section id="contenidos" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Contenidos del Curso</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="content-card card-body">
+                            <div class="content-icon">
+                                <i class="bi bi-cpu"></i>
+                            </div>
+                            <h4>Modelos de Inteligencia Artificial</h4>
+                            <p>Estudio de los diferentes modelos de IA, sus fundamentos teóricos y aplicaciones prácticas en diversos campos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="content-card card-body">
+                            <div class="content-icon">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                            <h4>Sistemas de Aprendizaje Automático</h4>
+                            <p>Desarrollo de sistemas capaces de aprender y mejorar automáticamente a partir de la experiencia sin ser programados explícitamente.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="content-card card-body">
+                            <div class="content-icon">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <h4>Programación de Inteligencia Artificial</h4>
+                            <p>Técnicas y lenguajes de programación específicos para el desarrollo de soluciones basadas en inteligencia artificial.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="content-card card-body">
+                            <div class="content-icon">
+                                <i class="bi bi-database"></i>
+                            </div>
+                            <h4>Sistemas de Big Data</h4>
+                            <p>Arquitecturas y tecnologías para el almacenamiento, procesamiento y análisis de grandes volúmenes de datos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="content-card card-body">
+                            <div class="content-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h4>Big Data Aplicado</h4>
+                            <p>Aplicaciones prácticas de Big Data en diferentes sectores y resolución de casos de uso reales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="content-card card-body">
+                            <div class="content-icon">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+                            <h4>Proyecto Final</h4>
+                            <p>Desarrollo de un proyecto integrador que aplique los conocimientos adquiridos en todas las áreas del curso.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planing del Curso -->
+    <section id="planing" class="section">
+        <div class="container">
+            <h2 class="section-title">Planing del Curso</h2>
+            
+            <div class="schedule-image-container mb-5">
+                <div class="zoom-container">
+                    <img src="../Imagenes/Planificacion_IABD.png" alt="Planificación del Curso" class="schedule-image">
+                </div>
+                <p class="image-caption">Planificación general del curso por meses.</p>
+            </div>
+
+            <div class="planning-card card mb-5">
+                <div class="planning-header">
+                    <h3 class="mb-0">Primera Evaluación</h3>
+                </div>
+                <div class="planning-body">
+                    <p>Contenidos de cada módulo con ejemplos y ejercicios prácticos:</p>
+                    
+                    <div class="accordion mt-4" id="modulosAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    Modelos de Inteligencia Artificial
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#modulosAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Introducción a los modelos de IA</li>
+                                        <li>Redes neuronales y aprendizaje profundo</li>
+                                        <li>Modelos predictivos y clasificación</li>
+                                        <li>Ejemplo: Implementación de un modelo de recomendación</li>
+                                        <li>Ejercicio: Creación de un modelo predictivo simple</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Sistemas de Aprendizaje Automático
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#modulosAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Algoritmos de aprendizaje supervisado y no supervisado</li>
+                                        <li>Preprocesamiento de datos</li>
+                                        <li>Evaluación de modelos</li>
+                                        <li>Ejemplo: Clasificación de imágenes con algoritmos de ML</li>
+                                        <li>Ejercicio: Implementación de un sistema de clustering</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Programación de Inteligencia Artificial
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#modulosAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Lenguajes para IA (Python, R)</li>
+                                        <li>Bibliotecas y frameworks (TensorFlow, PyTorch, Scikit-learn)</li>
+                                        <li>Desarrollo de aplicaciones con IA</li>
+                                        <li>Ejemplo: Implementación de una red neuronal convolucional</li>
+                                        <li>Ejercicio: Creación de una API para un modelo de ML</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    Sistemas de Big Data
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#modulosAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Arquitecturas Big Data</li>
+                                        <li>Procesamiento distribuido (Hadoop, Spark)</li>
+                                        <li>Bases de datos NoSQL</li>
+                                        <li>Ejemplo: Implementación de un pipeline de procesamiento de datos</li>
+                                        <li>Ejercicio: Análisis de grandes volúmenes de datos con Spark</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                    Big Data Aplicado
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#modulosAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Casos de uso en diferentes industrias</li>
+                                        <li>Visualización de datos</li>
+                                        <li>Integración de sistemas</li>
+                                        <li>Ejemplo: Dashboard de análisis de datos en tiempo real</li>
+                                        <li>Ejercicio: Análisis de un conjunto de datos de una industria específica</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="planning-card card">
+                <div class="planning-header">
+                    <h3 class="mb-0">Segunda Evaluación</h3>
+                </div>
+                <div class="planning-body">
+                    <p>3 proyectos transversales a todos los módulos:</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-4">
+                            <div class="card project-card h-100">
+                                <div class="card-body text-center">
+                                    <div class="project-icon">
+                                        <i class="bi bi-house-door"></i>
+                                    </div>
+                                    <h4>Aula Sensorizada</h4>
+                                    <p>Diseño e implementación de un sistema de sensores para recopilar datos del entorno del aula y su análisis mediante técnicas de IA y Big Data.</p>
+                                    <ul class="text-start">
+                                        <li>Recolección de datos ambientales</li>
+                                        <li>Análisis de patrones de uso</li>
+                                        <li>Optimización de recursos</li>
+                                        <li>Dashboard de monitorización</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card project-card h-100">
+                                <div class="card-body text-center">
+                                    <div class="project-icon">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                    <h4>Reconocimiento de Imágenes</h4>
+                                    <p>Desarrollo de un sistema de reconocimiento de imágenes utilizando redes neuronales convolucionales y técnicas de visión por computadora.</p>
+                                    <ul class="text-start">
+                                        <li>Procesamiento de imágenes</li>
+                                        <li>Entrenamiento de modelos CNN</li>
+                                        <li>Clasificación y detección de objetos</li>
+                                        <li>Aplicación práctica en un caso de uso real</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card project-card h-100">
+                                <div class="card-body text-center">
+                                    <div class="project-icon">
+                                        <i class="bi bi-music-note-beamed"></i>
+                                    </div>
+                                    <h4>Análisis Industria Musical</h4>
+                                    <p>Análisis de datos de la industria musical para identificar tendencias, predecir éxitos y recomendar contenido a los usuarios.</p>
+                                    <ul class="text-start">
+                                        <li>Procesamiento de audio</li>
+                                        <li>Análisis de tendencias y patrones</li>
+                                        <li>Sistemas de recomendación</li>
+                                        <li>Visualización de resultados</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ruegos y Preguntas -->
+    <section id="ruegos-preguntas" class="section bg-light text-center">
+        <div class="container">
+            <h2 class="section-title mx-auto" style="width: fit-content;">Preguntas</h2>
+            <div class="mt-5">
+                <i class="bi bi-question-circle-fill display-1 text-primary"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>CIPFP Mislata</h4>
+                    <p>Curso de Especialización en Inteligencia Artificial y Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h4>Contacto</h4>
+                    <p>Luis García Bonifaz</p>
+                    <p><i class="bi bi-envelope"></i> <a href="mailto:l.garciabonifaz@edu.gva.es">l.garciabonifaz@edu.gva.es</a></p>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 CIPFP Mislata. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Activar el enlace de navegación según la sección visible
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
