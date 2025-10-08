@@ -141,7 +141,7 @@ La mejor forma de aprender es construyendo. Estos dos proyectos serán nuestro h
 
 Vamos a empezar a "pensar en datos" desde el primer día.
 
-### Tarea 1: Diseño del ADN de los Sensores (Proyecto Smart City)
+### Smart City - Tarea 1: Diseño del ADN de los Sensores
 
 **Objetivo:** Entender la importancia de modelar los datos antes de empezar. Un buen diseño inicial nos ahorrará muchos problemas.
 
@@ -160,7 +160,7 @@ Vamos a empezar a "pensar en datos" desde el primer día.
 
 5. No te preocupes por la sintaxis perfecta, céntrate en definir los **atributos, sus tipos de dato y sus unidades**.
 
-### Tarea 2: La Primera Inspección: (Proyecto Análisis Académico)
+### Análisis Académico - Tarea 1: La Primera Inspección
 
 **Objetivo:** Desarrollar un "ojo crítico" para la calidad de los datos. Es una de las habilidades más importantes de un profesional del dato.
 
