@@ -53,6 +53,10 @@ La clave de MongoDB es que cada documento es una estructura flexible, similar a 
 - **Colección:** Un grupo de documentos. Es el equivalente a una tabla en bases de datos relacionales. No se aplica un esquema estricto a los documentos de una colección.
 - **Base de Datos:** Un contenedor físico para colecciones. Puedes tener múltiples bases de datos en una misma instancia de MongoDB.
 
+[Documentos](https://www.mongodb.com/docs/manual/core/document/)
+[Bases de Datos y Colleciones](https://www.mongodb.com/docs/manual/core/databases-and-collections/)
+
+
 ### 3.2. Comandos Básicos de MongoDB
 
 Para interactuar con MongoDB, usaremos el **Mongo Shell**. A continuación, los comandos más comunes:
@@ -64,85 +68,93 @@ Para interactuar con MongoDB, usaremos el **Mongo Shell**. A continuación, los 
 
 **2. Insertar Documentos**
 
-- `db.[nombre_coleccion].insertOne({ ... });` : Inserta un único documento.
-  
-``` json
-    db.sensores.insertOne({
-      id_sensor: "temp01",
-      tipo: "temperatura",
-      ubicacion: "sala_servidores",
-      valor_actual: 24.5,
-      unidad: "celsius"
+  - `db.[nombre_coleccion].insertOne({ ... });` : Inserta un único documento.
+
+
+```json
+    db.estudiantes.insertOne({
+      id_estudiante: "E001",
+      nombre: "Ana Pérez",
+      carrera: "Ingeniería Informática",
+      semestre: 3,
+      estado: "Activo"
     })
 ```
 
-- `db.[nombre_coleccion].insertMany([{ ... }, { ... }]);` : Inserta múltiples documentos.
+  - `db.[nombre_coleccion].insertMany([{ ... }, { ... }]);` : Inserta múltiples documentos.
+
+
 ```json
-db.sensores.insertMany([
-  {
-    "id_sensor": "temp01",
-    "tipo": "temperatura",
-    "ubicacion": "sala_servidores",
-    "valor_actual": 24.5,
-    "unidad": "celsius"
-  },
-  {
-    "id_sensor": "hum02",
-    "tipo": "humedad",
-    "ubicacion": "almacen_datos",
-    "valor_actual": 55,
-    "unidad": "porcentaje"
-  },
-  {
-    "id_sensor": "co2_03",
-    "tipo": "dioxido_carbono",
-    "ubicacion": "oficina_principal",
-    "valor_actual": 415,
-    "unidad": "ppm"
-  }
-])
+    db.cursos.insertMany([
+    {
+        "id_curso": "INF101",
+        "nombre": "Introducción a la Programación",
+        "departamento": "Informática",
+        "creditos": 4,
+        "profesor": "Dr. García"
+    },
+    {
+        "id_curso": "MAT205",
+        "nombre": "Cálculo Avanzado",
+        "departamento": "Matemáticas",
+        "creditos": 5,
+        "profesor": "Msc. Rodríguez"
+    },
+    {
+        "id_curso": "ART310",
+        "nombre": "Historia del Arte Moderno",
+        "departamento": "Arte",
+        "creditos": 3,
+        "profesor": "Dra. López"
+    }
+    ])
 ```
+
 **3. Buscar Documentos**
 
-- `db.[nombre_coleccion].find();` : Encuentra todos los documentos de una colección.
-- `db.[nombre_coleccion].find({ [criterio] });` : Busca documentos que coincidan con un criterio específico. 
+  - `db.[nombre_coleccion].find();` : Encuentra todos los documentos de una colección.
+  - `db.[nombre_coleccion].find({ [criterio] });` : Busca documentos que coincidan con un criterio específico.
+
 
 ```json
-    db.sensores.find({ tipo: "temperatura" });
+    db.cursos.find({ creditos: 4 });
 ```
 
-- `db.[nombre_coleccion].findOne({ ... });` : Devuelve el primer documento que coincide.
-- `db.[nombre_coleccion].find().pretty();` : Muestra los resultados de forma legible.
+  - `db.[nombre_coleccion].findOne({ ... });` : Devuelve el primer documento que coincide.
+  - `db.[nombre_coleccion].find().pretty();` : Muestra los resultados de forma legible.
 
 **4. Actualizar Documentos**
 
-- `db.[nombre_coleccion].updateOne({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza un solo documento.
+  - `db.[nombre_coleccion].updateOne({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza un solo documento.
+
 
 ```json
-    db.sensores.updateOne(
-    { "id_sensor": "temp01" },          // Criterio de búsqueda: el documento con id_sensor "temp01"
-    { $set: { "ubicacion": "cuarto_control" } } // Acción: establece el campo "ubicacion" a "cuarto_control"
+    db.estudiantes.updateOne(
+    { "id_estudiante": "E001" },          // Criterio de búsqueda: el estudiante con id "E001"
+    { $set: { "semestre": 4 } } // Acción: establece el campo "semestre" a 4
     )
 ```
 
-- `db.[nombre_coleccion].updateMany({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza múltiples documentos.
+  - `db.[nombre_coleccion].updateMany({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza múltiples documentos.
+
 
 ```json
-    db.sensores.updateMany(
-    { "tipo": "temperatura" },          // Criterio de búsqueda: todos los documentos con tipo "temperatura"
-    { $set: { "unidad": "grados_centigrados" } } // Acción: establece el campo "unidad" a "grados_centigrados"
+    db.cursos.updateMany(
+    { "departamento": "Informática" },          // Criterio de búsqueda: todos los cursos del departamento "Informática"
+    { $set: { "profesor": "Dr. Fernández" } } // Acción: establece el campo "profesor" a "Dr. Fernández"
     )
 ```
 
 **5. Eliminar Documentos**
 
-- `db.[nombre_coleccion].deleteOne({ [criterio] });` : Elimina el primer documento que coincide.
+  - `db.[nombre_coleccion].deleteOne({ [criterio] });` : Elimina el primer documento que coincide.
+
 
 ```json
-    db.usuarios.deleteOne({ email: "ejemplo@dominio.com" });
+    db.estudiantes.deleteOne({ id_estudiante: "E001" });
 ```
 
-- `db.[nombre_coleccion].deleteMany({ [criterio] });` : Elimina todos los documentos que coinciden.
+  - `db.[nombre_coleccion].deleteMany({ [criterio] });` : Elimina todos los documentos que coinciden.
 
 
 ### 3.3. Ejercicios Prácticos
@@ -254,7 +266,9 @@ Imagina que el **Orion Context Broker** es el "cerebro" de nuestro sistema IoT. 
 **¿Por qué MongoDB?** Porque su modelo de documentos se adapta perfectamente a la estructura JSON de los datos de los sensores, permitiendo que el estado de cada entidad (sensor, dispositivo, etc.) se represente como un solo documento.
 
 
-## 5. Práctica (Proyecto Smart City)
+## 5. Práctica
+
+### Smart City - Tarea 2: Construcción infraestructura FIWARE
 
 Vamos a construir una solución completa de gestión de datos de IoT.
 
@@ -266,7 +280,7 @@ Vamos a construir una solución completa de gestión de datos de IoT.
         - `cratedb`: La base de datos para el histórico de datos.
     - Asegúrate de que todos los contenedores se comuniquen correctamente a través de la red de Docker.
 2. **Creación de las 3 entidades:**
-    - Usando la **API REST de Orion Context Broker**, crearemos las 3 entidades que definimos en el Módulo 1 (ej. un sensor de temperatura, un sensor de humedad, etc.). Cada entidad tendrá sus propios atributos.
+    - Usando la **API REST de Orion Context Broker**, crearemos las 3 entidades que definimos en la *Tarea 1: Diseño del ADN de los Sensores*.
     - La llamada API enviará un `POST` a `/v2/entities` con el JSON de cada entidad.
 3. **Creación de una suscripción:**
     - Esta es la parte clave para el histórico. Crearemos una **suscripción** en Orion que "escucha" cualquier cambio en nuestras entidades.
@@ -279,8 +293,10 @@ Vamos a construir una solución completa de gestión de datos de IoT.
         - Actualizará el documento en **MongoDB** con el nuevo estado.
         - Debido a la suscripción, enviará una copia de los datos a **QuantumLeap**, que a su vez los insertará en **CrateDB** como una nueva entrada de serie de tiempo.
 5. **Guarda** toda la información en tu Repositorio de GitHub
-**Ayudas**
-[Mi primera aplicación con FIWARE](https://fiware-training.readthedocs.io/es-mx/latest/casodeestudio/descripcion/){target:_blank}
-[Orion Context Broker](https://fiware-training.readthedocs.io/es-mx/latest/ecosistemaFIWARE/ocb/){target:_blank}
-
+   
 Al final de la práctica, tendrás un sistema funcional donde puedes ver el estado actual de tus entidades en MongoDB y consultar el historial completo en CrateDB.
+
+**Ayudas**
+
+- [Mi primera aplicación con FIWARE](https://fiware-training.readthedocs.io/es-mx/latest/casodeestudio/descripcion/){target:_blank}
+- [Orion Context Broker](https://fiware-training.readthedocs.io/es-mx/latest/ecosistemaFIWARE/ocb/){target:_blank}
