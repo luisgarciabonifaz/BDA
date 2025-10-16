@@ -1,6 +1,7 @@
 <div class="titulo">
    Almacenamiento Moderno: Data Lake & Data Warehouse
 </div>
+
 #  
 
 En este tema vamos a aprender a construir el "almacén" donde guardaremos todos los datos durante elproyecto de Big Data La forma en que almacenamos los datos es una de las decisiones de arquitectura más críticas que tomaremos. Una buena estrategia de almacenamiento garantiza que nuestras consultas sean rápidas, que nuestros sistemas sean escalables y que nuestros costes se mantengan bajo control.
