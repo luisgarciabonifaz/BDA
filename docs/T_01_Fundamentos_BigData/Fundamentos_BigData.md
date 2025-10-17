@@ -1,9 +1,4 @@
-
-<div class="titulo">
-   Fundamentos y Ecosistema Moderno de Big Data
-</div>
-
-#  
+# Fundamentos y Ecosistema Moderno de Big Data 
 
 ¡Bienvenidos al curso de Big Data Aplicado! Este primer módulo es la puerta de entrada al fascinante universo de los datos a gran escala. Olvídate de las definiciones abstractas; aquí vamos a entender **por qué** el Big Data es una de las áreas más revolucionarias de la tecnología actual.
 

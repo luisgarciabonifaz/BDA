@@ -1,8 +1,4 @@
-<div class="titulo">
-   Bases de Datos NoSQL
-</div>
-
-#  
+# Bases de Datos NoSQL 
 
 No todos los datos encajan perfectamente en las estructuras rígidas de filas y columnas de las bases de datos relacionales (SQL) que conocemos. En el mundo del Big Data, los datos pueden ser **variados** (estructurados, semi-estructurados, no estructurados), masivos (**volumen**)y generados a gran **velocidad**. 
 

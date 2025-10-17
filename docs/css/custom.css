@@ -47,3 +47,17 @@
     padding: 15px;
  }
 
+/* ==== Estilo visual para los títulos principales (h1) ==== */
+.md-content h1:first-of-type {
+  background-color: navy;       /* Fondo azul oscuro */
+  color: white;                 /* Texto blanco */
+  padding: 20px;                /* Espaciado interno */
+  font-size: 1.5em;             /* Tamaño de fuente similar al .titulo */
+  border-radius: 10px;          /* Bordes redondeados */
+  text-align: center;           /* Centrar el texto */
+  display: flex;                /* Centrado flexible */
+  align-items: center;          /* Centrado vertical */
+  justify-content: center;      /* Centrado horizontal */
+  gap: 15px;                    /* Espacio si añades iconos o imágenes */
+  margin-bottom: 1.5rem;        /* Espacio con el siguiente contenido */
+}
