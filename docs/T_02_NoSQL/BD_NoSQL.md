@@ -50,111 +50,368 @@ La clave de MongoDB es que cada documento es una estructura flexible, similar a 
 - **Colección:** Un grupo de documentos. Es el equivalente a una tabla en bases de datos relacionales. No se aplica un esquema estricto a los documentos de una colección.
 - **Base de Datos:** Un contenedor físico para colecciones. Puedes tener múltiples bases de datos en una misma instancia de MongoDB.
 
-[Documentos](https://www.mongodb.com/docs/manual/core/document/)
-[Bases de Datos y Colleciones](https://www.mongodb.com/docs/manual/core/databases-and-collections/)
+![Esquema MongoDB](EsquemaDocumentos.png){: style="width:50%;margin:auto;display:block"}
 
+[+info Documentos](https://www.mongodb.com/docs/manual/core/document/)
 
-### 3.2. Comandos Básicos de MongoDB
+[+info Bases de Datos y Colleciones](https://www.mongodb.com/docs/manual/core/databases-and-collections/)
 
-Para interactuar con MongoDB, usaremos el **Mongo Shell**. A continuación, los comandos más comunes:
+### 3.1.1. Documentos
 
-**1. Ver bases de datos y cambiar de base de datos**
+El corazón de MongoDB es el documento, un conjunto ordenado de claves con valores asociados. Su representación como hemos nombrado en el tema anterior es en JSON, un formato muy intuitivo y que no pensamos que requiera mayor explicación. Este podría ser un ejemplo sencillo de un documento que guarda el nombre, apellidos y dedad de una persona. A la izquierda de los dos puntos el nombre del campo y a la derecha el valor.
 
-- `show dbs;` : Muestra todas las bases de datos disponibles.
-- `use [nombre_base_de_datos];` : Selecciona o crea una base de datos. Por ejemplo, `use fiware_db;`.
-
-**2. Insertar Documentos**
-
-  - `db.[nombre_coleccion].insertOne({ ... });` : Inserta un único documento.
-
-
-```json
-    db.estudiantes.insertOne({
-      id_estudiante: "E001",
-      nombre: "Ana Pérez",
-      carrera: "Ingeniería Informática",
-      semestre: 3,
-      estado: "Activo"
-    })
+``` json
+  {
+  nombre:"Jose Antonio",
+  apellidos:"Guillem Benedito",
+  edad:35
+  }
 ```
 
-  - `db.[nombre_coleccion].insertMany([{ ... }, { ... }]);` : Inserta múltiples documentos.
+Las claves de los documentos:
 
+  - No pueden ser nulas.
+  - No pueden contener los caracteres . (punto) y $ (dólar).
+  - Puede contener cualquiera de los demás caracteres UTF-8 existentes.
+  - Son case-sensitive (sensible a mayúsculas y minúsculas), por lo que las claves “nombre” y “Nombre” son diferentes, y por tanto consideradas como campos diferentes.
+  - Las claves dentro de un mismo documento deben ser únicas, no pueden duplicarse. Así por ejemplo el siguiente documento no es válido por tener dos veces la clave nota.
 
-```json
-    db.cursos.insertMany([
-    {
-        "id_curso": "INF101",
-        "nombre": "Introducción a la Programación",
-        "departamento": "Informática",
-        "creditos": 4,
-        "profesor": "Dr. García"
-    },
-    {
-        "id_curso": "MAT205",
-        "nombre": "Cálculo Avanzado",
-        "departamento": "Matemáticas",
-        "creditos": 5,
-        "profesor": "Msc. Rodríguez"
-    },
-    {
-        "id_curso": "ART310",
-        "nombre": "Historia del Arte Moderno",
-        "departamento": "Arte",
-        "creditos": 3,
-        "profesor": "Dra. López"
-    }
-    ])
+``` json
+  {
+  nombre:"Jose Antonio",
+  nota:8.9,
+  nota:7.2 
+  }
 ```
 
-**3. Buscar Documentos**
+Cada documento en Mongo debe tener **obligatoriamente** un campo _id con valor único y que actuará como identificador único del documento. Es tan necesario este campo que cuando se guarda un documento sin especificarlo, Mongo automáticamente le asigna uno del tipo ObjectId.
 
-  - `db.[nombre_coleccion].find();` : Encuentra todos los documentos de una colección.
-  - `db.[nombre_coleccion].find({ [criterio] });` : Busca documentos que coincidan con un criterio específico.
+### 3.1.2. Colecciones 
+
+Una colección es un grupo de documentos, es lo análogo a las tablas en el modelo relacional.
+Las colecciones tienen esquemas dinámicos, lo que significa que los documentos dentro de una colección pueden tener múltiples “formas”. Por ejemplo, los siguientes documentos podrían guardarse en la misma colección, a pesar de tener diferentes campos, y diferentes tipos de datos.
+``` json
+  { nombre:"Jose Antonio", edad:35 }
+  { username::"pepito", type:6, active:true }
+``` 
+
+Hay algunas restricciones respecto al nombre que una colección puede tener:
+
+  - La cadena vacía (“”) no es un nombre válido.
+  - Lo puede contener el carácter null.
+  - No se pueden crear colecciones cuyo nombre empiece por “system.”, ya que es un prefijo reservado para colecciones internas.
+  - No debe contener el carácter $ (dólar).
+
+## 3.2. Operaciones básicas
+
+### 3.2.1. Inserción 
+
+Para insertar un documento en una colección, utilice el método:
+``` json
+  db.alumno.insertOne({"name":"Antonio Cuenca"})
+``` 
 
 
-```json
-    db.cursos.find({ creditos: 4 });
+El comando ha añadido automáticamente el campo _id de tipo ObjectId, ya que como hemos explicado, todo documento debe tener un identificador único.
+Pero el uso del tipo ObjectId para el campo _id no es obligatorio, podemos utilizar cualquier valor, siempre y cuando garanticemos su unicidad. A continuación insertamos una nueva alumna, especificando que su _id es el número 10 (tipo Long).
+``` json
+  db.alumno.insertOne({_id:NumberLong(10), name:"Eva",apellidos:"Perez Garcia"})
 ```
 
-  - `db.[nombre_coleccion].findOne({ ... });` : Devuelve el primer documento que coincide.
-  - `db.[nombre_coleccion].find().pretty();` : Muestra los resultados de forma legible.
+Si queremos insertar múltiples documentos,podemos hacer la inserción más rápida utilizando batch inserts, que permiten insertar en bloque un array de documentos a la colección. Esto se consigue con solo pasar un array de objetos al comando insert.
+``` json
+  db.numerosprimos.insertOne(
+  [{_id:2},{_id:3},{_id:5},{_id:7},{_id:11},{_id:13},{_id:17},{_id:19}] )
+```
+  
+### 3.2.2. Borrado 
 
-**4. Actualizar Documentos**
-
-  - `db.[nombre_coleccion].updateOne({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza un solo documento.
-
-
-```json
-    db.estudiantes.updateOne(
-    { "id_estudiante": "E001" },          // Criterio de búsqueda: el estudiante con id "E001"
-    { $set: { "semestre": 4 } } // Acción: establece el campo "semestre" a 4
-    )
+Vaya con cuidado, eliminar colecciones completas es muy sencillo en Mongo. Esto borrará todo, tanto la colección como meta propiedades asociadas a ella o
+índices creados sobre campos.
+  db.alumno.drop()
+Por otra parte, para eliminar solo documentos de una colección, tenemos el comando deleteOne, que recibe como parámetro el criterio de borrado en forma de documento JSON. En ese caso, solo los documentos que cumplen el criterio se eliminarán de la colección.
+``` json
+  db.numerosprimos.deleteOne( {id:23})
 ```
 
-  - `db.[nombre_coleccion].updateMany({ [criterio] }, { $set: { [campo]: [valor] } });` : Actualiza múltiples documentos.
+### 3.2.3. Modificación 
+Para modificar un documento se utiliza el método **update**. Este método recibe dos parámetros, el primero es el criterio de actualización, y el segundo el modificador, que describe los cambios que deben realizarse.
 
+Esta es la lista de modificadores:
 
-```json
-    db.cursos.updateMany(
-    { "departamento": "Informática" },          // Criterio de búsqueda: todos los cursos del departamento "Informática"
-    { $set: { "profesor": "Dr. Fernández" } } // Acción: establece el campo "profesor" a "Dr. Fernández"
-    )
+| Modificador | Acción |
+| -- | -- |
+| **$set** | Asigna el valor a un campo |
+| **$unset** | Elimina cualquier campo de uno o varios documentos |
+| **$inc** | Incrementar el valor numérico de una clave existente |
+| **$push** | Añadir elementos a un array |
+| **$pull** | Elimina elementos de un array basados en un criterio|
+| **$pop** | Elimina el primer o último elemento del array |
+| **upsert** | Si no existe el documentoe lo crea |
+| **multi** | Modifica multiples documentos |
+
+Veamoslos:
+
+**$set**
+
+Asigna el valor a un campo. Si el campo todavía no existe en el documento lo creará. Se utiliza en el segundo parámetro que se le pasa al comando update.
+``` json
+    db.alumno.insertOne( { name:"Arturo", apellidos:"Leon Zapata" })
+    db.alumno.update( {name:"Arturo"}, { $set: {edad:17} })
 ```
 
-**5. Eliminar Documentos**
-
-  - `db.[nombre_coleccion].deleteOne({ [criterio] });` : Elimina el primer documento que coincide.
-
-
-```json
-    db.estudiantes.deleteOne({ id_estudiante: "E001" });
+Podemos darle valor a varios campos a la vez, simplemente informando los pares clave:valor separados por coma. En este ejemplo damos valor a tres campos diferentes con un solo comando.
+``` json
+    db.alumno.update({name:"Arturo"},{$set:{nota:8.2,orden:12,actitud:"positiva"}})
 ```
 
-  - `db.[nombre_coleccion].deleteMany({ [criterio] });` : Elimina todos los documentos que coinciden.
+**$unset**
+
+Para eliminar cualquier campo de uno o varios documentos lo hacemos también con el comando update pero con el modificador $unset.
+
+En MongoDB es habitual utilizar los valores 1 y -1 para indicar verdadero y falso respectivamente. En este caso, al especificar valor 1 estamos diciendo que la
+clave entra dentro del conjunto de campos en los que queremos aplicar el $unset.
+
+De esta forma, si queremos eliminar el campo "edad" del documento que guarda la información del alumno "Arturo", lo haríamos así.
+``` json
+    db.alumno.update({name:"Arturo"},{$unset:{edad:1}})
+``` 
+
+**$inc**
+
+Este modificador puede utilizarse para incrementar o decrementar el valor numérico de una clave existente o para crear una nueva si no existe.
+``` json
+    db.alumno.update({name:"Arturo"},{$inc:{puntuacion:2}})
+```
+
+Otros operadores que podemos utilizar de forma similar son **$mul, $min, $max y $currentDate**.
+``` json
+    db.alumno.update({name:"Arturo"},{$min:{puntuacion:3}})
+```
+
+El ejemplo de arriba modifica la puntuación y le asigna un 3, si esta es mayor que 3. Tambien se puede leer como que le asinga el menor de los valores, el actual o el propuesto en la actualización.
+
+**$push**
+
+Se utiliza para añadir elementos a un array. Si el array no existe lo crea con los elementos indicados en el push, y si ya existe los añade al final del array.
+``` json
+    db.alumno.insertOne({name:"Sofia", apellidos:"Alarcon Sevilla"})
+    db.alumno.update({name:"Sofia"},
+                     {$push:{"asignaturas":{name:"Matematicas", nota:9.1}}}
+                    )
+``` 
+  
+**$pull**
+
+Hay varias formas de eliminar elementos de un array. Cuando queremos borrar elementos basados en algún criterio, el modificador adecuado es $pull.
+Partimos de un array y borraremos elementos
+``` json
+    db.lists.insertOne({"todo": ["lavar platos", "colada", "tender"]})
+``` 
+Para eliminar la colada haríamos.
+``` json
+    db.lists.update({},{$pull:{"todo":"colada"}})
+```
+  
+**$pop**
+
+Para eliminar el primer o último elemento del array.
+Para eliminar el último elemento del array:
+``` json
+    db.lists.update({},{$pop:{todo:1}})
+```
+Para eliminar el prtimer elemento del array:
+``` json
+    db.lists.update({},{$pop:{todo:-1}})
+```
+
+**Upsert**
+
+Un upsert es un tipo de update especial. Si no se encuentra ningún documento que haga matching con el criterio del update, entonces se creará un nuevo documento combinando el criterio y lo que se quiere actualizar. Si se encuentra un documento que haga matching se actualizará normalmente.
+Para decirle a MongoDB que queremos hacer un upsert, solo hay que pasar al comando update un tercer parámetro, con valor true. Esto significa que el update se comportará como lo acabamos de explicar. 
+``` json
+    update({...},{...},true)
+    db.alumno.update({name:"Sofia"},
+                     {$set:{apellidos:"Alarcon Revilla"}},
+                     {upsert:true})
+```
+
+**Multiples Documentos**
+
+Para modificar múltiples documentos, en el tercer parámetro del update indicaremos {multi: true}. 
+``` json
+    db.books.update({lang:"en"},
+                    {$inc: {price: 50.00}}, 
+                    {multi:true})
+```
+
+## 3.3. Consultas 
+El método **find** es el qué se utiliza para hacer queries en Mongo. Es el equivalente al comando select en el modelo relacional. Al consultar una colección, Mongo nos
+devolverá un subconjunto de documentos, que variará desde el conjunto vació hasta la colección completa.
+
+Find tiene varios parámetros de entrada, el primero de ellos especifica los documentos que queremos recuperar, esto es, el criterio de búsqueda.
+``` json
+    db.coleccion.find({ clave:valor })
+```
+La función anterior nos devolvería documentos de la colección coleccion cuyo campo clave tenga un valor igual a valor.
+
+El valor por defecto para este primer parámetro es {}, que significa "cualquier documento". Por tanto una query como db.coleccion1.find({ }) devolverá todos los documentos de la colección coleccion1. Como es el valor por defecto para el criterio de la consulta es equivalente hacer find({ }) y find( ).
+``` json
+    db.alumno.find({edad:17})
+    db.alumno.find({name:"Antonio"})
+```
+
+Igual que en SQL podemos especificar los campos que queremos recuperar (select campo1, campo2, campo3 from tabla ... ), podemos hacerlo también en Mongo. Para ello solo tenemos que pasar un segundo parámetro al método find, en el que decimos los que queremos.
+``` json
+    db.coleccion1.find({ },{ clave3:1, clave4:1 })
+```
+Los campos que queremos que sean devueltos les pondremos el valor 1. El campo _id siempre se devuelve. También podemos especificar los campos que no queremos que sean devueltos, en este caso como valor para cada una de esos campos, pondremos cero. El resultado será que se devolverán el resto de documentos.
+``` json
+    db.coleccion1.find({ },{ clave3:0, clave4:0 })
+```
+  
+### 3.3.1 Operadores de comparación 
+MongoDB permite utilizar los siguientes operadores de comparación:
+
+| Operador | Condición |
+| -- | -- |
+| **$lt** | < |
+| **$lte** | <= |
+| **$gt** | > |
+| **$gte** | >= |
+  
+La sintaxis es:
+``` json
+  clave: { $operador: valor }
+```
+Así si por ejemplo queremos recuperar los libros con un precio mayor que 10 lo haríamos utilizando el operador **$gt** sobre el campo precio:
+``` json
+  db.libro.find({"precio":{$gt:10}},{titulo:1,precio:1})
+``` 
+
+### 3.3.2. Operadores lógicos
+
+| Operador | Acción                     | Sintaxis              |
+| -------- | ---------------------------| ------------------------------------------- |
+| **$in** | Recupera documentos cuyo campo clave esté entre alguno de los valores especificados en el array | clave:{$in:[valor1,valor2,valorN]} |
+| **$nin** | Recupera documentos cuyo campo clave NO esté entre alguno de los valores especificados en el array | clave:{$nin:[valor1,valor2,valorN]} |
+| **$or** | Con el siguiente find, vamos a recuperar aquellos documentos que estén en stock (enstock:false) o que tengan editorial (editorial:null). | $or:[{clave1:valor1},{clave2:valor2},{claveN:valorN}] |
+| **$nor** | Con el siguiente find, vamos a recuperar aquellos documentos que no estén en stock (enstock:false) o que no tengan editorial (editorial:null). | $nor:[{clave1:valor1},{clave2:valor2},{claveN:valorN}] |
+| **$not** | Es lo que se conoce como un metacondicional, que son opeadores que pueden aplicarse por encima de cualquier otro criterio. Su sintaxis es sencilla, solo hay que ponerlo “fuera” de aquello que queremos negar. | $not:{criterio} |
+| **$exist** | Se utiliza para comprobar los documentos que tienen informado o no un campo determinado | clave:{$exists:boolean} |
 
 
-### 3.3. Ejercicios Prácticos
+**Ejemplos**
+
+```json
+db.libro.find({editorial:{$in:["Debolsillo","Planeta","Gigamesh"]}},
+              {titulo:1,editorial:1}
+             )
+``` 
+``` json
+  db.libro.find({editorial:{$nin:["Debolsillo","Planeta","Gigamesh"]}},
+                {titulo:1,editorial:1}
+               )
+``` 
+``` json
+  db.libro.find({$or:[{enstock:false},{editorial:null}]},
+                {titulo:1,editorial:1,enstock:1}
+               )
+```
+``` json
+  db.libro.find({$nor:[{enstock:false},{editorial:null}]},
+                {titulo:1,editorial:1,enstock:1}
+               )
+```
+``` json
+  db.libro.find( { paginas: {$not: { $eq:480 } } },
+                 {titulo:1,paginas:1}
+               )
+```
+``` json
+  db.libro.find({paginas:{$exists:true}},{paginas:1})
+```
+
+!!! warning "null"
+    Tiene un comportamiento un poco extraño, ya que hace matching en los siguientes casos:
+
+    - Con valores que almacenan null, por ejemplo “y” : null
+    - Con campos que no existen en un documento. Si por ejemplo el documento A no tiene informado el campo x, una búsqueda por { x:null } sí que se encontraría.
+
+### 3.3.3. Documentos embebidos 
+
+Para hacer queries contra campos de documentos embebidos dentro de otros documentos, solamente hay que poner la “ruta” completa de claves separada por puntos. 
+
+Es decir, si tenemos por ejemplo una estructura como esta para los libros.
+``` json
+  db.libro.save({
+          "_id":"9788408117117",
+          "titulo":"Circo Máximo",
+          "autor": {
+                    nombre:"Santiago",
+                    apellidos:"Posteguillo Gómez",
+                    nacimiento: {
+                                 anyo:1967,
+                                 ciudad:"Valencia"
+                   }
+          },
+         "editorial":"Planeta",
+         "enstock":true,
+         "paginas":1100,
+         "precio":21.75
+  })
+```
+
+Podemos lanzar queries directamente contra los documentos embebidos, autor y nacimiento de esta forma.
+``` json
+  db.libro.findOne({"autor.nombre":"Santiago"})
+```
+  
+El find anterior recuperará el primer documento donde el campo nombre, del campo autor sea “Santiago”.
+``` json
+  db.libro.findOne({"autor.nacimiento.anyo":{$gt:1965}})
+```
+El find anterior recuperará el primer documento donde el campo anyo, del campo nacimiento, del campo autor sea mayor que 1965.
+
+### 3.4. Ejercicios Prácticos
+
+Vamos a trabajar con dos colecciones:
+[profesores](profesores.json){:target="_blank"} y [asignaturas](asignaturas.json){:target="_blank"}
+
+Para importar los datos y subirlos a MongoDB Atlas podéis usar este comando:
+``` python
+mongoimport --uri 'mongodb+srv://USUARIO:CONTRASEÑA@CLUSTER/BASEDEDATOS?retryWrites=true&w=majority' --collection='asignaturas' --file='asignaturas.json'
+```    
+Estas son las consultas propuestas:
+
+**Insertar, Modificar y Borrar**
+
+1. Listar todos los profesores  // db.profesores.find()
+- Insertar un profesor y una asignatura en la colección
+- Actualizar la asignatura del profesor que acabáis de insertar
+- Borrar el profesor que se acaba de insertar
+- Actualizar todas las edades de los profesores en una unidad
+- Usar upsert para añadir un nuevo profesor con nombre “Aitor”, en caso de que no lo encuentre, añade un campo “Personal” con valor ”Fijo”
+
+**Filtra, Ordenar y Contar mediante consultas**
+
+1. Listar los profesores mostrando solo los nombres
+- Ordenar por nombre de forma ascendente
+- Ordenar por nombre de forma descendente
+- Limitar a 2 una búsqueda general sobre la colección profesores
+- Limitar a 2 intercalando 1 salto entre resultados
+- Contar el número de profesores de la colección
+- Contar el número de profesores que se llaman juan
+
+**Selectores de consultas**
+
+1. Listar las asignaturas con 23 alumnos
+- Listar las asignaturas con 23 alumnos o más
+- Listar las asignaturas que imparte el profesor Juan
+- Listar las asignaturas que NO imparte el profesor Juan
+- Listar las asignaturas que imparten Juan o Laura 
+- Listar las asignaturas que NO imparten ni Juan ni Laura 
+
 
 Imagina que tienes una base de datos llamada `iot_data` para el Proyecto 1.
 
