@@ -596,7 +596,9 @@ Vamos a construir una solución completa de gestión de datos de IoT.
     - Cada vez que el script envíe una actualización, Orion hará dos cosas:
         - Actualizará el documento en **MongoDB** con el nuevo estado.
         - Debido a la suscripción, enviará una copia de los datos a **QuantumLeap**, que a su vez los insertará en **CrateDB** como una nueva entrada de serie de tiempo.
-5. **Guarda** toda la información en tu Repositorio de GitHub
+5. **Consulta Mongodb**
+    - Realiza una captura de pantalla con la consulta Mongodb a la coleccion de entidades en la que se vean todos los atributos de las tres entidades
+6. **Guarda** toda la información en tu Repositorio de GitHub
    
 Al final de la práctica, tendrás un sistema funcional donde puedes ver el estado actual de tus entidades en MongoDB y consultar el historial completo en CrateDB.
 
