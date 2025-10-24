@@ -486,23 +486,24 @@ Cada entidad tiene:
 
 **Ejemplo de suscripción:**
 
-```
+``` json
 {
   "description": "Suscripción para monitorear Room1",
   "subject": {
-    "entities": [
-      { "id": "Room1", "type": "Room" }
+    "entities": [            # Lista de entidades a monitorear
+      { "id": "Room1", 
+        "type": "Room" }
     ],
     "condition": {
-      "attrs": ["pressure"]
+      "attrs": ["pressure"]   # Que dato/s debe cambiar para enviar la notificación
     }
   },
   "notification": {
-    "http": { "url": "http://localhost:1028/accumulate" },
-    "attrs": ["temperature"]
+    "attrs": ["temperature"],   # Que datos envia la notificación
+    "http": { "url": "http://quantumleap:8668/v2/notify" }
   },
-  "expires": "2040-01-01T14:00:00.00Z",
-  "throttling": 5
+  "expires": "2040-01-01T14:00:00.00Z",    # Cuando caduca la suscripción
+  "throttling": 5       # Intervalo minimo entre notificaciones
 }
 ```
 
