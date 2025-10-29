@@ -1,8 +1,4 @@
-<div class="titulo">
-   Almacenamiento Moderno: Data Lake & Data Warehouse
-</div>
-
-#  
+# Almacenamiento Moderno: Data Lake & Data Warehouse
 
 En este tema vamos a aprender a construir el "almacén" donde guardaremos todos los datos durante elproyecto de Big Data La forma en que almacenamos los datos es una de las decisiones de arquitectura más críticas que tomaremos. Una buena estrategia de almacenamiento garantiza que nuestras consultas sean rápidas, que nuestros sistemas sean escalables y que nuestros costes se mantengan bajo control.
 
@@ -10,16 +6,22 @@ En este módulo, exploraremos los tres grandes paradigmas de almacenamiento: el 
 
 ## 1. Paradigmas de Almacenamiento: 
 
-**¿Biblioteca, Lago o Ambos?** La elección de la arquitectura de almacenamiento depende del tipo de datos que tenemos y, sobre todo, de lo que queremos hacer con ellos.
+**¿Biblioteca, Lago o Ambos?** 
+
+La elección de la arquitectura de almacenamiento depende del tipo de datos que tenemos y, sobre todo, de lo que queremos hacer con ellos.
 
 ### 1.1. El Data Warehouse (DWH): La Biblioteca Especializada
 
 Imagina una gran biblioteca universitaria. Los libros (datos) no se aceptan de cualquier manera. Pasan por un riguroso proceso de selección, catalogación y clasificación antes de ser colocados en estanterías específicas. Todo está perfectamente ordenado y estructurado para que un investigador (un analista de negocio) pueda encontrar la información que necesita para su tesis (un informe de BI) de la forma más rápida y fiable posible.
 
-- **Concepto Clave:** El DHW es un repositorio central de datos **integrados, depurados y estructurados**, optimizado para el análisis y la generación de informes (Business Intelligence).
-- **Schema-on-Write (Estructura al Escribir):** La característica que lo define. Antes de que un solo dato entre en el DWH, debemos haber definido una estructura rígida (tablas, columnas, tipos de datos). Si los datos no cumplen con esa estructura, son rechazados o deben ser transformados.
-- **Contenido:** Solo contiene la "joya de la corona": datos limpios, transformados y agregados que han sido validados. Es la **fuente única de la verdad (Single Source of Truth)** para la toma de decisiones estratégicas.
-- **Uso Principal:** Consultas SQL complejas, informes de BI (como los que haremos con Power BI) y cuadros de mando para la dirección.
+- **Concepto Clave:** 
+    - El DHW es un repositorio central de datos **integrados, depurados y estructurados**, optimizado para el análisis y la generación de informes (Business Intelligence).
+- **Schema-on-Write (Estructura al Escribir):** 
+    - La característica que lo define. Antes de que un solo dato entre en el DWH, debemos haber definido una estructura rígida (tablas, columnas, tipos de datos). Si los datos no cumplen con esa estructura, son rechazados o deben ser transformados.
+- **Contenido:** 
+    - Solo contiene la "joya de la corona": datos limpios, transformados y agregados que han sido validados. Es la **fuente única de la verdad (Single Source of Truth)** para la toma de decisiones estratégicas.
+- **Uso Principal:** 
+    - Consultas SQL complejas, informes de BI (como los que haremos con Power BI) y cuadros de mando para la dirección.
 - **Metodologías de Diseño:**
     - **Inmon (Top-down):** Propone construir un gran DWH corporativo centralizado y, a partir de él, crear pequeños subconjuntos de datos llamados *Data Marts* para cada departamento.
     - **Kimball (Bottom-up):** Propone un enfoque más ágil. Se construyen primero los *Data Marts* enfocados en procesos de negocio específicos (ventas, finanzas, etc.) y luego se unen para formar un DWH consolidado. **Para nuestro Proyecto 2, seguiremos la filosofía de Kimball**, ya que diseñaremos un Data Mart específico para el análisis de resultados académicos.
@@ -54,11 +56,16 @@ Imagina una **gran cadena de supermercados** como Mercadona o Carrefour.
 
 Ahora imagina un gran lago natural. Varios ríos (fuentes de datos) desembocan en él, arrastrando todo tipo de elementos: agua clara, barro, troncos, peces, plantas (datos estructurados, semi-estructurados y no estructurados). El lago lo acepta y lo almacena todo en su estado original, sin filtros.
 
-- **Concepto Clave:** Es un repositorio de almacenamiento masivo que guarda enormes cantidades de **datos en su formato nativo y crudo**.
-- **Schema-on-Read (Estructura al Leer):** La filosofía opuesta al DWH. No se define ninguna estructura al guardar los datos. La responsabilidad de interpretar y dar forma a los datos recae en el analista o científico de datos en el momento en que los va a utilizar.
-- **Contenido:** ¡De todo! Desde tablas de bases de datos y CSVs hasta logs de servidores, imágenes, vídeos, clics de una web o datos de sensores de IoT. Nada se descarta.
-- **Uso Principal:** Exploración de datos, análisis predictivo y Machine Learning, donde los científicos de datos necesitan acceso a los datos originales y sin procesar para descubrir patrones ocultos.
-- **El Gran Reto:** Si no se gestiona adecuadamente con metadatos y un catálogo, un Data Lake puede convertirse rápidamente en un **Data Swamp (Ciénaga de Datos)**: un repositorio caótico y sin documentar donde es imposible encontrar nada de valor.
+- **Concepto Clave:** 
+    - Es un repositorio de almacenamiento masivo que guarda enormes cantidades de **datos en su formato nativo y crudo**.
+- **Schema-on-Read (Estructura al Leer):** 
+    - La filosofía opuesta al DWH. No se define ninguna estructura al guardar los datos. La responsabilidad de interpretar y dar forma a los datos recae en el analista o científico de datos en el momento en que los va a utilizar.
+- **Contenido:** 
+    - ¡De todo! Desde tablas de bases de datos y CSVs hasta logs de servidores, imágenes, vídeos, clics de una web o datos de sensores de IoT. Nada se descarta.
+- **Uso Principal:** 
+    - Exploración de datos, análisis predictivo y Machine Learning, donde los científicos de datos necesitan acceso a los datos originales y sin procesar para descubrir patrones ocultos.
+- **El Gran Reto:** 
+    - Si no se gestiona adecuadamente con metadatos y un catálogo, un Data Lake puede convertirse rápidamente en un **Data Swamp (Ciénaga de Datos)**: un repositorio caótico y sin documentar donde es imposible encontrar nada de valor.
 
 #### 1.2.1. Herramientas populares para Data Lake
 
@@ -88,8 +95,10 @@ Piensa en un **coche autónomo moderno** (como un Tesla).
 
 ¿Y si pudiéramos tener la escala y flexibilidad del lago, pero con la fiabilidad y el orden de la biblioteca? Esa es la promesa del Data Lakehouse. Es la arquitectura que está dominando el ecosistema de datos moderno.
 
-- **Concepto Clave:** Es una nueva arquitectura que implementa funcionalidades de gestión y estructura propias de un Data Warehouse directamente sobre el almacenamiento de bajo coste de un Data Lake.
-- **Cómo Funciona:** Se basa en una capa de metadatos y un formato de tabla de código abierto (como Delta Lake, Apache Iceberg o Apache Hudi) que se coloca "encima" de los ficheros de datos (como Parquet) en el Data Lake. Esta capa añade capacidades cruciales.
+- **Concepto Clave:** 
+    - Es una nueva arquitectura que implementa funcionalidades de gestión y estructura propias de un Data Warehouse directamente sobre el almacenamiento de bajo coste de un Data Lake.
+- **Cómo Funciona:** 
+    - Se basa en una capa de metadatos y un formato de tabla de código abierto (como Delta Lake, Apache Iceberg o Apache Hudi) que se coloca "encima" de los ficheros de datos (como Parquet) en el Data Lake. Esta capa añade capacidades cruciales.
 - **Superpoderes que aporta:**
     - **Transacciones ACID:** Garantiza que las operaciones sobre los datos sean fiables (o se completan todas, o no se completa ninguna), evitando la corrupción de datos.
     - **Time Travel (Viaje en el Tiempo):** Permite consultar el estado de una tabla en un punto exacto del pasado, lo que es increíble para la auditoría y la depuración.
@@ -122,11 +131,34 @@ Una **plataforma de streaming de música** como Spotify es un caso de uso perfec
     - **Científico de Datos:** Utiliza los datos de la **tabla de Plata** para entrenar el motor de recomendación ("Descubrimiento Semanal"). Puede usar la función "Time Travel" de Delta Lake para reproducir los datos exactos que se usaron para entrenar una versión anterior del modelo y comparar resultados.
     - Ambos roles trabajan sobre la **misma copia de los datos** en el mismo sistema, eliminando la necesidad de duplicar información y asegurando la consistencia.
 
-### 1.4 Prácticas
+### 1.4 Almacenamiento S3 en AWS
+
+Amazon Simple Storage Service (Amazon S3) es un servicio de almacenamiento en la nube escalable y duradero que permite almacenar y recuperar datos en cualquier momento desde cualquier ubicación en la web. Amazon S3 es ampliamente utilizado para el almacenamiento de objetos, copias de seguridad, distribución de contenido y como componente central de muchas aplicaciones en la nube.
+
+#### 1.4.1. Conceptos de S3
+
+- **Buckets**: Un bucket de Amazon S3 es un contenedor para almacenar objetos. Los objetos se almacenan en buckets y deben tener un nombre único en todo Amazon S3.
+- **Objetos**: Los objetos son unidades de datos que se almacenan en buckets. Un objeto puede ser cualquier tipo de archivo, como documentos, imágenes, videos y más.
+- **Regiones**: Amazon S3 está disponible en múltiples regiones de todo el mundo. Puedes seleccionar la región que mejor se adapte a tus necesidades de rendimiento y cumplimiento.
+- **Clases de Almacenamiento**: Amazon S3 ofrece diversas clases de almacenamiento, como S3 Standard, S3 Intelligent-Tiering, S3 Glacier, S3 Glacier Deep Archive, entre otras, cada una diseñada para diferentes casos de uso y costos.
+- **Control de Acceso**: Puedes definir políticas de control de acceso para determinar quién puede acceder y qué acciones pueden realizar en tus buckets y objetos.
+
+#### 1.4.2. Configuración y Uso Básico de Amazon S3
+
+- **Creación de un Bucket**: Desde la Consola de AWS, puedes crear un nuevo bucket y seleccionar su región. 
+- **Carga de Objetos**: Puedes cargar objetos en tu bucket utilizando la Consola de AWS, la AWS CLI o SDKs.
+- **Acceso a Objetos**: Puedes configurar permisos de acceso a objetos para definir quién puede ver y descargar los objetos.
+- **Versiones de Objetos**: Amazon S3 admite versiones de objetos, lo que permite mantener un historial de cambios en los objetos.
+- **Almacenamiento de Datos**:Utiliza las clases de almacenamiento adecuadas según tus requisitos de rendimiento y costo.
+
+#### 1.4.4. Clases de almacenamiento S3 en AWS
+
+![Clases de almacenamiento S3](ClasesAlmacenamientoS3.png){: style="width:100%;margin:auto;display:block"}
+
+### 1.5 Prácticas
   
-- [Práctica 1](#practica-1)
-  
-- [Práctica 2](#practica-2)
+- [Práctica 1](#analisis-academico-tarea-2-arquitectura-de-data-lakehouse)
+- [Práctica 2](#analisis-academico-tarea-3-diseno-del-data-warehouse)
 
 ## 2. Formatos de Fichero Optimizados: El Secreto de la Velocidad
 
@@ -198,7 +230,7 @@ En una almacenamiento por Columnas sería así:
 
 ### 2.3 Práctica
   
-- [Práctica 3](#practica-3)
+- [Práctica 3](#analisis-academico-tarea-4-de-csv-a-parquet-con-python-y-pandas)
   
 ## 3. Gobernanza y Calidad del Dato: Poniendo Orden
 
@@ -276,19 +308,22 @@ El linaje de datos es la capacidad de visualizar el **ciclo de vida completo de 
     - **Depuración de Errores:** Si un dashboard muestra un dato incorrecto, el linaje nos permite "viajar hacia atrás" para encontrar el punto exacto donde se introdujo el error.
 - **Importancia:** Es fundamental para la **confianza y la auditoría**. Herramientas como **Apache NiFi**, que usaremos en el curso, tienen capacidades de linaje visual muy potentes, permitiendo ver en tiempo real la traza completa de cada dato que fluye por el sistema.
  
+[Práctica 4](#analisis-academico-tarea-5-gobernanza-y-caliad-del-dato)
 
 ## 4. Prácticas
 
-### Práctica 1
-**(Proyecto Analisis Académico): Arquitectura de Data Lakehouse**
+### Análisis Académico - Tarea 2: Arquitectura de Data Lakehouse
 
-Define una arquitectura Medallón (bronce, Plata, Oro) para el proyecto de datos academicos. 
+Desde jefatura de estudio los datos academicos se actualizan despues de cada evaluación (tres veces al año). Ademas en los informes que la dirección muestra al claustro se utilizan datos de cursos anteriores para hacer comparativas. [Aqui](InformeEjemplo.pdf) tienes un ejemplo de informe en formato PDF. 
+
+Los datos de los indicadores de actualizan una vez al año, al final del curso. Y tambien se utilizan datos de cursos anteriores para los informes de dirección.
+
+Teniendo en cuenta esta información define una arquitectura Medallón (bronce, Plata, Oro) para el proyecto de datos academicos. 
 
 - Creala en AWS con el servicio S3.
 - Añade la definición de la arquitectura a tu GitHub del Proyecto de Análisis Academico.
 
-### Práctica 2 
-**(Proyecto Analisis Académico): Diseño del Data Warehouse**
+### Análisis Académico - Tarea 3: Diseño del Data Warehouse
 
 Vamos a aplicar la metodología de Kimball para diseñar un *Data Mart* para nuestro proyecto. Usaremos un **Esquema en Estrella**, el modelo más común y eficiente para BI.
 
@@ -297,11 +332,31 @@ Vamos a aplicar la metodología de Kimball para diseñar un *Data Mart* para nue
 
 Añade el diseño a tu GitHub del Proyecto Analisis Académico.
 
-### Práctica 3 
-**(Proyecto Anáslisis Académico): De CSV a Parquet con Python y Pandas**
+### Análisis Académico - Tarea 4:  De CSV a Parquet con Python y Pandas
 
-Convertir los ficheros CSV limpios del módulo anterior al formato Parquet, mucho más eficiente, utilizando Python y Pandas
+Convertir los ficheros CSV limpios de los Indicadores al formato Parquet, mucho más eficiente, utilizando Python y Pandas
 
 De esta forma nuestros datos procesados se almacenan en un formato columnar y comprimido, dejándolos listos para ser utilizados por herramientas de procesamiento a gran escala como Apache NiFi en los próximas secciones.
 
 Añade el código a tu GitHub del Proyecto Analisis Académico.
+
+### Análisis Académico - Tarea 5:  Gobernanza y Caliad del Dato
+
+**Catalogo de Datos**
+
+Crea una hoja de calculo llamada **DATA_CATALOG** en tu proyecto de GitHub y rellenala con la información correspondiente a tu arquitectura Medallón, siguiendo este esquema:
+
+|Nombre del Activo de Datos|Descripción de Negocio|Propietario / Responsable|Clasificación de Sensibilidad|Capa de la Arquitectura|
+|--------------------------|----------------------|-------------------------|-----------------------------|------------------------|
+|raw/actas_originales|Ficheros de actas en formato PDF/CSV. Datos crudos y sin validar.|Administración / Profesorado|Confidencial (PII)|Bronce|
+
+**Linaje**
+
+Crea una hoja de calculo llamada **DATA_LINEAGE** en tu proyecto de GitHub y rellenala con el flujo de linaje. Rellena los detalles de cada transformación que, idealmente, se aplicaría en la Capa Plata a la nota numérica de las calificaciones. Aqui tienes un ejemplo
+
+| **Etapa / Fichero**    | **Origen**                                    | **Transformaciones Clave Aplicadas**                         | **Destino**                                   | **Responsable de la Transformación** |
+| ---------------------- | --------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------ |
+| **Inicio: Fichero CSV Calificaciones** | `raw/ficheros_originales`                        | Ninguna. Datos volcados directamente.                        | N/A                                           | Ingesta (e.g., Apache NiFi)          |
+| **Transformación (1)** | `raw/ficheros_originales`                        | **[Describe una limpieza o validación que aplicarías, ej: Estandarización del formato de nota (ej: "No Presentado" a NULL).]** | `processed/fact_calificaciones`               | Ingeniero de Datos                   |
+| **Transformación (2)** | `processed/fact_calificaciones`               | **[Describe una validación de calidad, ej: Comprobar que la calificación está en el rango [0, 10] y rechazar/marcar errores.]** | `processed/fact_calificaciones` (Tabla Plata) | Ingeniero de Datos                   |
+| **Agregación Final**   | `processed/fact_calificaciones` (Tabla Plata) | **[Describe la agregación necesaria para la Capa Oro, ej: Cálculo de la nota media grupal, o la tasa de éxito.]** | `gold/rendimiento_ciclo`                      | Analista BI / Científico de Datos    |
