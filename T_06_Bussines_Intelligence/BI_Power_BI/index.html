@@ -1,0 +1,1175 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/BDA/T_06_Bussines_Intelligence/BI_Power_BI/">
+      
+      
+        <link rel="prev" href="../../T_05_Orquestacion/Orquestacion_Flujos/">
+      
+      
+        <link rel="next" href="../../T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>T6 - Bussines Intelligence - BDA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="BDA" class="md-header__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BDA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T6 - Bussines Intelligence
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BDA" class="md-nav__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BDA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Aplicado
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Aplicado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_BigData/Fundamentos_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T1 - Fundamentos y Ecosistema Moderno de Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_NoSQL/BD_NoSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T2 - Bases de Datos NoSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T3 - Almacenamiento Moderno en Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_NIFI/ETL_NiFi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T4 - ETL con NiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Orquestacion/Orquestacion_Flujos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T5 - Orquestacion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    T6 - Bussines Intelligence
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    T6 - Bussines Intelligence
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-business-intelligence-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Business Intelligence (BI)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-componentes-de-business-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Componentes de Business Intelligence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ciclo-de-business-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ciclo de Business Intelligence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cuadros-de-mando-dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cuadros de Mando (Dashboards)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Cuadros de Mando (Dashboards)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Componentes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-indicadores-clave-de-rendimiento-kpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Indicadores Clave de Rendimiento (KPI)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-por-que-usar-una-herramienta-de-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ¿Por qué usar una herramienta de BI?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-microsoft-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Microsoft Power BI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Microsoft Power BI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-caracteristicas-clave-de-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Características Clave de Power BI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-componentes-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Componentes Principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. ¿Cómo funciona?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-ejemplo-sencillo-de-un-informe-en-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Ejemplo Sencillo de un Informe en Power BI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-modelado-de-datos-para-bi-con-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Modelado de Datos para BI con Power BI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Modelado de Datos para BI con Power BI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71conexion-a-las-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1.Conexión a las Fuentes de Datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-la-importancia-del-esquema-en-estrella" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. La Importancia del Esquema en Estrella
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-creacion-de-relaciones-jerarquias-y-columnas-calculadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Creación de Relaciones, Jerarquías y Columnas Calculadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-introduccion-a-dax-data-analysis-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4. Introducción a DAX (Data Analysis Expressions)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-principios-de-diseno-de-dashboards-efectivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Principios de Diseño de Dashboards Efectivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-construccion-del-dashboard-de-analisis-academico" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. Construcción del Dashboard de Analisis Académico
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T7 - Visualizacion Tiempo Real
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-business-intelligence-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Business Intelligence (BI)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-componentes-de-business-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Componentes de Business Intelligence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ciclo-de-business-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ciclo de Business Intelligence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cuadros-de-mando-dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cuadros de Mando (Dashboards)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Cuadros de Mando (Dashboards)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Componentes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-indicadores-clave-de-rendimiento-kpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Indicadores Clave de Rendimiento (KPI)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-por-que-usar-una-herramienta-de-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ¿Por qué usar una herramienta de BI?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-microsoft-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Microsoft Power BI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Microsoft Power BI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-caracteristicas-clave-de-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Características Clave de Power BI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-componentes-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Componentes Principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. ¿Cómo funciona?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-ejemplo-sencillo-de-un-informe-en-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Ejemplo Sencillo de un Informe en Power BI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-modelado-de-datos-para-bi-con-power-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Modelado de Datos para BI con Power BI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Modelado de Datos para BI con Power BI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71conexion-a-las-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1.Conexión a las Fuentes de Datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-la-importancia-del-esquema-en-estrella" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. La Importancia del Esquema en Estrella
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-creacion-de-relaciones-jerarquias-y-columnas-calculadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Creación de Relaciones, Jerarquías y Columnas Calculadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-introduccion-a-dax-data-analysis-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4. Introducción a DAX (Data Analysis Expressions)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-principios-de-diseno-de-dashboards-efectivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Principios de Diseño de Dashboards Efectivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-construccion-del-dashboard-de-analisis-academico" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. Construcción del Dashboard de Analisis Académico
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div class="titulo">
+   Bussines Intelligence y Visualización con Power BI
+</div>
+<h1 id="_1"></h1>
+<p>Has trabajado duro. Has recolectado datos, los has almacenado, los has procesado y los has automatizado. Pero, ¿de qué sirve todo ese esfuerzo si no podemos entender lo que los datos nos dicen? </p>
+<p>Este tema es la culminación de tu viaje en la ciencia de datos. Aquí, convertirás los datos brutos en <strong>conocimiento accionable</strong> utilizando <strong>Microsoft Power BI</strong>, una de las herramientas de <strong>Inteligencia de Negocio (BI)</strong> más poderosas del mercado.</p>
+<p>Aprenderás a conectar Power BI a tus fuentes de datos, a modelar la información de forma eficiente y a diseñar paneles interactivos que ayuden a la toma de decisiones. Todo esto lo aplicaremos directamente en el <strong>proyecto de resultados académicos</strong>, para analizar estos resultados.</p>
+<h2 id="1-business-intelligence-bi">1. Business Intelligence (BI)</h2>
+<ul>
+<li>Business Intelligence (BI) se refiere al proceso de recopilar, almacenar, analizar y visualizar datos para tomar decisiones empresariales informadas. Implica el uso de tecnología y herramientas para convertir datos en información significativa y útil. </li>
+<li>BI permite a las organizaciones obtener una visión completa de su desempeño y tomar decisiones basadas en datos en tiempo real. Ayuda a identificar tendencias, oportunidades y problemas, lo que conduce a una mejor eficiencia operativa y ventaja competitiva. </li>
+<li>Mejora la toma de decisiones, optimiza procesos empresariales, aumenta la eficiencia, identifica oportunidades de crecimiento, reduce costos y aumenta la satisfacción del cliente, entre otros beneficios. </li>
+</ul>
+<h2 id="2-componentes-de-business-intelligence">2. Componentes de Business Intelligence</h2>
+<p>BI está compuesto por varias tecnologías y procesos clave:</p>
+<ul>
+<li>Fuentes de datos: Bases de datos, archivos, APIs, redes sociales, sensores, ERP, CRM, entre otros.</li>
+<li>Extracción, Transformación y Carga (ETL): Procesos para extraer datos de diversas fuentes, transformarlos en un formato útil y cargarlos en un almacén de datos. ETL garantiza la integridad y calidad de los datos antes de su análisis.</li>
+<li>Almacén de datos (Data Warehouse): Repositorio centralizado donde se almacenan los datos de la empresa para su análisis. También se pueden utilizar Data Marts, que son subconjuntos de datos específicos para áreas de negocio.</li>
+<li>Herramientas de análisis y visualización: Software como Power BI, Tableau o Qlik Sense que permiten interpretar datos y crear informes interactivos.</li>
+<li>Data Mining y Big Data: Técnicas avanzadas para descubrir patrones en grandes volúmenes de datos mediante algoritmos de machine learning y análisis estadístico.
+ -Gestión de metadatos y calidad del dato: Se enfoca en garantizar que los datos sean precisos, consistentes y actualizados.</li>
+</ul>
+<h2 id="3-ciclo-de-business-intelligence">3. Ciclo de Business Intelligence</h2>
+<p>El proceso de BI sigue varias fases:</p>
+<ul>
+<li><strong>Recopilación de datos</strong>: Se obtienen datos de distintas fuentes internas y externas.</li>
+<li><strong>Procesamiento y limpieza de datos</strong>: Se eliminan errores, inconsistencias y se normalizan los datos para su correcto análisis.</li>
+<li><strong>Almacenamiento de datos</strong>: Se organizan en bases de datos o almacenes de datos para su posterior consulta y análisis.</li>
+<li><strong>Análisis de datos</strong>: Se aplican técnicas estadísticas y algoritmos para identificar tendencias, patrones y correlaciones.</li>
+<li><strong>Visualización e informes</strong>: Se presentan los resultados en dashboards y gráficos interactivos para facilitar la toma de decisiones.</li>
+<li><strong>Toma de decisiones</strong>: Los insights generados permiten a los directivos tomar decisiones estratégicas informadas.</li>
+</ul>
+<h2 id="4-cuadros-de-mando-dashboards">4. Cuadros de Mando (Dashboards)</h2>
+<p>Un cuadro de mando, también conocido como tablero de control o dashboard, es una herramienta de gestión que proporciona una vista visual de los indicadores clave de rendimiento (KPI, por sus siglas en inglés) y otros datos relevantes para permitir a los usuarios monitorear el desempeño de una organización, departamento o proceso en tiempo real. </p>
+<p>Estos cuadros de mando son utilizados en una variedad de contextos, desde empresas hasta organizaciones gubernamentales, y pueden adaptarse para satisfacer las necesidades específicas de cada usuario o entidad. </p>
+<p>Las características principales de un cuadro de mando incluyen su capacidad para proporcionar una vista rápida y completa del desempeño organizacional, facilitar la toma de decisiones informadas al proporcionar datos relevantes y actualizados, y mejorar la transparencia y la comunicación dentro de la organización al alinear a todos los miembros en torno a objetivos comunes.</p>
+<p>Los cuadros de mando permiten monitorear el rendimiento en tiempo real, identificar problemas y tendencias, y tomar decisiones informadas y basadas en datos de manera rápida y efectiva. Ayudan a alinear los esfuerzos con los objetivos estratégicos y a mejorar el rendimiento general de la organización. </p>
+<h3 id="41-componentes">4.1. Componentes</h3>
+<p>Los componentes típicos de un cuadro de mando son:</p>
+<ul>
+<li>
+<p><strong>Indicadores clave de rendimiento (KPI)</strong>: Son medidas específicas que reflejan el desempeño de una organización en relación con sus objetivos y metas. Los KPIs varían según el contexto y pueden incluir métricas financieras, de producción, de calidad, de satisfacción del cliente, entre otras.</p>
+</li>
+<li>
+<p><strong>Gráficos y visualizaciones</strong>: Los cuadros de mando suelen presentar datos de forma visual mediante gráficos, tablas, diagramas de dispersión, indicadores de semáforo, entre otros. Esto facilita la interpretación rápida y la identificación de tendencias y patrones importantes.</p>
+</li>
+<li>
+<p><strong>Datos en tiempo real</strong>: Los sistemas de cuadros de mando pueden integrarse con bases de datos y sistemas de información en tiempo real para proporcionar información actualizada de manera constante.</p>
+</li>
+<li>
+<p><strong>Alertas y notificaciones</strong>: Algunos cuadros de mando pueden incluir funciones de alerta que notifican a los usuarios cuando se detectan desviaciones significativas en los indicadores de rendimiento o cuando se alcanzan ciertos umbrales predefinidos.</p>
+</li>
+<li>
+<p><strong>Personalización y filtrado</strong>: Los usuarios suelen tener la capacidad de personalizar su vista del cuadro de mando, seleccionando qué indicadores desean monitorear y aplicando filtros para enfocarse en áreas específicas de interés.</p>
+</li>
+<li>
+<p><strong>Interactividad</strong>: Muchos cuadros de mando permiten a los usuarios interactuar con los datos, por ejemplo, haciendo clic en elementos para obtener más detalles o cambiar la forma en que se presentan los datos.</p>
+</li>
+<li>
+<p><strong>Accesibilidad</strong>: Los cuadros de mando suelen estar disponibles en línea o a través de aplicaciones móviles, lo que permite a los usuarios acceder a ellos desde cualquier lugar y en cualquier momento.</p>
+</li>
+</ul>
+<h3 id="42-indicadores-clave-de-rendimiento-kpi">4.2. Indicadores Clave de Rendimiento (KPI)</h3>
+<p>Los Indicadores Clave de Rendimiento (KPI) son métricas cuantificables utilizadas para evaluar el éxito en el logro de los objetivos estratégicos de una organización. Representan áreas críticas de desempeño que deben ser monitoreadas y mejoradas continuamente. </p>
+<p><strong>Tipos de KPI:</strong></p>
+<ul>
+<li>Estratégicos: relacionados con los objetivos a largo plazo de la organización. </li>
+<li>Operativos: relacionados con los procesos y actividades diarias. </li>
+<li>Financieros: relacionados con la salud financiera de la organización, como ingresos, costos, rentabilidad, etc. </li>
+<li>Cualitativos: basados en percepciones y opiniones, como la satisfacción del cliente. </li>
+</ul>
+<p>**Selección de KPI relevantes para diferentes áreas de negocio: **</p>
+<ul>
+<li>Los KPI deben estar alineados con los objetivos estratégicos de la organización y ser específicos, medibles, alcanzables, relevantes y oportunos (SMART). La selección de KPI adecuados varía según el área funcional, como ventas, marketing, recursos humanos, etc. </li>
+</ul>
+<p><strong>Importancia de los KPI en la evaluación del desempeño y el seguimiento de objetivos organizacionales:</strong></p>
+<ul>
+<li>Los KPI proporcionan una medida objetiva del rendimiento y ayudan a identificar áreas de mejora. Facilitan la toma de decisiones basada en datos y permiten evaluar el progreso hacia los objetivos estratégicos establecidos. </li>
+</ul>
+<p>La Inteligencia de Negocio es el proceso de transformar datos brutos en información significativa y útil para el análisis empresarial. Las herramientas de BI como Power BI, Tableau o Qlik, son la interfaz entre los datos y los usuarios de negocio.</p>
+<h2 id="5-por-que-usar-una-herramienta-de-bi">5. ¿Por qué usar una herramienta de BI?</h2>
+<p>Los motivos para usar una herramienta de BI son varios:</p>
+<ul>
+<li><strong>Conexión con múltiples fuentes de datos:</strong> Permiten importar datos de bases de datos, archivos, servicios en la nube, etc.</li>
+<li><strong>Modelado de datos:</strong> Facilitan la creación de un modelo lógico a partir de diferentes tablas.</li>
+<li><strong>Visualización:</strong> Ofrecen una amplia gama de gráficos y tablas para representar los datos de manera visual y comprensible.</li>
+<li><strong>Interactividad:</strong> Los dashboards son dinámicos. Puedes usar filtros y segmentaciones para explorar los datos a diferentes niveles.</li>
+<li><strong>Colaboración:</strong> Permiten compartir informes y cuadros de mando con otros miembros del equipo.</li>
+</ul>
+<h2 id="6-microsoft-power-bi">6. Microsoft Power BI</h2>
+<p><strong>Microsoft Power BI</strong> es una suite de herramientas de inteligencia de negocio que transforma datos de diversas fuentes en información coherente, visualmente inmersiva y que se puede compartir. Está diseñado para que cualquier persona, sin ser un experto, pueda crear visualizaciones y dashboards interactivos.</p>
+<h3 id="61-caracteristicas-clave-de-power-bi">6.1. Características Clave de Power BI</h3>
+<ul>
+<li><strong>Conectividad Abundante:</strong> Power BI puede conectarse a cientos de fuentes de datos, incluyendo archivos (Excel, CSV), bases de datos (SQL Server, PostgreSQL), servicios en la nube (Azure, Salesforce) y APIs.</li>
+<li><strong>Interfaz Intuitiva:</strong> Su interfaz de arrastrar y soltar facilita la creación de informes y dashboards. La curva de aprendizaje es relativamente baja, especialmente para aquellos familiarizados con Microsoft Excel.</li>
+<li><strong>Potente Modelado de Datos:</strong> Permite limpiar, transformar y relacionar datos de distintas fuentes para crear un modelo unificado, ideal para un análisis más profundo.</li>
+<li><strong>Lenguaje DAX:</strong> El lenguaje de fórmulas <strong>DAX</strong> (Data Analysis Expressions) es la columna vertebral de Power BI para el análisis. Permite crear métricas personalizadas, columnas calculadas y filtros complejos.</li>
+<li><strong>Ecosistema Integrado:</strong> Al ser parte de Microsoft, se integra a la perfección con otras herramientas como Excel, Azure y Microsoft 365, lo que lo hace una opción preferida para muchas empresas.</li>
+</ul>
+<h3 id="62-componentes-principales">6.2. Componentes Principales</h3>
+<p>La suite de Power BI se compone de varias partes que trabajan en conjunto:</p>
+<ul>
+<li><strong>Power BI Desktop:</strong> La herramienta principal para el desarrollo. Es una aplicación de escritorio gratuita donde te conectas a las fuentes de datos, modelas la información y creas los informes y visualizaciones.</li>
+<li><strong>Servicio Power BI (Power BI Service):</strong> Es la plataforma basada en la nube donde publicas y compartes tus informes y dashboards. Permite la colaboración en equipo, la actualización automática de los datos y la visualización desde cualquier dispositivo.</li>
+<li><strong>Power BI Mobile:</strong> Aplicaciones para iOS y Android que te permiten ver y consumir los informes y dashboards publicados desde tu teléfono o tablet.</li>
+</ul>
+<h3 id="63-como-funciona">6.3. ¿Cómo funciona?</h3>
+<p>El proceso de trabajo con Power BI generalmente sigue estos tres pasos:</p>
+<ol>
+<li><strong>Obtención y Transformación de Datos (Power Query):</strong> Usas Power BI Desktop para conectarte a tus fuentes de datos. Con el editor de <strong>Power Query</strong>, puedes limpiar y transformar los datos (ej. renombrar columnas, eliminar duplicados, cambiar tipos de datos) para prepararlos para el análisis.</li>
+<li><strong>Modelado de Datos (Power Pivot):</strong> En la vista de modelo, creas <strong>relaciones</strong> entre las tablas y usas el lenguaje <strong>DAX</strong> para crear medidas y columnas calculadas. Esto crea un modelo de datos lógico y eficiente, optimizado para la analítica.</li>
+<li><strong>Visualización y Publicación:</strong> En la vista de informe, arrastras los campos a un lienzo para crear visualizaciones (gráficos de barras, de líneas, mapas). Una vez finalizado el informe, lo publicas en el <strong>Servicio Power BI</strong> para que otras personas puedan verlo y usarlo.</li>
+</ol>
+<h3 id="64-ejemplo-sencillo-de-un-informe-en-power-bi">6.4. Ejemplo Sencillo de un Informe en Power BI</h3>
+<p>Imagina que quieres visualizar los resultados académicos del Proyecto de resulatados académicos.</p>
+<ol>
+<li><strong>Conectas:</strong> Usas Power BI Desktop para conectarte a tu base de datos y traer las tablas de <code>Calificaciones</code>, <code>Cursos</code> y <code>Familia</code>.</li>
+<li><strong>Modelas:</strong> Creas relaciones en la vista de modelo: <code>Calificaciones</code> se relaciona con <code>Cursos</code> y <code>Familia</code> a través de sus claves primarias y foráneas. Con DAX, creas una medida para calcular el promedio de calificaciones. <code>Promedio de Calificaciones = AVERAGEX(Calificaciones, Calificaciones[calificacion_final])</code></li>
+<li><strong>Visualizas:</strong><ul>
+<li>Arrastras la medida <code>Promedio de Calificaciones</code> a un gráfico de barras.</li>
+<li>Arrastras el campo <code>familia_nombre</code> a un eje para ver el promedio por familia.</li>
+<li>Añades una tarjeta para mostrar el promedio de calificaciones general.</li>
+<li>Incluyes un gráfico de líneas para la evolución de las calificaciones por curso.</li>
+</ul>
+</li>
+</ol>
+<p>Este sencillo informe te permite ver de inmediato el rendimiento académico de cada familia y cómo evolucionan los resultados con cada curso, lo que demuestra el poder de Power BI para convertir datos en información útil.</p>
+<h2 id="7-modelado-de-datos-para-bi-con-power-bi">7. Modelado de Datos para BI con Power BI</h2>
+<p>El éxito de un informe de Power BI depende en gran medida de un <strong>modelo de datos</strong> bien estructurado.</p>
+<h3 id="71conexion-a-las-fuentes-de-datos">7.1.Conexión a las Fuentes de Datos</h3>
+<p>Power BI puede conectarse a un vasto número de fuentes. En nuestra práctica, nos conectaremos a las tablas que generamos en el Data Warehouse en el tema 3. Utilizaremos el conector apropiado para bases de datos (como el conector de SQL Server, PostgreSQL, etc.) para importar los datos de las tablas de hechos y dimensiones.</p>
+<h3 id="72-la-importancia-del-esquema-en-estrella">7.2. La Importancia del Esquema en Estrella</h3>
+<p>El <strong>esquema en estrella</strong>, que ya hemos discutido en el tema 3, es la estructura ideal para el análisis de BI. En Power BI, esto se traduce en:</p>
+<ul>
+<li>Una <strong>tabla de hechos</strong> central que contiene los valores numéricos a analizar (ej. <code>calificacion_final</code>).</li>
+<li>Varias <strong>tablas de dimensiones</strong> que contienen los atributos que describen los hechos (ej. <code>familia</code>, <code>curso</code>, <code>grado</code>).</li>
+<li>Las tablas de dimensiones se conectan a la tabla de hechos a través de <strong>relaciones</strong> .</li>
+</ul>
+<h3 id="73-creacion-de-relaciones-jerarquias-y-columnas-calculadas">7.3. Creación de Relaciones, Jerarquías y Columnas Calculadas</h3>
+<ul>
+<li><strong>Relaciones:</strong> Power BI detecta automáticamente algunas relaciones, pero es crucial que las revises y las crees manualmente si es necesario. Las relaciones definen cómo una tabla filtra a otra. Por ejemplo, una relación entre la tabla de <code>Familia</code> y la de <code>Calificaciones</code> permite que un filtro por <code>Familia</code> muestre solo las calificaciones de esa familia.</li>
+<li><strong>Jerarquías:</strong> Permiten a los usuarios profundizar en los datos. Puedes crear una jerarquía de tiempo (<code>Año</code> -&gt; <code>Trimestre</code> -&gt; <code>Mes</code> -&gt; <code>Día</code>) o una jerarquía de ubicación.</li>
+<li><strong>Columnas Calculadas:</strong> Con el lenguaje <strong>DAX</strong>, puedes crear nuevas columnas en tu modelo de datos. Por ejemplo, puedes crear una columna <code>Resultado</code> que clasifique a los estudiantes como "Aprobado" o "Suspenso" basándose en una calificación final.</li>
+</ul>
+<h3 id="74-introduccion-a-dax-data-analysis-expressions">7.4. Introducción a DAX (Data Analysis Expressions)</h3>
+<p>DAX es el lenguaje de fórmulas de Power BI, similar a las fórmulas de Excel, pero mucho más potente. Se usa para crear:</p>
+<ul>
+<li><strong>Columnas calculadas:</strong> Como en el ejemplo anterior.</li>
+<li><strong>Medidas:</strong> Son cálculos dinámicos que se evalúan en el contexto de un informe. Por ejemplo, puedes crear una medida para calcular el promedio de las calificaciones o el total de estudiantes por familia. Las medidas son la base de los <strong>indicadores clave de rendimiento (KPIs)</strong>.</li>
+</ul>
+<h2 id="8-principios-de-diseno-de-dashboards-efectivos">8. Principios de Diseño de Dashboards Efectivos</h2>
+<p>Un buen diseño es tan importante como un buen análisis. Un dashboard debe contar una historia de forma clara y concisa.</p>
+<ul>
+<li><strong>Conoce a tu audiencia:</strong> ¿Qué preguntas intentan responder? ¿Necesitan un alto nivel de detalle o una visión general?</li>
+<li><strong>Usa un diseño simple:</strong> Evita el exceso de información. Utiliza espacios en blanco y agrupa los elementos lógicamente.</li>
+<li><strong>Elige las visualizaciones correctas:</strong> Un gráfico de barras es excelente para comparar categorías, mientras que un gráfico de líneas es ideal para mostrar tendencias a lo largo del tiempo.</li>
+<li><strong>Utiliza colores de forma estratégica:</strong> El color puede guiar la mirada del usuario y resaltar información importante.</li>
+</ul>
+<p><a href="https://www.sqlbi.com/wp-content/uploads/videotrainings/dashboarddesign/rules-A3.pdf" target="_blank">The 15 Rules to Design a Perfect Dashboard</a></p>
+<h2 id="9-practicas">9. Prácticas</h2>
+<h3 id="91-construccion-del-dashboard-de-analisis-academico">9.1. Construcción del Dashboard de Analisis Académico</h3>
+<p>Esta práctica es el objetivo final de nuestro proyecto de resultados academicos.</p>
+<ol>
+<li><strong>Conexión a la Fuente:</strong> Conecta Power BI a la base de datos que contiene las tablas del Data Warehouse (<code>Calificaciones</code>, <code>Familia</code>, <code>Curso</code>, <code>Grado</code>, etc.).</li>
+<li><strong>Modelo de Datos:</strong> En la vista de modelo de Power BI, establece las relaciones entre la tabla de hechos (<code>Calificaciones</code>) y las tablas de dimensiones (<code>Familia</code>, <code>Curso</code>, <code>Grado</code>).</li>
+<li><strong>Visualizaciones y Métricas:</strong><ul>
+<li><strong>Filtros:</strong> Agrega segmentaciones (<code>slicers</code>) para permitir que los usuarios filtren los datos por <code>Familia</code>, <code>Curso</code> y <code>Grado</code>.</li>
+<li><strong>Visualizaciones Interactivas:</strong><ul>
+<li>Un <strong>gráfico de barras</strong> para comparar la calificación promedio por <code>Familia</code> o <code>Curso</code>.</li>
+<li>Un <strong>gráfico de líneas</strong> para mostrar la evolución del promedio de calificaciones a lo largo de los cursos.</li>
+</ul>
+</li>
+<li><strong>Métricas Calculadas con DAX:</strong><ul>
+<li>Una medida para calcular la <strong>calificación promedio</strong> de todos los estudiantes.</li>
+<li>Una medida para contar el <strong>número total de estudiantes</strong> en el conjunto de datos.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Diseño del Dashboard:</strong> Organiza las visualizaciones, los filtros y las métricas en una página coherente. Utiliza títulos claros y etiquetas para que el dashboard sea fácil de entender.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 de octubre de 2025 16:21:00 UTC">30 de octubre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

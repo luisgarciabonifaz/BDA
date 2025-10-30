@@ -1,0 +1,1297 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/BDA/T_01_Fundamentos_BigData/RepasoSQL/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>2. SQL - BDA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-sql" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="BDA" class="md-header__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BDA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. SQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BDA" class="md-nav__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BDA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Aplicado
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Aplicado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Fundamentos_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T1 - Fundamentos y Ecosistema Moderno de Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_NoSQL/BD_NoSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T2 - Bases de Datos NoSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T3 - Almacenamiento Moderno en Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_NIFI/ETL_NiFi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T4 - ETL con NiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Orquestacion/Orquestacion_Flujos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T5 - Orquestacion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Bussines_Intelligence/BI_Power_BI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T6 - Bussines Intelligence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T7 - Visualizacion Tiempo Real
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#20-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.0. Claves
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.0. Claves">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#201-clave-primaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.0.1. Clave primaria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#202-clave-ajena" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.0.2 Clave ajena
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Comandos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-ddl" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. DDL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. DDL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.1. CREATE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-alter" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.2. ALTER
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-drop" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.3 DROP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-truncate" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.4. TRUNCATE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-dml" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. DML
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. DML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1. INSERT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.2 UPDATE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.3. DELETE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-clausulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Cláusulas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-operadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Operadores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-funciones-de-agregado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6. Funciones de agregado
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7. Consultas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7. Consultas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#271-consultas-de-seleccion-basicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1. Consultas de selección básicas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#272-consultas-con-predicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2. Consultas con predicado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-criterios-de-seleccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8. Criterios de selección
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-agregacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9. Agregación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10. Claves
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211-consultas-multitabla" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.11. Consultas multitabla
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#212-vistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.12. Vistas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#213-funciones-miscelanea" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.13. Funciones Miscelánea
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#214-datos-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.14. Datos para practicar
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="2-sql">2. SQL</h1>
+<h2 id="20-claves">2.0. Claves</h2>
+<p>En las BD Relacionales existe el concepto de clave que hac referencia al modo de identificar una fila o registro de forma única. Existen dos tipos de claves, primaria y ajena</p>
+<h3 id="201-clave-primaria">2.0.1. Clave primaria</h3>
+<p>Una clave primaria es un campo (o conjunto de campos) que identifica de manera única cada fila en una tabla. Es fundamental para garantizar la integridad de los datos y que no existan filas duplicadas.</p>
+<p>Características:</p>
+<ul>
+<li>Única: No puede haber dos filas en una tabla con el mismo valor en la clave primaria.</li>
+<li>No Nulo: Los valores de una clave primaria no pueden ser nulos.</li>
+<li>Estable: El valor de la clave primaria no debe cambiar frecuentemente, ya que está relacionado con otras tablas.</li>
+</ul>
+<p>Ejemplo en SQL:
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">  </span><span class="c1">-- Clave primaria</span>
+<span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></p>
+<h3 id="202-clave-ajena">2.0.2 Clave ajena</h3>
+<p>Una clave ajena es un campo o conjunto de campos en una tabla que se utiliza para establecer y reforzar un vínculo entre dos tablas. La clave ajena en una tabla hace referencia a la clave primaria de otra tabla.</p>
+<p>Características:
+- Integridad Referencial: Las claves ajenas aseguran que los valores en una tabla coincidan con los valores en otra tabla.
+- Relación entre tablas: Una clave ajena crea una relación entre dos tablas, lo que permite mantener la coherencia de los datos.
+- Dependencia de clave primaria: Siempre hace referencia a una clave primaria o candidata en otra tabla.</p>
+<p>Ejemplo en SQL:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Pedidos</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_pedido</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">  </span><span class="c1">-- Clave primaria de la tabla Pedidos</span>
+<span class="w">    </span><span class="n">fecha_pedido</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">id_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">  </span><span class="c1">-- Clave ajena que referencia la tabla Clientes</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id_cliente</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Clientes</span><span class="p">(</span><span class="n">id_cliente</span><span class="p">)</span><span class="w">  </span><span class="c1">-- Definimos la clave ajena</span>
+<span class="p">);</span>
+</code></pre></div>
+<h2 id="21-comandos">2.1. Comandos</h2>
+<p>Existen tres tipos de comandos SQL:</p>
+<ul>
+<li>Los DDL (Data Definition Language) que permiten crear y definir nuevas bases de datos, campos e índices.</li>
+<li>Los DML (Data Manipulation Language) que permiten generar consultas para ordenar, filtrar y extraer datos de la base de datos.</li>
+<li>Los DCL (Data Control Language) que se encargan de definir los permisos sobre los datos.</li>
+</ul>
+<p>Revisaremos los dos primeros.</p>
+<h2 id="22-ddl">2.2. DDL</h2>
+<h3 id="221-create">2.2.1. CREATE</h3>
+<p>Este comando crea un objeto dentro del gestor de base de datos. Puede ser una base de datos, tabla, índice, procedimiento almacenado o vista.
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">menagerie</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">pet</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                  </span><span class="k">owner</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                  </span><span class="n">species</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                  </span><span class="n">sex</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                  </span><span class="n">birth</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                  </span><span class="n">death</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span><span class="o">&lt;</span><span class="n">details</span><span class="o">&gt;</span>
+</code></pre></div></p>
+<h3 id="222-alter">2.2.2. ALTER</h3>
+<p>Este comando permite modificar la estructura de un objeto. Se pueden agregar/quitar campos a una tabla, modificar el tipo de un campo, agregar/quitar índices a una tabla, modificar un trigger, etc.
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="s1">&#39;NOMBRE_TABLA&#39;</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">nuevo_campo</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="s1">&#39;NOMBRE_TABLA&#39;</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">nombre_antiguo</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">nombre_nuevo</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="223-drop">2.2.3 DROP</h3>
+<p>Este comando elimina un objeto de la base de datos. Se puede combinar con la sentencia ALTER.
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="s1">&#39;NOMBRE_TABLA&#39;</span><span class="p">;</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="s1">&#39;BASEDATOS&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="s1">&#39;NOMBRE_TABLA&#39;</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">NOMBRE_COLUMNA</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="224-truncate">2.2.4. TRUNCATE</h3>
+<p>Este comando borra todo el contenido de una tabla, pero no borra la tabla.
+<div class="highlight"><pre><span></span><code><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="s1">&#39;NOMBRE_TABLA&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="23-dml">2.3. DML</h2>
+<h3 id="231-insert">2.3.1. INSERT</h3>
+<p>Una sentencia INSERT de SQL agrega uno o más registros a una (y sólo una) tabla en una base de datos relacional.
+Forma básica:
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="s1">&#39;tabla&#39;</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;columna1&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;columna2,...&#39;</span><span class="p">])</span><span class="w"> </span>
+<span class="w">       </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;valor1&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;valor2,...&#39;</span><span class="p">])</span>
+</code></pre></div>
+Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">agenda_telefonica</span><span class="w"> </span>
+<span class="w">       </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Jhonny Aguiar&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">080473968</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="232-update">2.3.2 UPDATE</h3>
+<p>Una sentencia UPDATE de SQL es utilizada para modificar los valores de un conjunto de registros existentes en una tabla.
+Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">mi_tabla</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">campo1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;nuevo valor campo1&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">campo2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="233-delete">2.3.3. DELETE</h3>
+<p>Una sentencia DELETE de SQL borra uno o más registros existentes en una tabla.</p>
+<p>Forma básica:
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;tabla&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="s1">&#39;columna1&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;valor1&#39;</span>
+</code></pre></div>
+Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">My_table</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">field2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="24-clausulas">2.4. Cláusulas</h2>
+<p>Las cláusulas son condiciones de modificación utilizadas para definir los datos que desea seleccionar o manipular.</p>
+<ul>
+<li><strong>FROM</strong>: Utilizada para especificar la tabla de la cual se van a seleccionar los registros.</li>
+<li><strong>GROUP BY</strong>: Utilizada para separar los registros seleccionados en grupos específicos.</li>
+<li><strong>HAVING</strong>: Utilizada para expresar condición que debe satisfacer cada grupo.</li>
+<li><strong>ORDER BY</strong>: Utilizada para ordenar los registros seleccionados de acuerdo con un orden específico.</li>
+<li><strong>WHERE</strong>: Utilizada para determinar los registros seleccionados en la cláusula FROM.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">campos</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">campo</span><span class="o">=</span><span class="n">X</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">campo2</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">campos3</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="n">suma</span><span class="o">&gt;</span><span class="mi">3</span>
+</code></pre></div>
+<h2 id="25-operadores">2.5. Operadores</h2>
+<ul>
+<li>Operadores Lógicos: AND, OR y NOT</li>
+<li>Operadores de comparación: &lt;, &gt;, &lt;&gt;, &lt;=, &gt;=, BETWEEN, LIKE, In</li>
+</ul>
+<h2 id="26-funciones-de-agregado">2.6. Funciones de agregado</h2>
+<p>Las funciones de agregado se usan dentro de una cláusula SELECT en grupos de registros para devolver un único valor que se aplica a un grupo de registros. Los campos que aparecen en el SELECT que no son funciones de agregado deben aparecer en la clausula GROUP BY.</p>
+<p>Funciones:</p>
+<ul>
+<li>AVG</li>
+<li>COUNT</li>
+<li>SUM</li>
+<li>MAX</li>
+<li>MIN</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">Dpto</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">Sueldo</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Empleados</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Dpto</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="27-consultas">2.7. Consultas</h2>
+<p>Consultas de selección se utilizan para indicar al motor de datos que devuelva información de las bases de datos, esta información es devuelta en forma de conjunto de registros. Este conjunto de registros es modificable.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">Campos</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Tabla</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">Nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Telefono</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="271-consultas-de-seleccion-basicas">2.7.1. Consultas de selección básicas</h3>
+<p>Ordenar los registros con ORDER BY:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">CodigoPostal</span><span class="p">,</span><span class="w"> </span><span class="n">Nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Telefono</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodigoPostal</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Nombre</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="272-consultas-con-predicado">2.7.2. Consultas con predicado</h3>
+<p><strong>TOP</strong>: Devuelve un cierto número de registros que entran en un rango especificado por una cláusula ORDER BY.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">TOP</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="n">Nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Apellido</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Estudiantes</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Nota</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>DISTINCT</strong>: Omite los registros que contienen datos duplicados en los campos seleccionados. Para que los valores de cada campo listado en la instrucción SELECT se incluyan en la consulta deben ser únicos.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">Apellido</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Empleados</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="28-criterios-de-seleccion">2.8. Criterios de selección</h2>
+<p><strong>Operadores lógicos</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Empleados</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Edad</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Empleados</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">Edad</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">Sueldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Empleados</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">Estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Soltero&#39;</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Empleados</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">Sueldo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Sueldo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span>
+<span class="w">      </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">Provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Madrid&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Casado&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Operador BETWEEN</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Pedidos</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">CodPostal</span><span class="w"> </span><span class="k">Between</span><span class="w"> </span><span class="mi">28000</span><span class="w"> </span><span class="k">And</span><span class="w"> </span><span class="mi">28999</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Operador LIKE</strong>: Se utiliza para comparar una expresión de cadena con una expresión SQL.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personas</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;AN%&#39;</span>
+</code></pre></div>
+<strong>Operador IN</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Pedidos</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Provincia</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sevilla&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<h2 id="29-agregacion">2.9. Agregación</h2>
+<p><strong>AVG</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">Avg</span><span class="p">(</span><span class="n">Gastos</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Promedio</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Pedidos</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Gastos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+</code></pre></div>
+<strong>MAX, MIN</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">Min</span><span class="p">(</span><span class="n">Gastos</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ElMin</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Pedidos</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Pais</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Costa Rica&#39;</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">Gastos</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ElMax</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Pedidos</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Pais</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Costa Rica&#39;</span><span class="p">;</span>
+</code></pre></div>
+<strong>SUM</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">Sum</span><span class="p">(</span><span class="n">PrecioUnidad</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Cantidad</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Total</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">DetallePedido</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>GROUP BY</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">Id_Familia</span><span class="p">,</span><span class="w"> </span><span class="k">Sum</span><span class="p">(</span><span class="n">Stock</span><span class="p">)</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Productos</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Id_Familia</span><span class="p">;</span>
+</code></pre></div>
+<strong>HAVING</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">Id_Familia</span><span class="w"> </span><span class="k">Sum</span><span class="p">(</span><span class="n">Stock</span><span class="p">)</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Productos</span><span class="w"> </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Id_Familia</span><span class="w"> </span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">Sum</span><span class="p">(</span><span class="n">Stock</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">NombreProducto</span><span class="w"> </span><span class="k">Like</span><span class="w"> </span><span class="s1">&#39;BOS%&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="210-claves">2.10. Claves</h2>
+<p>Claves Primarias y Ajenas:
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Orders</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">OrderID</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                      </span><span class="n">OrderNumber</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                      </span><span class="n">PersonID</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                      </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">OrderID</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                      </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">PersonID</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Persons</span><span class="p">(</span><span class="n">PersonID</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="211-consultas-multitabla">2.11. Consultas multitabla</h2>
+<p>Trabajaremos con estas tablas:</p>
+<p>Tabla Clientes:</p>
+<table>
+<thead>
+<tr>
+<th>cid</th>
+<th>nombre</th>
+<th>telefono</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>jose</td>
+<td>111</td>
+</tr>
+<tr>
+<td>2</td>
+<td>manuel</td>
+<td>222</td>
+</tr>
+<tr>
+<td>3</td>
+<td>maria</td>
+<td>333</td>
+</tr>
+<tr>
+<td>4</td>
+<td>jesus</td>
+<td>4444</td>
+</tr>
+</tbody>
+</table>
+<p>Tabla Acciones:</p>
+<table>
+<thead>
+<tr>
+<th>aid</th>
+<th>cid</th>
+<th>action</th>
+<th>cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>REDHAT</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>NOVEL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>SUN</td>
+<td>30</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>FORD</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>JOIN:</strong> </p>
+<p>La sentencia SQL JOIN se utiliza para relacionar varias tablas. Nos permitirá obtener un listado de los campos que tienen coincidencias en ambas tablas.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">accion</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Acciones</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Clientes</span><span class="p">.</span><span class="n">cid</span><span class="o">=</span><span class="n">Acciones</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>nombre</th>
+<th>telefono</th>
+<th>action</th>
+<th>cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maria</td>
+<td>222</td>
+<td>REDHAT</td>
+<td>10</td>
+</tr>
+<tr>
+<td>jesus</td>
+<td>4444</td>
+<td>NOVEL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>jesus</td>
+<td>4444</td>
+<td>SUN</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>LEFT JOIN:</strong> </p>
+<p>La sentencia LEFT JOIN nos dará el resultado anterior más los campos de la tabla de la izquierda del JOIN que no tienen coincidencias en la tabla de la derecha.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">accion</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Acciones</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Clientes</span><span class="p">.</span><span class="n">cid</span><span class="o">=</span><span class="n">Acciones</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>nombre</th>
+<th>telefono</th>
+<th>action</th>
+<th>cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jose</td>
+<td>111</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>maria</td>
+<td>222</td>
+<td>REDHAT</td>
+<td>10</td>
+</tr>
+<tr>
+<td>manuel</td>
+<td>333</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>jesus</td>
+<td>4444</td>
+<td>NOVEL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>jesus</td>
+<td>4444</td>
+<td>SUN</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>RIGHT JOIN:</strong> </p>
+<p>Idéntico funcionamiento que en el caso anterior pero con la tabla que se incluye en la consulta a la derecha del JOIN.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">accion</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Acciones</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Clientes</span><span class="p">.</span><span class="n">cid</span><span class="o">=</span><span class="n">Acciones</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>nombre</th>
+<th>telefono</th>
+<th>action</th>
+<th>cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maria</td>
+<td>222</td>
+<td>REDHAT</td>
+<td>10</td>
+</tr>
+<tr>
+<td>jesus</td>
+<td>4444</td>
+<td>NOVEL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>jesus</td>
+<td>4444</td>
+<td>SUN</td>
+<td>30</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>NULL</td>
+<td>FORD</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>UNION y UNION ALL:</strong> </p>
+<p>Podemos combinar el resultado de varias sentencias con UNION o UNION ALL. UNION no nos muestra los resultados duplicados, pero UNION ALL si los muestra.
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">accion</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Acciones</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Clientes</span><span class="p">.</span><span class="n">cid</span><span class="o">=</span><span class="n">Acciones</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">accion</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span>
+<span class="k">UNION</span><span class="w"> </span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">accion</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Acciones</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Clientes</span><span class="p">.</span><span class="n">cid</span><span class="o">=</span><span class="n">Acciones</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="mi">1</span>
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>nombre</th>
+<th>telefono</th>
+<th>action</th>
+<th>cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jose</td>
+<td>111</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>manuel</td>
+<td>333</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>NULL</td>
+<td>FORD</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>RESUMEN</strong></p>
+<p><img alt="Resumen Join" src="../sqljoin.jpg" style="width:80%;margin:auto;display:block" /></p>
+<h2 id="212-vistas">2.12. Vistas</h2>
+<p>La cláusula CREATE VIEW permite la creación de vistas. La cláusula asigna un nombre a la vista y permite especificar la consulta que la define.
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">ClientesConAcciones</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span>
+<span class="w">           </span><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">accion</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span>
+<span class="w">           </span><span class="k">FROM</span><span class="w"> </span><span class="n">Clientes</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Acciones</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Clientes</span><span class="p">.</span><span class="n">cid</span><span class="o">=</span><span class="n">Acciones</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="213-funciones-miscelanea">2.13. Funciones Miscelánea</h2>
+<p><strong>CONVERT:</strong> </p>
+<p>Convierte el valor de salida en un tipo de datos específico.
+<div class="highlight"><pre><span></span><code><span class="k">CONVERT</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span><span class="w"> </span><span class="n">tipo</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>ISNULL:</strong> </p>
+<p>Por lo general, si no especifica el valor sin valor para su atributo, es probable que termine con algunos valores nulos en la columna. Pero puede lidiar con ellos fácilmente usando la función isnull().
+<div class="highlight"><pre><span></span><code><span class="k">ISNULL</span><span class="p">(</span><span class="n">expresión</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>IF:</strong> </p>
+<p>Finalmente, la función más importante que usará en SQL es la función if (). Le permite definir la condicionalidad if que se encuentra en cualquier lenguaje de programación.
+Tiene una sintaxis simple:
+<div class="highlight"><pre><span></span><code><span class="k">IF</span><span class="p">(</span><span class="n">expresión</span><span class="p">,</span><span class="w"> </span><span class="n">valor_si_verdadero</span><span class="p">,</span><span class="w"> </span><span class="n">valor_si_falso</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="214-datos-para-practicar">2.14. Datos para practicar</h2>
+<p>Aqui tienes los comandos SQL para crear unas tablas con datos para pruebas</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Alumnos</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">AlumnoID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Edad</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ProfesorID</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Profesores</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">ProfesorID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Materia</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Alumnos</span><span class="w"> </span><span class="p">(</span><span class="n">AlumnoID</span><span class="p">,</span><span class="w"> </span><span class="n">Nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Edad</span><span class="p">,</span><span class="w"> </span><span class="n">ProfesorID</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Juan Pérez&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;María López&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro Pérez&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Luis Garcia&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Maria Martinez&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Eva Gonzaleza&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">104</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Profesores</span><span class="w"> </span><span class="p">(</span><span class="n">ProfesorID</span><span class="p">,</span><span class="w"> </span><span class="n">Nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Materia</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Profesor Smith&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Matemáticas&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Profesora Johnson&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Historia&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">103</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Profesor Martinez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Lengua&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">104</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Profesora Eva&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ingles&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 de octubre de 2025 16:21:00 UTC">30 de octubre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

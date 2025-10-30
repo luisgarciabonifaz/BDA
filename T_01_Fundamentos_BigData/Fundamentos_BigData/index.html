@@ -1,0 +1,1055 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/BDA/T_01_Fundamentos_BigData/Fundamentos_BigData/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../T_02_NoSQL/BD_NoSQL/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>T1 - Fundamentos y Ecosistema Moderno de Big Data - BDA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fundamentos-y-ecosistema-moderno-de-big-data" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="BDA" class="md-header__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BDA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T1 - Fundamentos y Ecosistema Moderno de Big Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BDA" class="md-nav__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BDA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Aplicado
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Aplicado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    T1 - Fundamentos y Ecosistema Moderno de Big Data
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    T1 - Fundamentos y Ecosistema Moderno de Big Data
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-big-data-mas-alla-de-muchos-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Big Data? Más allá de "muchos datos"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es Big Data? Más allá de &#34;muchos datos&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-las-5-v-del-big-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Las 5 "V" del Big Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-roles-profesionales-en-el-mundo-del-dato" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Roles Profesionales en el Mundo del Dato
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-el-ecosistema-de-datos-moderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. El Ecosistema de Datos Moderno
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. El Ecosistema de Datos Moderno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21el-ciclo-de-vida-del-dato-en-el-ecosistema-moderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.El Ciclo de Vida del Dato en el Ecosistema Moderno
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-presentacion-de-los-proyectos-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Presentación de los Proyectos del Curso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Presentación de los Proyectos del Curso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-proyecto-1-smart-city-el-pulso-de-la-ciudad-en-tiempo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Proyecto 1: Smart City - El Pulso de la Ciudad en Tiempo Real
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-proyecto-2-analisis-academico-inteligencia-para-la-educacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Proyecto 2: Análisis Académico - Inteligencia para la Educación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-practica-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Práctica Inicial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Práctica Inicial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smart-city-tarea-1-diseno-del-adn-de-los-sensores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smart City - Tarea 1: Diseño del ADN de los Sensores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-academico-tarea-1-la-primera-inspeccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis Académico - Tarea 1: La Primera Inspección
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_NoSQL/BD_NoSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T2 - Bases de Datos NoSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T3 - Almacenamiento Moderno en Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_NIFI/ETL_NiFi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T4 - ETL con NiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Orquestacion/Orquestacion_Flujos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T5 - Orquestacion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Bussines_Intelligence/BI_Power_BI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T6 - Bussines Intelligence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T7 - Visualizacion Tiempo Real
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-big-data-mas-alla-de-muchos-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Big Data? Más allá de "muchos datos"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es Big Data? Más allá de &#34;muchos datos&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-las-5-v-del-big-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Las 5 "V" del Big Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-roles-profesionales-en-el-mundo-del-dato" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Roles Profesionales en el Mundo del Dato
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-el-ecosistema-de-datos-moderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. El Ecosistema de Datos Moderno
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. El Ecosistema de Datos Moderno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21el-ciclo-de-vida-del-dato-en-el-ecosistema-moderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.El Ciclo de Vida del Dato en el Ecosistema Moderno
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-presentacion-de-los-proyectos-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Presentación de los Proyectos del Curso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Presentación de los Proyectos del Curso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-proyecto-1-smart-city-el-pulso-de-la-ciudad-en-tiempo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Proyecto 1: Smart City - El Pulso de la Ciudad en Tiempo Real
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-proyecto-2-analisis-academico-inteligencia-para-la-educacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Proyecto 2: Análisis Académico - Inteligencia para la Educación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-practica-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Práctica Inicial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Práctica Inicial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smart-city-tarea-1-diseno-del-adn-de-los-sensores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smart City - Tarea 1: Diseño del ADN de los Sensores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-academico-tarea-1-la-primera-inspeccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis Académico - Tarea 1: La Primera Inspección
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="fundamentos-y-ecosistema-moderno-de-big-data">Fundamentos y Ecosistema Moderno de Big Data</h1>
+<p>¡Bienvenidos al curso de Big Data Aplicado! Este primer módulo es la puerta de entrada al fascinante universo de los datos a gran escala. Olvídate de las definiciones abstractas; aquí vamos a entender <strong>por qué</strong> el Big Data es una de las áreas más revolucionarias de la tecnología actual.</p>
+<p>No nos quedaremos solo en la teoría de las "5 V"; exploraremos el <strong>ecosistema de herramientas real</strong> que usan empresas como Netflix, Airbnb o Spotify, conocido como el "Modern Data Stack". Entenderemos los distintos roles profesionales que existen en este campo y, lo más importante, presentaremos los <strong>dos proyectos que serán nuestra guía práctica</strong> durante las próximas sesiones de clase. El objetivo es que, al finalizar este módulo, tengas un mapa completo del territorio que vamos a explorar y los emocionantes retos que vamos a superar juntos.</p>
+<h2 id="1-que-es-big-data-mas-alla-de-muchos-datos">1. ¿Qué es Big Data? Más allá de "muchos datos"</h2>
+<p>El Big Data se refiere a conjuntos de datos masivos y complejos que, por su volumen, variedad y velocidad, superan la capacidad de las herramientas tradicionales para su almacenamiento y procesamiento. Su principal objetivo es extraer información valiosa, patrones y conocimientos para tomar mejores decisiones, optimizar procesos y desarrollar soluciones inteligentes en diversos ámbitos como la medicina, el marketing o la gestión del tráfico. </p>
+<p>Imagina que pasas de tener una libreta de contactos (un Excel) a tener que gestionar la agenda de teléfonos de todo un país, que además se actualiza cada segundo. Esa es la esencia del Big Data: los problemas y oportunidades que surgen cuando los datos superan la capacidad de las herramientas tradicionales.</p>
+<p>Para entenderlo mejor, usamos el modelo de las <strong>5 "V"</strong>:</p>
+<h3 id="11-las-5-v-del-big-data">1.1. Las 5 "V" del Big Data</h3>
+<ul>
+<li><strong>Volumen (Cantidad):</strong> Se refiere a la escala masiva de los datos generados. Ya no hablamos de Megabytes o Gigabytes, sino de <strong>Terabytes, Petabytes o incluso Exabytes</strong>.<ul>
+<li><em>Ejemplo:</em> Las horas de vídeo subidas a YouTube cada minuto, o los datos de transacciones de una cadena de supermercados global.</li>
+<li><em>Reto:</em> ¿Cómo almacenamos y accedemos a esta cantidad ingente de información de forma eficiente y económica?</li>
+</ul>
+</li>
+<li><strong>Velocidad (Ritmo):</strong> Se refiere al ritmo al que los datos se crean, transmiten y procesan. Muchas veces, necesitamos analizarlos en <strong>tiempo real</strong> o casi real.<ul>
+<li><em>Ejemplo:</em> El torrente de tuits durante la final de un mundial, los datos de sensores de un coche autónomo o las transacciones con tarjeta de crédito que deben ser validadas en milisegundos.</li>
+<li><em>Reto:</em> ¿Cómo capturamos y procesamos datos que "vuelan" sin perder información valiosa?</li>
+</ul>
+</li>
+<li><strong>Variedad (Formatos):</strong> Los datos ya no son solo tablas ordenadas en una base de datos. Vienen en múltiples formatos.<ul>
+<li><strong>Datos Estructurados:</strong> Altamente organizados, como una tabla de Excel o una base de datos SQL.</li>
+<li><strong>Datos Semi-estructurados:</strong> No encajan en una tabla, pero tienen una estructura interna, como un fichero JSON o XML.</li>
+<li><strong>Datos No Estructurados:</strong> No tienen un modelo predefinido, como un email, una imagen, un vídeo, un audio o un post en redes sociales.</li>
+<li><em>Ejemplo:</em> Un único post de Instagram puede contener una imagen (no estructurado), un texto con #hashtags (semi-estructurado) y metadatos como la geolocalización (estructurado).</li>
+<li><em>Reto:</em> ¿Cómo extraemos información útil de esta mezcla heterogénea de formatos?</li>
+</ul>
+</li>
+</ul>
+<details class="info">
+<summary>Tipos de datos</summary>
+<table>
+<thead>
+<tr>
+<th>Tipo de Datos</th>
+<th>Descripcion</th>
+<th>Formatos comunes</th>
+<th>Ejemplos</th>
+<th>Observaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Archivos de Datos Estructurados</strong></td>
+<td>Datos organizados en un formato con una estructura fija y predefinida, como las tablas de una base de datos relacional.</td>
+<td>CSV</td>
+<td>Archivos de hojas de cálculo, bases de datos SQL y archivos CSV.</td>
+<td>Los archivos estructurados son eficientes para almacenar datos tabulares, pero pueden ser menos flexibles para datos variados o no estructurados.</td>
+</tr>
+<tr>
+<td><strong>Archivos de Datos Semiestructurados</strong></td>
+<td>No siguen una estructura fija como los datos estructurados, pero tienen cierta organización o jerarquía, como en el caso de archivos JSON o XML.</td>
+<td>JSON y XML</td>
+<td>Archivos JSON que almacenan configuraciones, datos de sensores o información de productos.</td>
+<td>Los datos semiestructurados son ideales para representar información jerárquica, como configuraciones de aplicaciones o datos de sensores.</td>
+</tr>
+<tr>
+<td><strong>Archivos de Datos No Estructurados</strong></td>
+<td>Carecen de una organización o formato definido y pueden incluir archivos de imágenes, videos, documentos de texto sin formato y audio, entre otros.</td>
+<td></td>
+<td>Imágenes JPEG, videos MP4, documentos de texto sin formato, grabaciones de audio, etc.</td>
+<td>Se utilizan herramientas de procesamiento de medios, visión por computadora, reconocimiento de voz y análisis de texto para extraer información de datos no estructurados.</td>
+</tr>
+<tr>
+<td><strong>Archivos de Log</strong></td>
+<td>Registran eventos y actividades, como transacciones, errores o interacciones de usuarios.</td>
+<td></td>
+<td></td>
+<td>Herramientas como Splunk, ELK Stack (Elasticsearch, Logstash, Kibana) y Apache Flume se utilizan para analizar y visualizar datos de registros.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<ul>
+<li><strong>Veracidad (Confianza):</strong> Se refiere a la calidad y fiabilidad de los datos. No todos los datos son precisos. Pueden tener ruido, sesgos, inconsistencias o simplemente ser falsos.<ul>
+<li><em>Ejemplo:</em> Reseñas falsas de productos en Amazon, errores en lecturas de sensores por un fallo de hardware, o datos introducidos manualmente con erratas.</li>
+<li><em>Reto:</em> ¿Cómo limpiamos los datos y nos aseguramos de que podemos confiar en ellos para tomar decisiones? <em>Garbage In, Garbage Out</em> (si entra basura, sale basura).</li>
+</ul>
+</li>
+<li><strong>Valor (Propósito):</strong> Esta es la "V" más importante. De nada sirve tener un océano de datos si no podemos extraer de él conocimiento útil (<strong>insights</strong>) que nos permita tomar mejores decisiones, optimizar procesos, crear nuevos productos o entender mejor a nuestros clientes.<ul>
+<li><em>Ejemplo:</em> Netflix analiza qué ven sus millones de usuarios (volumen, velocidad, variedad) para decidir qué series producir (valor).</li>
+<li><em>Reto y Objetivo Final:</em> ¿Cómo transformamos los datos crudos en valor tangible para una organización?</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-roles-profesionales-en-el-mundo-del-dato">1.2. Roles Profesionales en el Mundo del Dato</h3>
+<p>Para gestionar estas 5 "V", han surgido roles especializados. Pensemos en ellos como un equipo de construcción:</p>
+<ul>
+<li><strong>👷‍♀️ Ingeniero de Datos (Data Engineer):</strong> Es el arquitecto e ingeniero civil del mundo de los datos. Su trabajo es diseñar, construir y mantener las "autopistas" por las que viajarán los datos. Crea los pipelines (tuberías) que recogen datos de las fuentes (APIs, bases de datos, ficheros) y los llevan a un lugar centralizado (Data Lake o Data Warehouse) de forma limpia y eficiente. <strong>En este curso, adoptaremos principalmente este rol.</strong><ul>
+<li><em>Herramientas:</em> SQL, Python, <strong>Apache NiFi</strong>, Airflow, Spark, bases de datos NoSQL.</li>
+</ul>
+</li>
+<li><strong>👨‍💼 Analista de Datos (Data Analyst):</strong> Es el intérprete o el traductor. Una vez que los datos están en el destino, el analista los explora, los analiza y crea informes y visualizaciones (dashboards) para responder a preguntas de negocio concretas. Busca tendencias, patrones y "qué ha pasado".<ul>
+<li><em>Herramientas:</em> SQL, <strong>Power BI</strong>, Tableau, Excel.</li>
+</ul>
+</li>
+<li><strong>👩‍🔬 Científico de Datos (Data Scientist):</strong> Es el "adivino" o estratega. Va un paso más allá del analista. Utiliza métodos estadísticos y algoritmos de Machine Learning para hacer predicciones y responder a "qué pasará" o "qué podemos hacer para que algo ocurra".<ul>
+<li><em>Herramientas:</em> Python (con librerías como Scikit-learn, TensorFlow), R, estadística, Machine Learning.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-el-ecosistema-de-datos-moderno">2. El Ecosistema de Datos Moderno</h2>
+<p>El "sótano de servidores" de las empresas ha dado paso a la nube. El ecosistema moderno de datos se basa en servicios flexibles, escalables y potentes ofrecidos por proveedores cloud.</p>
+<p><strong>¿Por qué la nube?</strong></p>
+<ul>
+<li><strong>Escalabilidad:</strong> Paga solo por lo que usas y aumenta la capacidad con un clic.</li>
+<li><strong>Flexibilidad:</strong> Accede a una enorme gama de herramientas especializadas.</li>
+<li><strong>Mantenimiento Reducido:</strong> El proveedor se encarga de la infraestructura física.</li>
+</ul>
+<p><strong>Principales Proveedores:</strong></p>
+<ul>
+<li><strong>AWS (Amazon Web Services):</strong> El pionero y líder del mercado.</li>
+<li><strong>Microsoft Azure:</strong> Fuerte integración con el ecosistema de Microsoft.</li>
+<li><strong>GCP (Google Cloud Platform):</strong> Muy potente en análisis de datos y Machine Learning.</li>
+</ul>
+<h3 id="21el-ciclo-de-vida-del-dato-en-el-ecosistema-moderno">2.1.El Ciclo de Vida del Dato en el Ecosistema Moderno</h3>
+<p>Pensemos en el viaje que hacen los datos como una cadena de montaje. Cada etapa tiene un propósito específico:</p>
+<ol>
+<li><strong>Ingesta (Ingestion):</strong> Es el punto de partida. ¿Cómo metemos los datos en nuestro sistema?<ul>
+<li><em>Fuentes:</em> APIs de redes sociales, sensores IoT (como en nuestro <strong>Proyecto Smart City</strong>), bases de datos de la empresa, ficheros CSV (como en nuestro <strong>Proyecto Análisi Académico</strong>).</li>
+<li><em>Herramientas:</em> <strong>Apache NiFi</strong>, Fivetran, Airbyte.</li>
+</ul>
+</li>
+<li><strong>Almacenamiento (Storage):</strong> ¿Dónde guardamos los datos?<ul>
+<li><strong>Data Lake:</strong> Un gran "lago" de datos crudos. Almacena todo en su formato original. Es barato y muy flexible. Ideal para datos no estructurados y para que los Científicos de Datos exploren.</li>
+<li><strong>Data Warehouse:</strong> Un "almacén" de datos estructurados, limpios y ordenados. La información está modelada y lista para ser analizada y generar informes (BI).</li>
+<li><strong>Data Lakehouse:</strong> La arquitectura moderna que une ambos mundos. Permite tener la flexibilidad y bajo coste de un Data Lake con las capacidades de gestión y rendimiento de un Data Warehouse.</li>
+</ul>
+</li>
+<li><strong>Procesamiento (Processing - ETL vs. ELT):</strong> ¿Cómo transformamos los datos crudos en datos útiles?<ul>
+<li><strong>ETL (Extract, Transform, Load):</strong> El método tradicional. Se extraen los datos, se transforman en un servidor intermedio y luego se cargan ya limpios en el Data Warehouse.</li>
+<li><strong>ELT (Extract, Load, Transform):</strong> El método moderno, potenciado por la nube. Se extraen los datos y se cargan <strong>inmediatamente</strong> en el Data Lake/Warehouse. La transformación se hace <em>después</em>, aprovechando la potencia de cálculo del sistema de almacenamiento. Es más rápido y flexible.</li>
+<li><em>Herramientas:</em> <strong>Apache NiFi</strong> (ideal para ETL visual), dbt (data build tool), Apache Spark.</li>
+</ul>
+</li>
+<li><strong>Orquestación (Orchestration): El Director de Orquesta</strong><ul>
+<li><strong>¿Qué es?</strong> Es el proceso de <strong>automatizar, programar y coordinar</strong> la ejecución de todos nuestros flujos de datos. Un flujo de ETL no sirve de mucho si tenemos que ejecutarlo a mano cada día. La orquestación se encarga de que todo funcione solo.</li>
+<li><strong>Analogía:</strong> Piensa en los flujos de NiFi como los músicos de una orquesta. Cada uno sabe tocar su instrumento (procesar datos). El orquestador es el <strong>director de orquesta</strong>: les dice cuándo empezar, en qué orden tocar, y qué hacer si uno de ellos falla.</li>
+<li><strong>Propósito:</strong> Define las dependencias ("<em>no empieces a procesar los datos hasta que no se hayan cargado por completo</em>"), gestiona los reintentos en caso de error y nos da una visión centralizada de la salud de todos nuestros procesos.</li>
+<li><em>Herramientas:</em> <strong>Apache Airflow</strong> (el estándar de la industria, que define los flujos como código en "DAGs" o Grafos Acíclicos Dirigidos), Mage, Prefect.</li>
+</ul>
+</li>
+<li><strong>Visualización y Análisis (Analytics &amp; BI):</strong> ¿Cómo le damos sentido a los datos?<ul>
+<li>Es la capa final, donde los datos se convierten en gráficos, informes y cuadros de mando interactivos que aportan <strong>valor</strong> al negocio.</li>
+<li><em>Herramientas:</em> <strong>Microsoft Power BI</strong> y Tableau (para Business Intelligence), <strong>Grafana</strong> (para monitorización y datos en tiempo real).</li>
+</ul>
+</li>
+</ol>
+<div style="text-align: center;">
+<pre class="mermaid"><code>graph LR;
+    A(1. Ingesta &lt;br&gt; Apache NiFi) --&gt; B(2. Almacenamiento &lt;br&gt; Data Lake, DW);
+    B --&gt; C(3. Procesamiento &lt;br&gt; ETL / ELT &lt;br&gt; NiFi, Spark);
+    C --&gt; D(4. Orquestación &lt;br&gt; Apache Airflow);
+    D --&gt; E(5. Visualización y Análisis &lt;br&gt; Power BI, Grafana);</code></pre>
+</div>
+<h2 id="3-presentacion-de-los-proyectos-del-curso">3. Presentación de los Proyectos del Curso</h2>
+<p>La mejor forma de aprender es construyendo. Estos dos proyectos serán nuestro hilo conductor. Cada módulo nos dará una pieza para avanzar en ellos.</p>
+<h3 id="31-proyecto-1-smart-city-el-pulso-de-la-ciudad-en-tiempo-real">3.1. Proyecto 1: Smart City - El Pulso de la Ciudad en Tiempo Real</h3>
+<ul>
+<li><strong>El Reto:</strong> Simular una ciudad inteligente. Capturaremos datos de sensores de temperatura, CO2 y calidad del agua, los procesaremos en tiempo real y crearemos un panel de control para monitorizar la "salud" de la ciudad.</li>
+<li><strong>Conceptos Clave que Aplicaremos:</strong><ul>
+<li>Ingesta de datos IoT (FIWARE).</li>
+<li>Bases de datos NoSQL.</li>
+<li>Creación de flujos de datos en tiempo real con <strong>Apache NiFi</strong>.</li>
+<li>Visualización de series temporales y alertas con <strong>Grafana</strong>.</li>
+</ul>
+</li>
+<li><strong>Resultado Final:</strong> Un dashboard operativo que nos muestre en directo qué está pasando en nuestra ciudad.</li>
+</ul>
+<h3 id="32-proyecto-2-analisis-academico-inteligencia-para-la-educacion">3.2. Proyecto 2: Análisis Académico - Inteligencia para la Educación</h3>
+<ul>
+<li><strong>El Reto:</strong> Ayudar a un centro educativo a entender sus resultados académicos. Partiremos de varios ficheros CSV "sucios" y los transformaremos en un sistema de Business Intelligence (BI) coherente que permita tomar decisiones.</li>
+<li><strong>Conceptos Clave que Aplicaremos:</strong><ul>
+<li>ETL por lotes para limpiar y unir datos de ficheros.</li>
+<li>Diseño de un Data Warehouse con un <strong>esquema en estrella</strong>.</li>
+<li>Uso de <strong>Apache NiFi</strong> para automatizar la limpieza y carga de datos.</li>
+<li>Creación de un cuadro de mando interactivo con <strong>Power BI</strong>.</li>
+</ul>
+</li>
+<li><strong>Resultado Final:</strong> Un informe en Power BI que permita al equipo directivo filtrar por curso, año o ciclo y analizar tasas de éxito, promociones, etc.</li>
+</ul>
+<p><a href="../../PDF/Proyectos.pdf" target="_blank">Proyectos</a></p>
+<h2 id="4-practica-inicial">4. Práctica Inicial</h2>
+<p>Vamos a empezar a "pensar en datos" desde el primer día.</p>
+<h3 id="smart-city-tarea-1-diseno-del-adn-de-los-sensores">Smart City - Tarea 1: Diseño del ADN de los Sensores</h3>
+<p><strong>Objetivo:</strong> Entender la importancia de modelar los datos antes de empezar. Un buen diseño inicial nos ahorrará muchos problemas.</p>
+<p><strong>Instrucciones:</strong></p>
+<ol>
+<li>
+<p>Crea un Repositorio Git Hub para ir añadido todo el trabajo del proyecto</p>
+</li>
+<li>
+<p>Abre un editor de texto simple (Bloc de Notas, VS Code) o una hoja de cálculo.</p>
+</li>
+<li>
+<p>Crea una entidad para el sensor de temperatura definiendo su estructura.</p>
+</li>
+<li>
+<p>Crea una estructura similar para:</p>
+<ul>
+<li>El sensor de CO2 (con un atributo <code>co2</code> en <code>ppm</code>)</li>
+<li>El sensor de calidad del agua (con <code>ph</code>, <code>chlorine</code> en <code>mgL</code>, etc.). </li>
+</ul>
+</li>
+<li>
+<p>No te preocupes por la sintaxis perfecta, céntrate en definir los <strong>atributos, sus tipos de dato y sus unidades</strong>.</p>
+</li>
+</ol>
+<h3 id="analisis-academico-tarea-1-la-primera-inspeccion">Análisis Académico - Tarea 1: La Primera Inspección</h3>
+<p><strong>Objetivo:</strong> Desarrollar un "ojo crítico" para la calidad de los datos. Es una de las habilidades más importantes de un profesional del dato.</p>
+<p><strong>Instrucciones:</strong></p>
+<ol>
+<li>Crea un Repositorio Git Hub para ir añadido todo el trabajo del proyecto</li>
+<li>Descarga los ficheros CSV del proyecto académico.</li>
+<li>Ábrelos con Microsoft Excel, Google Sheets o un visor de CSV. <strong>No modifiques nada todavía.</strong></li>
+<li>Conviértete en un detective y responde a estas preguntas para cada fichero:<ul>
+<li>¿Cuál es el separador de columnas (coma <code>,</code> o punto y coma <code>;</code>)?</li>
+<li>¿La primera fila contiene los nombres de las columnas (encabezados)? ¿Son claros?</li>
+<li>Inspecciona visualmente las primeras 20-30 filas. ¿Ves valores que te parezcan extraños o que faltan (celdas vacías, "N/A", "s/d")?</li>
+<li>¿Los formatos son consistentes? Por ejemplo, ¿las fechas están siempre como <code>DD/MM/AAAA</code> o a veces cambian?</li>
+<li>Identifica las "claves" o "IDs" que podrían servir para relacionar unos ficheros con otros (ej: <code>id_alumno</code> en el fichero de <code>calificaciones.csv</code> y también en <code>alumnos.csv</code>).</li>
+</ul>
+</li>
+<li>Apunta tus hallazgos en un documento de texto. Este será nuestro punto de partida para la limpieza de datos en módulos posteriores.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 de octubre de 2025 16:21:00 UTC">30 de octubre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

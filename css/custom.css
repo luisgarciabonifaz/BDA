@@ -1,0 +1,63 @@
+/* Oculta el nombre del sitio solo en la portada */
+[data-md-page="index"] .md-header__title .md-header__topic {
+  display: none !important;
+}
+
+
+/* Para que ocupe todo el ancho de pantalla */
+.md-grid {
+    max-width: initial;
+}
+
+/* Titulo */
+.titulo {
+  /* --- Tus estilos de apariencia (se mantienen) --- */
+  background-color: navy;
+  padding: 20px; 
+  color: white; 
+  font-size: 1.5em; 
+  border-radius: 10px;
+
+  /* --- Cambios y añadidos para Flexbox --- */
+  display: flex;
+  align-items: center;    /* Centra el contenido verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  gap: 15px;               /* (Opcional) Añade espacio entre la imagen y el texto */
+}
+
+
+/* Autor */
+.autor {
+  text-align: right;
+  margin-top: 20px;
+  }
+
+
+  /* Estilos para el contenedor de las columnas */
+.columns-container {
+    display: flex; /* Usa Flexbox para las columnas */
+    gap: 20px;     /* Espacio entre las columnas */
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan en pantallas pequeñas */
+}
+
+/* Estilos para cada columna */
+.column {
+    flex: 1; /* Esto hace que cada columna ocupe el mismo espacio disponible */
+    min-width: 280px; /* Ancho mínimo para evitar que se colapsen demasiado */
+    padding: 15px;
+ }
+
+/* ==== Estilo visual para los títulos principales (h1) ==== */
+.md-content h1:first-of-type {
+  background-color: navy;       /* Fondo azul oscuro */
+  color: white;                 /* Texto blanco */
+  padding: 20px;                /* Espaciado interno */
+  font-size: 1.5em;             /* Tamaño de fuente similar al .titulo */
+  border-radius: 10px;          /* Bordes redondeados */
+  text-align: center;           /* Centrar el texto */
+  display: flex;                /* Centrado flexible */
+  align-items: center;          /* Centrado vertical */
+  justify-content: center;      /* Centrado horizontal */
+  gap: 15px;                    /* Espacio si añades iconos o imágenes */
+  margin-bottom: 1.5rem;        /* Espacio con el siguiente contenido */
+}

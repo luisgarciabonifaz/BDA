@@ -1,0 +1,1034 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/BDA/T_05_Orquestacion/Orquestacion_Flujos/">
+      
+      
+        <link rel="prev" href="../../T_04_NIFI/ETL_NiFi/">
+      
+      
+        <link rel="next" href="../../T_06_Bussines_Intelligence/BI_Power_BI/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>T5 - Orquestacion - BDA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="BDA" class="md-header__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BDA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T5 - Orquestacion
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BDA" class="md-nav__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BDA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Aplicado
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Aplicado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_BigData/Fundamentos_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T1 - Fundamentos y Ecosistema Moderno de Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_NoSQL/BD_NoSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T2 - Bases de Datos NoSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T3 - Almacenamiento Moderno en Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_NIFI/ETL_NiFi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T4 - ETL con NiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    T5 - Orquestacion
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    T5 - Orquestacion
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-la-orquestacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es la Orquestación de Datos?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es la Orquestación de Datos?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-diferencia-entre-orquestacion-y-coreografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Diferencia entre Orquestación y Coreografía
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-herramientas-de-orquestacion-basadas-en-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Herramientas de Orquestación Basadas en Código
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Herramientas de Orquestación Basadas en Código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-apache-airflow-el-estandar-de-la-industria" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Apache Airflow: El estándar de la industria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-alternativas-a-airflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Alternativas a Airflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-profundizando-en-apache-airflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Profundizando en Apache Airflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Profundizando en Apache Airflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-caracteristicas-clave-de-airflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Características Clave de Airflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-componentes-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Componentes Principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. ¿Cómo funciona?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-ejemplo-sencillo-de-un-dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Ejemplo Sencillo de un DAG
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-integracion-de-nifi-con-orquestadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Integración de NiFi con Orquestadores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-practica-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Practica 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-practica-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Practica 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Bussines_Intelligence/BI_Power_BI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T6 - Bussines Intelligence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T7 - Visualizacion Tiempo Real
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-la-orquestacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es la Orquestación de Datos?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es la Orquestación de Datos?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-diferencia-entre-orquestacion-y-coreografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Diferencia entre Orquestación y Coreografía
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-herramientas-de-orquestacion-basadas-en-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Herramientas de Orquestación Basadas en Código
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Herramientas de Orquestación Basadas en Código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-apache-airflow-el-estandar-de-la-industria" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Apache Airflow: El estándar de la industria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-alternativas-a-airflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Alternativas a Airflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-profundizando-en-apache-airflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Profundizando en Apache Airflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Profundizando en Apache Airflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-caracteristicas-clave-de-airflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Características Clave de Airflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-componentes-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Componentes Principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. ¿Cómo funciona?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-ejemplo-sencillo-de-un-dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Ejemplo Sencillo de un DAG
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-integracion-de-nifi-con-orquestadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Integración de NiFi con Orquestadores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-practica-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Practica 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-practica-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Practica 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div class="titulo">
+   Orquestación y Automatización de Flujos
+</div>
+<h1 id="_1"></h1>
+<h2 id="1-que-es-la-orquestacion-de-datos">1. ¿Qué es la Orquestación de Datos?</h2>
+<p>La orquestación de datos es la coordinación de múltiples tareas para crear un proceso de flujo de datos completo y automatizado. Imagina que tienes una orquesta: el director es el orquestador, asegurándose de que cada músico (cada tarea) toque en el momento correcto para crear una melodía (el flujo de datos completo).</p>
+<h3 id="11-diferencia-entre-orquestacion-y-coreografia">1.1. Diferencia entre Orquestación y Coreografía</h3>
+<ul>
+<li><strong>Orquestación:</strong> Es un enfoque <strong>centralizado</strong>. Hay un sistema (el orquestador) que tiene una visión global del proceso. Es como un director de orquesta que le dice a cada músico cuándo tocar. La orquestación es ideal para flujos de datos donde las dependencias son clave (ej. no puedes cargar datos si no has terminado de transformarlos).</li>
+<li><strong>Coreografía:</strong> Es un enfoque <strong>descentralizado</strong>. Cada componente del sistema reacciona a los eventos de otros componentes, sin un controlador central. Es como en una fiesta donde la gente baila de forma libre, reaccionando a la música y a los demás sin un coreógrafo que les diga qué hacer. Es útil en sistemas distribuidos y asíncronos.</li>
+</ul>
+<p>En la ingeniería de datos, la <strong>orquestación</strong> es el método preferido para los pipelines de ETL, ya que permite controlar el orden de ejecución, gestionar fallos y reintentos, y monitorear el progreso del flujo de datos de principio a fin.</p>
+<h2 id="2-herramientas-de-orquestacion-basadas-en-codigo">2. Herramientas de Orquestación Basadas en Código</h2>
+<p>A diferencia de las herramientas visuales como NiFi, las herramientas de orquestación como Apache Airflow se basan en <strong>código</strong> para definir los flujos de trabajo. Esto las hace extremadamente flexibles, versionables y reutilizables.</p>
+<h3 id="21-apache-airflow-el-estandar-de-la-industria">2.1. Apache Airflow: El estándar de la industria</h3>
+<p>Airflow es una plataforma de código abierto para crear, programar y monitorizar flujos de trabajo de manera programática. Sus conceptos clave son:</p>
+<ul>
+<li><strong>DAG (Directed Acyclic Graph):</strong> Es el corazón de Airflow. Un DAG es un <strong>grafo acíclico dirigido</strong> que representa el flujo de trabajo. "Dirigido" significa que las tareas tienen un orden específico (A → B → C), y "acíclico" significa que no hay bucles (una tarea no puede volver a una tarea anterior). Cada nodo del grafo es una tarea, y las flechas indican las dependencias.</li>
+<li><strong>Operadores (Operators):</strong> Son las piezas de código que definen lo que una tarea debe hacer. Cada operador representa una tarea atómica. Ejemplos comunes incluyen:<ul>
+<li><code>BashOperator</code>: Ejecuta un comando de shell.</li>
+<li><code>PythonOperator</code>: Ejecuta una función de Python.</li>
+<li><code>SimpleHttpOperator</code>: Envía una petición HTTP.</li>
+</ul>
+</li>
+<li><strong>Tareas (Tasks):</strong> Una instancia de un <code>Operador</code> dentro de un <code>DAG</code>.</li>
+</ul>
+<h3 id="22-alternativas-a-airflow">2.2. Alternativas a Airflow</h3>
+<ul>
+<li><strong>Mage:</strong> Una herramienta más moderna y amigable para el desarrollo. Su enfoque se centra en el desarrollo interactivo y la sencillez, ideal para equipos pequeños o flujos de trabajo más sencillos.</li>
+<li><strong>Prefect:</strong> Una plataforma que se presenta como una alternativa a Airflow, enfocada en la robustez y la facilidad de uso. Prefect se destaca por su manejo de los fallos y sus capacidades de reintentos inteligentes.</li>
+</ul>
+<h2 id="3-profundizando-en-apache-airflow">3. Profundizando en Apache Airflow</h2>
+<p><strong>Apache Airflow</strong> es una plataforma de código abierto que se ha convertido en el estándar de la industria para orquestar flujos de trabajo de datos. A diferencia de NiFi, que se centra en el flujo y la transformación visual, Airflow se enfoca en la <strong>programación y automatización</strong> de tareas a gran escala.</p>
+<h3 id="31-caracteristicas-clave-de-airflow">3.1. Características Clave de Airflow</h3>
+<ul>
+<li><strong>Basado en Código:</strong> Los flujos de trabajo se definen como código Python, lo que permite la versionabilidad, las pruebas unitarias y la colaboración en equipo. Esto es una ventaja significativa sobre las herramientas con interfaces gráficas.</li>
+<li><strong>Flexibilidad:</strong> Con su extensa biblioteca de <strong>operadores</strong>, Airflow puede interactuar con casi cualquier sistema, desde bases de datos hasta APIs y servicios en la nube (AWS, Google Cloud, Azure).</li>
+<li><strong>Interfaz de Usuario (UI):</strong> Airflow incluye una interfaz web intuitiva para monitorizar el estado de los DAGs, ver los logs de las tareas, depurar fallos y gestionar las ejecuciones.</li>
+<li><strong>Escalabilidad:</strong> Está diseñado para ejecutar miles de tareas de manera simultánea en un clúster de máquinas, lo que lo hace ideal para entornos de Big Data.</li>
+</ul>
+<h3 id="32-componentes-principales">3.2. Componentes Principales</h3>
+<p>Para entender cómo funciona Airflow, es crucial conocer sus componentes principales:</p>
+<ul>
+<li><strong>Scheduler (Planificador):</strong> Es el "cerebro" de Airflow. Se encarga de programar los DAGs, gestionar las ejecuciones (DAG Runs) y disparar las tareas en el momento adecuado.</li>
+<li><strong>Webserver (Servidor Web):</strong> El componente que ejecuta la interfaz de usuario de Airflow. Los usuarios interactúan con sus DAGs a través de esta interfaz.</li>
+<li><strong>Executor (Ejecutor):</strong> Es el motor que realmente ejecuta las tareas. Airflow ofrece varios tipos de ejecutores (Sequential, Local, Celery, Kubernetes), que determinan cómo y dónde se ejecutan las tareas.</li>
+<li><strong>Worker (Trabajador):</strong> En un clúster de Airflow, los workers son los procesos que ejecutan las tareas que el <code>Executor</code> les asigna.</li>
+<li><strong>Base de Datos de Metadatos:</strong> Almacena el estado de los DAGs, la información de las tareas, los logs de ejecución y las configuraciones.</li>
+</ul>
+<figure>
+  <img alt="Arquitectura Airflow" src="../Imagenes/Arquitectura_Airflow.png" />
+<br />
+<figcaption>https://airflow.apache.org/docs/apache-airflow/2.0.1/concepts.html</figcaption>
+</figure>
+<h3 id="33-como-funciona">3.3. ¿Cómo funciona?</h3>
+<ol>
+<li><strong>Definición del DAG:</strong> Un desarrollador escribe un archivo de Python que define un DAG. En este archivo, se especifican:<ul>
+<li><strong>Las tareas</strong> </li>
+<li><strong>Las dependencias</strong>. El orden en el que deben ejecutarse.</li>
+</ul>
+</li>
+<li><strong>Detección y Programación:</strong> El <strong>Scheduler</strong> busca nuevos archivos DAG en una carpeta específica. Una vez detectado, esté lo programa para su ejecución en base a la frecuencia que se haya definido (ej. una vez al día).</li>
+<li><strong>Ejecución de Tareas:</strong> Cuando llega el momento de la ejecución, el <strong>Scheduler</strong> le dice al <strong>Executor</strong> qué tareas deben ejecutarse. Este asigna estas tareas a los <strong>Workers</strong>.</li>
+<li><strong>Monitoreo y Almacenamiento:</strong> El <strong>Webserver</strong> muestra el estado de las tareas y los DAGs en tiempo real. Todos los eventos y logs se guardan en la base de datos de metadatos para su consulta y depuración.</li>
+</ol>
+<h3 id="34-ejemplo-sencillo-de-un-dag">3.4. Ejemplo Sencillo de un DAG</h3>
+<p>Aquí tienes un ejemplo de un DAG simple escrito en Python que simula un flujo de trabajo que primero descarga un archivo y luego lo procesa.</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code>from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+from datetime import datetime, timedelta
+
+# Define los argumentos por defecto para el DAG
+default_args = {
+    &#39;owner&#39;: &#39;airflow&#39;,
+    &#39;depends_on_past&#39;: False,
+    &#39;start_date&#39;: datetime(2025, 1, 1),
+    &#39;email_on_failure&#39;: False,
+    &#39;email_on_retry&#39;: False,
+    &#39;retries&#39;: 1,
+    &#39;retry_delay&#39;: timedelta(minutes=5),
+}
+
+# Define el DAG
+dag = DAG(
+    &#39;flujo_descarga_procesamiento_simple&#39;,
+    default_args=default_args,
+    description=&#39;Un DAG simple para descargar y procesar un archivo&#39;,
+    schedule_interval=timedelta(days=1),
+)
+
+# Tarea 1: Descargar un archivo (usando un operador de bash para simular)
+descargar_archivo = BashOperator(
+    task_id=&#39;descargar_archivo&#39;,
+    bash_command=&#39;echo &quot;Simulando la descarga de un archivo...&quot;&#39;,
+    dag=dag,
+)
+
+# Tarea 2: Procesar el archivo descargado
+procesar_archivo = BashOperator(
+    task_id=&#39;procesar_archivo&#39;,
+    bash_command=&#39;echo &quot;Procesando el archivo descargado...&quot;&#39;,
+    dag=dag,
+)
+
+# Establecer la dependencia entre las tareas
+descargar_archivo &gt;&gt; procesar_archivo
+</code></pre></div>
+<p>En este ejemplo, la línea <code>descargar_archivo &gt;&gt; procesar_archivo</code> define la dependencia: la tarea de <code>procesar_archivo</code> no se ejecutará hasta que la tarea de <code>descargar_archivo</code> haya finalizado con éxito. Este es el principio básico detrás de la orquestación con Airflow.</p>
+<h2 id="4-integracion-de-nifi-con-orquestadores">4. Integración de NiFi con Orquestadores</h2>
+<p>Una de las principales ventajas de herramientas como NiFi es su <strong>API REST</strong>. Esta interfaz nos permite interactuar con NiFi de manera programática, lo que significa que un orquestador como Airflow puede enviar comandos a NiFi.</p>
+<p>El patrón de integración típico es:</p>
+<ol>
+<li><strong>Airflow define el flujo de trabajo (DAG):</strong> El DAG de Airflow contendrá tareas para los diferentes pasos de nuestro pipeline.</li>
+<li><strong>Una tarea de Airflow envía una petición a la API de NiFi:</strong> Esta petición puede, por ejemplo, iniciar o detener un grupo de procesos en NiFi.</li>
+<li><strong>NiFi ejecuta el flujo de datos:</strong> NiFi se encarga del procesamiento, la transformación y la carga de los datos.</li>
+<li><strong>Airflow monitoriza el estado:</strong> Airflow puede seguir el estado de la tarea de NiFi, sabiendo si se ejecutó con éxito o si falló.</li>
+</ol>
+<p>Este enfoque separa la <strong>orquestación</strong> (quién, cuándo y en qué orden se ejecutan las tareas) de la <strong>ejecución</strong> (cómo se procesan realmente los datos), permitiendo que cada herramienta se enfoque en lo que mejor sabe hacer.</p>
+<h2 id="5-practicas">5. Prácticas</h2>
+<h3 id="51-practica-1">5.1. Practica 1</h3>
+<p><strong>Creación de un DAG en Airflow para el proyecto Smart City</strong></p>
+<ol>
+<li><strong>Configuración del Entorno:</strong> Montaremos una instancia de Apache Airflow (típicamente con Docker Compose) y la configuraremos para que pueda comunicarse con nuestra instancia de NiFi del proyeto de sensores.</li>
+<li><strong>Creación del DAG:</strong></li>
+<li>Escribiremos un archivo de Python para definir el DAG.</li>
+<li>El DAG tendrá una única tarea principal.</li>
+<li>Utilizaremos un <code>SimpleHttpOperator</code> para enviar una petición a la API de NiFi. La petición le dirá a NiFi que inicie la ejecución de nuestro grupo de procesos (<code>Process Group</code>) para el de sensores.</li>
+<li>Programaremos el DAG para que se ejecute diariamente a una hora específica.</li>
+<li><strong>Verificación:</strong> Una vez en marcha, monitorizaremos el DAG desde la interfaz de Airflow para asegurarnos de que se ejecute en el horario programado. También revisaremos los registros de NiFi para confirmar que el flujo de datos se ha iniciado y completado correctamente.</li>
+<li><strong>Documentación</strong> Guardamos en el Repositorio de GitHub el DAG creado.</li>
+</ol>
+<h3 id="52-practica-2">5.2. Practica 2</h3>
+<p><strong>Creación de un DAG en Airflow para el proyecto Análisis Académico</strong></p>
+<ol>
+<li><strong>Configuración del Entorno:</strong> Utilizaremos el docker compose de la práctica anterior.</li>
+<li><strong>Creacion del DAG:</strong></li>
+<li>Escribiremos un archivo de Python para definir el/los DAG/s.</li>
+<li>El/Los DAG/s tendrán todas las tareas nececesarias para orquestar el proyecto Análisis Académico.</li>
+<li>Crearemos las tareas de la ETL con codigo python. Olvidandonos del flujo de datos creado con NiFi.</li>
+<li>Programaremos el/los DAG/s para que se ejecute diariamente a una hora específica.</li>
+<li>
+<p><strong>Verificación:</strong> Una vez en marcha, monitorizaremos el flujo de datos desede la interfaz de Airflow para asegurarnos de que se ejecute en el horario programado.</p>
+</li>
+<li>
+<p><strong>Documentación</strong> Guardamos en el Repositorio de GitHub los DAG creados.</p>
+</li>
+</ol>
+<p>El objetivo de estas prácticas es crear un sistema de procesamiento de datos <strong>totalmente automatizado</strong> y robusto, listo para entornos de producción.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 de octubre de 2025 16:21:00 UTC">30 de octubre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

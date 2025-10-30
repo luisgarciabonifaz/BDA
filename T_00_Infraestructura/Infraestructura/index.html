@@ -1,0 +1,980 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/BDA/T_00_Infraestructura/Infraestructura/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Infraestructura - BDA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#infraestructura" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="BDA" class="md-header__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BDA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Infraestructura
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BDA" class="md-nav__button md-logo" aria-label="BDA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BDA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Aplicado
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Aplicado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_BigData/Fundamentos_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T1 - Fundamentos y Ecosistema Moderno de Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_NoSQL/BD_NoSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T2 - Bases de Datos NoSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Almacenamiento_Moderno/Almacenamiento_Moderno_BigData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T3 - Almacenamiento Moderno en Big Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_NIFI/ETL_NiFi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T4 - ETL con NiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Orquestacion/Orquestacion_Flujos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T5 - Orquestacion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Bussines_Intelligence/BI_Power_BI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T6 - Bussines Intelligence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Visualizacion_Tiempo_Real/Visualizacion_Tiempo_Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    T7 - Visualizacion Tiempo Real
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conceptos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Conceptos Clave
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gestion-de-imagenes-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Gestión de Imágenes (Images)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gestion-de-contenedores-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Gestión de Contenedores (Containers)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-limpieza-y-utilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Limpieza y Utilidades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ejemplos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-flujo-de-trabajo-con-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Flujo de Trabajo con GitHub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Flujo de Trabajo con GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-estructura-de-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Estructura de Directorios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Commits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. README.md:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. AWS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="infraestructura">Infraestructura</h1>
+<p>Para el desarrollo de las practicas de este modulo trabajaremos con estas herramientas y servicios</p>
+<ul>
+<li>Docker: Para crear las infraestructuras de servicios</li>
+<li>AWS: Para el almacenamiento y las Bases de Datos en la nube</li>
+<li>GitHub: Para el flujo de trabajo y la documentación </li>
+</ul>
+<h2 id="1-docker">1. Docker</h2>
+<p>Usaremos las siguientes infraestructuras de servicios con Docker, cada una de ellas con un fichero de configuración <em>docker-compose.yml</em>:</p>
+<ul>
+<li><strong>SmartCity</strong>:  FIWARE </li>
+<li><strong>ETL</strong>: :NiFi</li>
+<li><strong>Orquestación</strong>: Airflow</li>
+</ul>
+<details class="info">
+<summary>Ayuda Docker</summary>
+<h3 id="1-conceptos-clave">1. Conceptos Clave</h3>
+<ul>
+<li><strong>Imagen:</strong> Plantilla para un contenedor (inmutable).</li>
+<li><strong>Contenedor:</strong> Instancia en ejecución de una imagen.</li>
+<li><strong>Dockerfile:</strong> Archivo de texto con las instrucciones para construir una imagen.</li>
+<li><strong>Modo Interactivo (<code>-it</code>):</strong> Permite interactuar con el contenedor, útil para <em>shells</em>.</li>
+</ul>
+<h3 id="2-gestion-de-imagenes-images">2. Gestión de Imágenes (Images)</h3>
+<p>Las imágenes son plantillas de solo lectura usadas para crear contenedores.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker pull &lt;imagen&gt;</code></td>
+<td>Descarga una imagen de un registro (por defecto Docker Hub).</td>
+<td><code>docker pull ubuntu:latest</code></td>
+</tr>
+<tr>
+<td><code>docker images</code></td>
+<td>Lista todas las imágenes locales.</td>
+<td><code>docker images</code></td>
+</tr>
+<tr>
+<td><code>docker rmi &lt;id/nombre&gt;</code></td>
+<td>Elimina una imagen local.</td>
+<td><code>docker rmi ubuntu</code></td>
+</tr>
+<tr>
+<td><code>docker build -t &lt;nombre&gt; .</code></td>
+<td>Construye una imagen a partir de un <strong>Dockerfile</strong> en el directorio actual.</td>
+<td><code>docker build -t mi-app:v1 .</code></td>
+</tr>
+<tr>
+<td><code>docker push &lt;usuario/nombre:tag&gt;</code></td>
+<td>Sube una imagen a un registro.</td>
+<td><code>docker push miusuario/mi-app:v1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-gestion-de-contenedores-containers">3. Gestión de Contenedores (Containers)</h3>
+<p>Los contenedores son instancias ejecutables de las imágenes.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker run &lt;imagen&gt;</code></td>
+<td>Crea y ejecuta un nuevo contenedor a partir de una imagen.</td>
+<td><code>docker run nginx</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker run -d &lt;imagen&gt;</code></td>
+<td>Ejecuta en <strong>modo *detached*</strong> (segundo plano).</td>
+<td><code>docker run -d redis</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker run -it &lt;imagen&gt; /bin/bash</code></td>
+<td>Ejecuta de forma <strong>interactiva</strong> (<code>-it</code>) y abre una <em>shell</em>.</td>
+<td><code>docker run -it ubuntu /bin/bash</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker run -p &lt;host_port&gt;:&lt;cont_port&gt; &lt;imagen&gt;</code></td>
+<td><strong>Mapea un puerto</strong> del host al contenedor.</td>
+<td><code>docker run -p 8080:80 nginx</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker ps</code></td>
+<td>Lista los contenedores <strong>en ejecución</strong>.</td>
+<td><code>docker ps</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker ps -a</code></td>
+<td>Lista <strong>todos</strong> los contenedores (incluidos los detenidos).</td>
+<td><code>docker ps -a</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker stop &lt;id/nombre&gt;</code></td>
+<td>Detiene un contenedor en ejecución.</td>
+<td><code>docker stop mi-servidor</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker start &lt;id/nombre&gt;</code></td>
+<td>Inicia un contenedor detenido.</td>
+<td><code>docker start mi-servidor</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker restart &lt;id/nombre&gt;</code></td>
+<td>Reinicia un contenedor.</td>
+<td><code>docker restart mi-servidor</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker rm &lt;id/nombre&gt;</code></td>
+<td>Elimina un contenedor detenido.</td>
+<td><code>docker rm mi-contenedor</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker exec -it &lt;id/nombre&gt; &lt;comando&gt;</code></td>
+<td>Ejecuta un comando dentro de un contenedor en ejecución.</td>
+<td><code>docker exec -it mi-servidor ls -l</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker logs &lt;id/nombre&gt;</code></td>
+<td>Muestra los logs (salida estándar) de un contenedor.</td>
+<td><code>docker logs -f mi-servidor</code> (con <code>-f</code> para seguir)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-limpieza-y-utilidades">4. Limpieza y Utilidades</h3>
+<p>Comandos para mantener el entorno de Docker limpio.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker system prune</code></td>
+<td>Elimina datos no utilizados: contenedores detenidos, imágenes sin etiqueta, redes sin usar.</td>
+<td><code>docker system prune</code></td>
+</tr>
+<tr>
+<td><code>docker volume prune</code></td>
+<td>Elimina volúmenes no utilizados.</td>
+<td><code>docker volume prune</code></td>
+</tr>
+<tr>
+<td><code>docker network ls</code></td>
+<td>Lista las redes de Docker.</td>
+<td><code>docker network ls</code></td>
+</tr>
+<tr>
+<td><code>docker info</code></td>
+<td>Muestra información detallada sobre la instalación de Docker.</td>
+<td><code>docker info</code></td>
+</tr>
+<tr>
+<td><code>docker login</code></td>
+<td>Inicia sesión en un registro de Docker (ej: Docker Hub).</td>
+<td><code>docker login</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-ejemplos">5. Ejemplos</h3>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Comando</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arrancar Infraestructura</td>
+<td>docker-compose up -d</td>
+<td>Levanta todos los servicios en segundo plano</td>
+</tr>
+<tr>
+<td>Ver Logs</td>
+<td>docker-compose logs -f</td>
+<td>Monitorea la actividad de todos los servicios.</td>
+</tr>
+<tr>
+<td>Detener Infraestructura</td>
+<td>docker-compose down</td>
+<td>Detiene y elimina los contenedores (conserva las imágenes).</td>
+</tr>
+<tr>
+<td>Ejecutar Script</td>
+<td>docker exec -it <nombre_contenedor> python src/script.py</td>
+<td>Ejecuta tu código (simulación, ETL) dentro de un contenedor.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="2-flujo-de-trabajo-con-github">2. Flujo de Trabajo con GitHub</h2>
+<p>GitHub es una plataforma de alojamiento de código y   colaboración basada en la web. Su función principal es proporcionar un lugar centralizado para almacenar repositorios de proyectos que utilizan Git, un sistema de control de versiones distribuido. </p>
+<p>Es la plataforma estándar de la industria para alojar proyectos de código, permitiendo la colaboración, el control de versiones y una gestión de proyectos estructurada y transparente.</p>
+<p>Usaremos GitHub para la documentación y el flujo de trabajo de nuestros proyectos.</p>
+<details class="info">
+<summary>Conceptos clave GitHub</summary>
+<ul>
+<li><strong>Repositorio (Repo)</strong>: Es la carpeta principal de tu proyecto en GitHub. Contiene todos los archivos del proyecto, junto con el historial completo de revisiones de Git.</li>
+<li><strong>Clonar</strong>: Es descargar una copia completa de un repositorio de GitHub a tu máquina local.</li>
+<li><strong>Commit</strong>: Es guardar un conjunto de cambios realizados en el proyecto. Cada commit incluye un mensaje que describe los cambios.</li>
+<li><strong>Push</strong>: Es enviar tus commits locales (los cambios que has guardado) desde tu máquina al repositorio remoto en GitHub.</li>
+<li><strong>Pull</strong>: Es descargar los últimos cambios desde el repositorio remoto de GitHub a tu máquina local.</li>
+<li><strong>Rama (Branch)</strong>: Permite trabajar en nuevas características o correcciones sin afectar el código principal (generalmente la rama main o master). Es fundamental para el trabajo en equipo y el desarrollo seguro.</li>
+<li><strong>Pull Request (PR) / Merge Request (MR)</strong>: Es la forma estándar de proponer cambios de una rama a otra (por ejemplo, de una rama de característica a la rama principal). Permite que otros revisen el código antes de que se integre.</li>
+</ul>
+</details>
+<h3 id="21-estructura-de-directorios">2.1. Estructura de Directorios</h3>
+<p>Cada proyecto reside en su propio directorio y contiene un archivo <code>docker-compose.yml</code> para definir sus servicios. Este puede ser un ejemplo</p>
+<p>Cada Repositoria tendra un directorio por proyecto con un archivo docker-compose.yml. Esta podría ser la estructura carpetas en el repositorio de GitHub:</p>
+<div class="highlight"><pre><span></span><code>├── bigdata-proyecto-smartcity/
+│   ├── docker-compose.yml  # FIWARE, CrateDB, Grafana
+│   ├── data/
+│   │   └── sensors_data.json
+│   └── src/
+│       └── simulation_script.py
+├── bigdata-proyecto-academico/
+│   ├── docker-compose.yml  # Base de Datos (PostgreSQL/MySQL), Herramienta ETL
+│   ├── data/
+│   │   └── calificaciones.csv
+│   └── src/
+│       └── etl_script.py
+└── README.md
+</code></pre></div>
+<h3 id="22-commits">2.2. Commits</h3>
+<p>El historial de <code>commits</code> debe ser <strong>constante y descriptivo</strong> para mostrar el progreso. Se recomienda seguir un esquema de mensajes claro.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Etapa</th>
+<th style="text-align: left;">Comando <code>git</code></th>
+<th style="text-align: left;">Mensaje de Commit (Ejemplo)</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Infraestructura</strong></td>
+<td style="text-align: left;"><code>git add docker-compose.yml</code></td>
+<td style="text-align: left;"><code>feat: Inicializar infraestructura Docker con Orion, CrateDB y Grafana</code></td>
+<td style="text-align: left;">Establecer el entorno de trabajo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Desarrollo</strong></td>
+<td style="text-align: left;"><code>git add src/simulation_script.py</code></td>
+<td style="text-align: left;"><code>feat: Implementar simulación de los tres sensores (Temp, CO2, Agua) y enviar a Orion</code></td>
+<td style="text-align: left;">Implementación de nueva funcionalidad.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Documentación/Refactor</strong></td>
+<td style="text-align: left;"><code>git add src/etl_process.py</code></td>
+<td style="text-align: left;"><code>refactor: Crear proceso ETL para calcular valores Max/Min/Medios diarios y cargar en Data Warehouse</code></td>
+<td style="text-align: left;">Mejora o reestructuración de código/procesos.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recordatorio:</strong> Después de cada <code>commit</code>, ejecuta <code>git push origin main</code> para sincronizar con el repositorio remoto.</p>
+<h3 id="23-readmemd">2.3. README.md:</h3>
+<p>El archivo <code>README.md</code> es el <strong>informe final</strong> y la <strong>guía de ejecución</strong> del proyecto. Debe estar en la raíz del repositorio.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Sección del README.md</th>
+<th style="text-align: left;">Contenido Mínimo Requerido (Ej. Proyecto Académico)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <strong>Definición del Proyecto</strong></td>
+<td style="text-align: left;"><strong>Objetivo</strong> (Ej: Consolidar históricos e indicadores de calidad) y <strong>enfoque</strong> (Ej: Modelo dimensional para BI).</td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <strong>Infraestructura Técnica</strong></td>
+<td style="text-align: left;">Lista de <strong>contenedores</strong> (PostgreSQL/MySQL, Contenedor Python para ETL). Incluir la estructura del <code>docker-compose.yml</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <strong>Proceso ETL y Modelo de Datos</strong></td>
+<td style="text-align: left;"><strong>Diagrama o descripción</strong> de la transformación de archivos CSV (ITACA, PAA) en tablas de Hechos y Dimensiones. Describir las <strong>validaciones</strong> realizadas.</td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <strong>Instrucciones de Uso</strong></td>
+<td style="text-align: left;">Pasos <strong>exactos</strong> para la ejecución: <code>git clone</code>, <code>docker-compose up -d</code>, cómo ejecutar el script ETL (<code>python src/etl_process.py</code>), y cómo conectar la herramienta de BI (Ej: Power BI) al Data Warehouse.</td>
+</tr>
+<tr>
+<td style="text-align: left;">5. <strong>Resultados (Power BI)</strong></td>
+<td style="text-align: left;"><strong>Capturas de pantalla</strong> del Cuadro de Mando, mostrando indicadores clave (Ej: porcentaje de aprobación) y filtros aplicables (Familia, Curso, Evaluación, etc.).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-aws">3. AWS</h2>
+<p>Para  las bases de datso y el almacenamiento en la nube usaremos los servicios de <strong>AWS</strong> en concreto los de AWS Academy</p>
+<p>Los servicios que usremos son :</p>
+<ul>
+<li><strong>Bases de Datos:</strong> Uso de servicios gestionados de bases de datos (Ej: Amazon RDS).</li>
+<li><strong>Almacenamiento:</strong> Uso de <strong>S3</strong> (Simple Storage Service) para archivos estáticos o <em>data lakes</em>.</li>
+</ul>
+<p>El alumno tendra en AWS Academy:</p>
+<ul>
+<li>Un curso de Cloud Foundations</li>
+<li>Dos Learner Lab ( Laboratorios)  <ul>
+<li>Uno para los proyectos del modulo </li>
+<li>Otro para los proyectos globales</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 de octubre de 2025 16:21:00 UTC">30 de octubre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
